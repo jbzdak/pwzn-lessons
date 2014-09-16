@@ -1,0 +1,7 @@
+venv
+output
+cache
+.idea
+*.pid
+*.py[co]
+*~
