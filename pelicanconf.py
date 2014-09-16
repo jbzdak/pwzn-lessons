@@ -31,6 +31,7 @@ FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
+STATIC_PATHS = ['static']
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),

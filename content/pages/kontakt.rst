@@ -6,7 +6,10 @@ Kontakt
 :slug: Kontakt
 
 Zachęcam do kontaktu na adres e-mail:
-``bzdak@if.*``
+``bzdak@if.*``.
+
+Zapraszam również do zadawania pytań przez
+system komentarzy!
 
 ---
 

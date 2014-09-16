@@ -1,4 +1,4 @@
-PY?=python
+PY?=venv/bin/python
 PELICAN?=pelican
 PELICANOPTS=
 
@@ -14,8 +14,8 @@ FTP_TARGET_DIR=/
 
 SSH_HOST=db.fizyka.pw.edu.pl
 SSH_PORT=22
-SSH_USER=jbzdak
-SSH_TARGET_DIR=/home/jbzdak/pwd
+SSH_USER=bzdak
+SSH_TARGET_DIR=/home/bzdak/public_html/pwzd
 
 S3_BUCKET=my_s3_bucket
 

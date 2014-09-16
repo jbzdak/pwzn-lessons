@@ -1,8 +1,7 @@
 Termin zajęć
 ############
 
-:date: 2010-10-03 10:20
-:modified: 2010-10-03 10:20
+:date: 2014-09-16
 :tags: ważne
 :category: organizacja
 :summary: Termin zajęć
