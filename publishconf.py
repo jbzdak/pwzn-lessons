@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://db.fizyka.pw.edu.pl/pwzd'
+SITEURL = 'http://db.fizyka.pw.edu.pl/pwzn'
 
 RELATIVE_URLS = False
 
