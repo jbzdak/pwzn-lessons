@@ -1,0 +1,6 @@
+# Created by .gitignore support plugin (hsz.mobi)
+### IPythonNotebook template
+# Temporary data
+.ipynb_checkpoints/
+*html
+*rst

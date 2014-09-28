@@ -19,7 +19,7 @@ Z konieczności raczej będą to analizy związane z fizyką Jądrową (sam si�
 zajmuje), narzędzia te jednak są na tyle generyczne, że nadadzą 
 się też innym specjalnościom.
 
-Możliwem że (zależnie od ilosci studentów z MUZ) zrobimy jakieś rzeczy związane
+Możliwe że (zależnie od ilości studentów z MUZ) zrobimy jakieś rzeczy związane
 z eksploracją danych.
 
 Możliwe że uda mi się zrobić jakieś przykłady związane z optoelektroniką.
@@ -41,7 +41,7 @@ Na laboratoriach ocenie podlega wykonanie praktycznych zadań, zasadniczo zadani
 powinny być wykonane w trakcie zajęć. Możliwe będzie oddanie zajęć na następnych
 zajęciach.
 
-Projekt i jego kryteria będą określone w okolicach piątych zajęc.
+Projekt i jego kryteria będą określone w okolicach piątych zajęć.
 
 Informacje organizacyjne
 ------------------------

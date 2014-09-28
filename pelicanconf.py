@@ -16,6 +16,11 @@ if not THEME in sys.path:
 
 import blog_utils
 
+PLUGIN_PATHS = [unipath.Path(DIRNAME, 'pelican-plugins').absolute()]
+
+PLUGINS = ['render_math']
+
+
 AUTHOR = u'Jacek Bzdak'
 SITENAME = u'Python w Zastosowaniach Naukowych'
 SITEURL = ''

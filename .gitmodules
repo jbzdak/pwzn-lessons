@@ -1,3 +1,6 @@
 [submodule "themes/jbtheme"]
 	path = themes/jbtheme
 	url = git@github.com:jbzdak/jb-pelican-theme.git
+[submodule "content/static/reveal.js"]
+	path = content/static/reveal.js
+	url = https://github.com/hakimel/reveal.js.git
