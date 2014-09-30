@@ -5,8 +5,7 @@ Całki numeryczne (skrótowo)
 :tags: zajęcia, zaj1
 :category: zajęcia
 :summary: Termin zajęć
-
-#:status: draft
+:status: draft
 
 Całkę funkcji można estymować za pomocą szeregu aproksymacji.
 
