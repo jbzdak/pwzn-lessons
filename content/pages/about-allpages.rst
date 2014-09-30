@@ -9,3 +9,4 @@ O nas
 
 Przedmiot Python w Zastosowaniach Naukowych.
 
+* `RSS <http://db.fizyka.pw.edu.pl/pwzn/feeds/all.atom.xml>`__

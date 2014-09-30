@@ -5,7 +5,6 @@ Polityka prywatności i plików cookies
 :tags: ważne, highlighted
 :slug: polityka-prywatności
 :category: highlighted
-:summary: About us
 
 
 Sama strona nie używa plików cookies, tj. nie są używane pliki cookies
