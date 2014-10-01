@@ -30,6 +30,10 @@ Dla osób chcących korzystać ze swojego sprzętu:
   Może być `sublime <http://www.sublimetext.com/>`__,
   Na Linuksach może być gedit, kate, vim
   (`ze wsparciem dla Pythona <https://wiki.python.org/moin/Vim>`__).
+  Ostatecznie można pracować we wbudowanym w pythona `IDLE <https://docs.python.org/3.4/library/idle.html>`__.
+
+  Proszę **NIE** używać rozbudowanych IDE (takich jak Pycharm)!
+
 
 
 
