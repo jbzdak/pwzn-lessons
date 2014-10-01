@@ -85,7 +85,9 @@ oraz takimi zagadnieniami jak:
 * Tworzenie i format plików binarnych
 * Wywołanie systemowe ``mmap`` (i odpowiednik na Windowsie)
 
-**Narzędzia:** Studenci będą pracować w IDE PyCharm.
+**Narzędzia:** Studenci będą pracować w IDE PyCharm. Dodatkowo studenci zapoznają się 
+z pojęciem środowiska virtualnego oraz nauczą się instalować Pythonowe moduły
+za pomocą managera paczek PIP, oraz narzędzi setuptools.
 
 **Zadanie na konice bloku** (do wykonania na zajęciach): napisanie programu
 wydajnie pracującego na dużym zestawie danych binarnych.

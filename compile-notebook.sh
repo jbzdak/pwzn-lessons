@@ -12,10 +12,10 @@ function compile(){
     ipython nbconvert zaj1-blok*.ipynb --to html
     ipython nbconvert zaj1-blok*.ipynb --to slides --reveal-prefix ../reveal.js
 
-    mkdir -p $CONTENT/$zaj
+    #mkdir -p $CONTENT/$zaj
     mkdir -p $CONTENT/static/$zaj
 
-    cp *rst $CONTENT/$zaj
+    #cp *rst $CONTENT/$zaj
     cp *html $CONTENT/static/$zaj
 }
 
