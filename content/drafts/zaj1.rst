@@ -71,3 +71,91 @@ Wyświetl:
 1. Całą strukturę danych
 2. Dane drugiego zwierzęcia
 3. Imiona wszystich zwierząt
+
+Blok 2
+******
+
+Zadanie 1
+#########
+
+Dokumentacja funkcji
+`sorted <https://docs.python.org/3/library/functions.html#sorted>`__
+twierdzi, że funkcja przekazana jako argument ``key`` jest
+wykonywana raz dla każdego elementu tablicy. Nie wierzę w to!
+
+Napisz funkcję/obiekt key który liczy ile razy została wywołana i
+udowodnij mi że dokumentacja nie kłamie.
+
+Podpowiedż:
+
+* Możesz użyć domknięcia.
+* Możesz zamiast funkcji przekazać obiekt, który ma przeładowany operator ().
+
+Zadanie 2
+#########
+
+Napisz funkcję która jest bardziej rozwiniętą funkcji ``range``,
+przjmować ona będzie trzy argumenty:
+x0, xN oraz n. A zwracać będzie listę mającą n elementów pierwszym jest x0, ostatnim xN,
+a wartości pomiędzy są rozłożone równomiernie.
+
+Funkcja ta może przyjmować wartości zmiennoprzecinkowe.
+
+Zadanie 3
+#########
+
+Napisz funkcję która ma taką sygnaturę:
+
+.. code-block:: python
+
+    def furier(furier_arg, points):
+        """
+            furier_arg to lista floatów które definiują współczynniki rozkładu pewnej funkcji F
+            na współczynniki furiera (dla ustalenia uwagi są to współczynniki przy sinusach)
+            points to list punktow dla których wartości funkcji F będą zwrócone
+        """
+        pass
+
+Zadanie 3a
+##########
+
+Popraw funkcję z poprzedniego zadania tak by można było wybrać czy rozkładamy na `sin` czy `cos`.
+
+Zadanie 4
+#########
+
+Stwórz klasę `Integrator` która implementować będzie interfejs dokonujący
+całkowania numerycznego.
+
+Stwórz klasy `RectangleIntegrator` (całkująca metodą prostokątów),
+`TrapesoidIntegrator` (całkująca metodą trójkątów),
+`SimpsonIntegrator` (Całkujące metodą Simpsona) dziedziczą po klasie `Integrator`.
+
+Dla osób które tego nie pamiętają: `informacje o całkowaniu numerycznym
+<{filename}/numeryczne.rst>`__.
+
+Klasa ta dodatkowo powinna dzielić przedział całkowania na N
+podprzedziałów, dla każdego z podprzedziałów należy zastosować
+odpowiednią metodę.
+
+Zadanie 5 (Zadanie wymagane na ocenę 5)
+#######################################
+
+Stwórz klasę która będzie dokonywała całkowania za pomocą wzorów
+Newtona-Cotesa rzędu 3, 4, 5 i 6.
+
+**Uwaga** To jest zadanie w którym powinniście wykorzystać programowanie
+danymi. Współczynniki powinny być zapisane w jakiejś strukturze danych,
+a następnie ten sam algorytm powinien wyznaczać całkę N-tego rzędu.
+
+Tutaj nie trzeba dzielić przedziału całkowania na dodatkowe podprzedziały.
+
+Zadanie 5: **Challenge**
+########################
+
+**Challenge** to zadanie które jest opcjonalne, nie wpływa na ocenę
+z zajęć ale jego wykonanie jest konieczne do wyjścia wcześniej.
+
+
+
+

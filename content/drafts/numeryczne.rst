@@ -30,6 +30,11 @@ Zasada simpsona:
 Dokładność tych metod można podnieść dzieląc przedział całkowania na
 podprzedziały i sumując.
 
+Pozostałe wzory Newtona-Cotesa są na `wolphram alpha
+<http://mathworld.wolfram.com/Newton-CotesFormulas.html>`__.
+
+
+
 Adaptacyjna metoda Simpsona
 ---------------------------
 
@@ -43,7 +48,9 @@ na metodach numerycznych, tutaj przytoczę więc algorytm:
 * Wyznaczamy całkę w zakresach od a do (a+b)/2 i od (a+b)/2 do b
 * Jeśli różnica między całką na całym zakresie a sumą całek na połówkach jest
   mniejsza od 15 * Epsilon zwracamy (lewe + prawe - (lewe + prawe - cale)/15
-* Jeśli jest większa zwracamy sumę całek od a do (a+b)/2 i od (a+b)/21
+* Jeśli jest większa zwracamy sumę całek od a do (a+b)/2 i od (a+b)/2 do b
+
+1
 
 .. note::
 
