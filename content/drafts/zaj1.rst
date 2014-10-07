@@ -55,8 +55,9 @@ zakresie od 0 do 2*pi dla co 1E-5.
     nadają się na klucze w słowniku ze względu na
     nieintuicyjne działanie.
 
-    Dlatego przed użyciem ffloata jako klucza
-    plecam wykorzystanie funkcji ``round``.
+    Dlatego przed użyciem floata jako klucza w słowniku
+    (oraz przy wybieraniu wartości) polecam
+    wykorzystanie funkcji ``round``.
 
     Proszę sprawdzić jej działanie w
     `dokumentacji <https://docs.python.org/3/>`__.
@@ -138,8 +139,12 @@ Klasa ta dodatkowo powinna dzielić przedział całkowania na N
 podprzedziałów, dla każdego z podprzedziałów należy zastosować
 odpowiednią metodę.
 
-Zadanie 5 (Zadanie wymagane na ocenę 5)
-#######################################
+Zadanie 5: Zadanie na pięć
+##########################
+
+**Zadanie na 5** wykonanie tego zadania konieczne jest do uzyskania
+oceny 5 z tych zajęć.
+
 
 Stwórz klasę która będzie dokonywała całkowania za pomocą wzorów
 Newtona-Cotesa rzędu 3, 4, 5 i 6.
@@ -150,6 +155,9 @@ a następnie ten sam algorytm powinien wyznaczać całkę N-tego rzędu.
 
 Tutaj nie trzeba dzielić przedziału całkowania na dodatkowe podprzedziały.
 
+W tym zadaniu powinieneś skorzystać z wyników niektórych poprzednich
+zadań :)
+
 Zadanie 5: **Challenge**
 ########################
 
@@ -157,5 +165,5 @@ Zadanie 5: **Challenge**
 z zajęć ale jego wykonanie jest konieczne do wyjścia wcześniej.
 
 
-
+Zaimplementuj klasę dokonującą całkowania adaptacyjną metodą Simpsona.
 

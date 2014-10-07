@@ -1782,7 +1782,7 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[15]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1799,7 +1799,7 @@ In&nbsp;[1]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[16]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1829,43 +1829,20 @@ In&nbsp;[2]:
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
 </div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="s">&quot;foo&quot;</span> <span class="c"># Definicja ciągu znaków, jak widzicie jedna zmienna </span>
-<span class="c"># może zmienić swój typ w trakcie życia (jest to nie polecane!)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="foo-=-&quot;foo&quot;-#-Definicja-ci&#261;gu-znak&#243;w,-jak-widzicie-jedna-zmienna--#-mo&#380;e-zmieni&#263;-sw&#243;j-typ-w-trakcie-&#380;ycia-(jest-to-nie-polecane!)-print(foo)">foo = "foo" # Definicja ci&#261;gu znak&#243;w, jak widzicie jedna zmienna  # mo&#380;e zmieni&#263; sw&#243;j typ w trakcie &#380;ycia (jest to nie polecane!) print(foo)<a class="anchor-link" href="#foo-=-&quot;foo&quot;-#-Definicja-ci&#261;gu-znak&#243;w,-jak-widzicie-jedna-zmienna--#-mo&#380;e-zmieni&#263;-sw&#243;j-typ-w-trakcie-&#380;ycia-(jest-to-nie-polecane!)-print(foo)">&#182;</a></h2>
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-foo
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[17]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1898,7 +1875,7 @@ In&nbsp;[4]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[5]:
+In&nbsp;[18]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1930,7 +1907,7 @@ In&nbsp;[5]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[19]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1950,10 +1927,173 @@ In&nbsp;[6]:
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-6-96146fb7f6ff&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">&lt;ipython-input-19-96146fb7f6ff&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
 <span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>baz <span class="ansiyellow">=</span> foo <span class="ansiyellow">+</span> bar <span class="ansired"># Dynamiczny język nie oznacza że wszystko się rzutuje samo</span><span class="ansiyellow"></span>
 
 <span class="ansired">TypeError</span>: unsupported operand type(s) for +: &apos;int&apos; and &apos;str&apos;</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Garbage-collector">Garbage collector<a class="anchor-link" href="#Garbage-collector">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python posiada narzędzia automatycznego zarządzania pamięcią, dokładnieje jest to garbage collector działający na zasadzie liczenia referencji z opcjonalnym rozbijaniem cykli. </p>
+<p>Za każdym razem jak jakiś obiekt przypisywany jest do zmiennej wewnętrzny licznik odn$iesień rośnie o jeden. Jeśli licznik odniesień obiektu spada do zera obiekt jest kasowany. </p>
+<p>Opcjonalnie Python potrafi kasować cykle obiektów. Jeśli <code>A</code> ma wskaźnik do <code>B</code> a <code>B</code> do <code>A</code> to nigdy liczba odniesień żadnego z tych obiektów nie spadnie do zera, i mówimy że <code>A</code> i <code>B</code> tworzą cykl. Python potrafi sobie z takimi sytuacjami radzić </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Garbage-collector">Garbage collector<a class="anchor-link" href="#Garbage-collector">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[20]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span> 
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>     <span class="c"># Metoda wywoływana podczas kasowania obiektu.</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;I&#39;m dying&quot;</span><span class="p">)</span> <span class="c"># powinna ona służyć **tylko** do zwolnienia pamięci</span>
+                           <span class="c"># zaalokowanej przez ten obiekt poza metodami </span>
+                           <span class="c"># allokacji w Pythonie (np. za pomocą wywołania malloc)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[21]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">foo</span> <span class="c"># operator del kasuje zmienną </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+I&apos;m dying
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[22]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span> <span class="c">#Zmienna w kolokalnym kontekście umrze od razu</span>
+    
+<span class="n">test</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+I&apos;m dying
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[23]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="n">bar</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">foo</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[24]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">del</span> <span class="n">bar</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+I&apos;m dying
+
+</pre>
 </div>
 </div>
 
@@ -1991,7 +2131,7 @@ In&nbsp;[6]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[25]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2024,7 +2164,7 @@ Ciag znaków
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[8]:
+In&nbsp;[26]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2057,7 +2197,7 @@ znaków
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[27]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2105,7 +2245,7 @@ O takie
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[10]:
+In&nbsp;[28]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2136,7 +2276,7 @@ foobar
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[29]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2167,7 +2307,7 @@ b
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[30]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2187,7 +2327,7 @@ In&nbsp;[12]:
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-12-3c014a63ceda&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">&lt;ipython-input-30-3c014a63ceda&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
 <span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span><span class="ansiblue">&quot;bar&quot;</span><span class="ansiyellow">[</span><span class="ansicyan">2</span><span class="ansiyellow">]</span> <span class="ansiyellow">=</span> <span class="ansiblue">&quot;z&quot;</span> <span class="ansired"># Ciągów nie można zmieniać</span><span class="ansiyellow"></span>
 
 <span class="ansired">TypeError</span>: &apos;str&apos; object does not support item assignment</pre>
@@ -2201,7 +2341,7 @@ In&nbsp;[12]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[13]:
+In&nbsp;[31]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2217,7 +2357,7 @@ In&nbsp;[13]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
+    Out[31]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2253,7 +2393,7 @@ In&nbsp;[13]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[14]:
+In&nbsp;[32]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2287,7 +2427,7 @@ In&nbsp;[14]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[15]:
+In&nbsp;[33]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2320,7 +2460,7 @@ In&nbsp;[15]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[34]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2360,7 +2500,7 @@ In&nbsp;[16]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[17]:
+In&nbsp;[35]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2392,7 +2532,7 @@ In&nbsp;[17]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[36]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2408,7 +2548,7 @@ In&nbsp;[18]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[18]:</div>
+    Out[36]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2426,7 +2566,7 @@ In&nbsp;[18]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[19]:
+In&nbsp;[37]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2441,7 +2581,7 @@ In&nbsp;[19]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[20]:
+In&nbsp;[38]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2457,7 +2597,7 @@ In&nbsp;[20]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[20]:</div>
+    Out[38]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2475,7 +2615,7 @@ In&nbsp;[20]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[21]:
+In&nbsp;[39]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2492,7 +2632,7 @@ In&nbsp;[21]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[21]:</div>
+    Out[39]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2510,7 +2650,7 @@ In&nbsp;[21]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[22]:
+In&nbsp;[40]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2526,7 +2666,7 @@ In&nbsp;[22]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[22]:</div>
+    Out[40]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2553,7 +2693,7 @@ True
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[23]:
+In&nbsp;[41]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2586,7 +2726,7 @@ In&nbsp;[23]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[24]:
+In&nbsp;[42]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2637,7 +2777,7 @@ In&nbsp;[24]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[25]:
+In&nbsp;[43]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2654,7 +2794,7 @@ In&nbsp;[25]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[25]:</div>
+    Out[43]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2672,7 +2812,7 @@ In&nbsp;[25]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[26]:
+In&nbsp;[44]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2688,7 +2828,7 @@ In&nbsp;[26]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[26]:</div>
+    Out[44]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2706,7 +2846,7 @@ In&nbsp;[26]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[27]:
+In&nbsp;[45]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2722,7 +2862,7 @@ In&nbsp;[27]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[27]:</div>
+    Out[45]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2740,7 +2880,7 @@ In&nbsp;[27]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[28]:
+In&nbsp;[46]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2756,7 +2896,7 @@ In&nbsp;[28]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[28]:</div>
+    Out[46]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2774,7 +2914,7 @@ In&nbsp;[28]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[29]:
+In&nbsp;[47]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2790,7 +2930,7 @@ In&nbsp;[29]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[29]:</div>
+    Out[47]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -2826,7 +2966,7 @@ In&nbsp;[29]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[30]:
+In&nbsp;[48]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2858,7 +2998,7 @@ In&nbsp;[30]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[31]:
+In&nbsp;[49]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2908,7 +3048,7 @@ In&nbsp;[31]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[32]:
+In&nbsp;[50]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2941,7 +3081,7 @@ In&nbsp;[32]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[33]:
+In&nbsp;[51]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2974,7 +3114,7 @@ In&nbsp;[33]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[34]:
+In&nbsp;[52]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2994,7 +3134,7 @@ In&nbsp;[34]:
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-34-65dca6cd3416&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">&lt;ipython-input-52-65dca6cd3416&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
 <span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>my_tuple_2<span class="ansiyellow">[</span><span class="ansicyan">0</span><span class="ansiyellow">]</span> <span class="ansiyellow">=</span> <span class="ansicyan">10</span><span class="ansiyellow"></span>
 
 <span class="ansired">TypeError</span>: &apos;tuple&apos; object does not support item assignment</pre>
@@ -3017,7 +3157,7 @@ In&nbsp;[34]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[35]:
+In&nbsp;[53]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3050,7 +3190,7 @@ In&nbsp;[35]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[36]:
+In&nbsp;[54]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3082,7 +3222,7 @@ In&nbsp;[36]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[37]:
+In&nbsp;[55]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3133,7 +3273,7 @@ Pączuś
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[38]:
+In&nbsp;[56]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3150,7 +3290,7 @@ In&nbsp;[38]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[38]:</div>
+    Out[56]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3168,7 +3308,7 @@ False
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[39]:
+In&nbsp;[57]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3184,7 +3324,7 @@ In&nbsp;[39]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[39]:</div>
+    Out[57]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3202,7 +3342,7 @@ True
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[40]:
+In&nbsp;[58]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3219,7 +3359,7 @@ In&nbsp;[40]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[40]:</div>
+    Out[58]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3255,7 +3395,7 @@ True
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[41]:
+In&nbsp;[59]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3275,7 +3415,7 @@ In&nbsp;[41]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[42]:
+In&nbsp;[60]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3306,7 +3446,7 @@ Pączuś
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[43]:
+In&nbsp;[61]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3323,16 +3463,16 @@ In&nbsp;[43]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[43]:</div>
+    Out[61]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-{&apos;masa&apos;: (10, &apos;kg&apos;),
+{&apos;kolor oczu&apos;: &apos;czarne jak noc&apos;,
+ &apos;rasa&apos;: &apos;kot&apos;,
+ &apos;masa&apos;: (10, &apos;kg&apos;),
  &apos;imie&apos;: &apos;Pączuś&apos;,
- &apos;kolor oczu&apos;: &apos;czarne jak noc&apos;,
- &apos;wiek&apos;: (10, &apos;lat&apos;),
- &apos;rasa&apos;: &apos;kot&apos;}
+ &apos;wiek&apos;: (10, &apos;lat&apos;)}
 </pre>
 </div>
 
@@ -3355,7 +3495,7 @@ In&nbsp;[43]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[44]:
+In&nbsp;[62]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3380,7 +3520,7 @@ In&nbsp;[44]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-{1.5: &apos;kotek&apos;, &apos;foo&apos;: &apos;Tak też działa&apos;, 3: &apos;pięc&apos;, (1, 2, 3): (4, 5, 6)}
+{1.5: &apos;kotek&apos;, (1, 2, 3): (4, 5, 6), 3: &apos;pięc&apos;, &apos;foo&apos;: &apos;Tak też działa&apos;}
 
 </pre>
 </div>
@@ -3393,7 +3533,7 @@ In&nbsp;[44]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[45]:
+In&nbsp;[63]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3413,7 +3553,7 @@ In&nbsp;[45]:
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-45-0bd8918e5c6a&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">&lt;ipython-input-63-0bd8918e5c6a&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
 <span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>example<span class="ansiyellow">[</span><span class="ansiyellow">[</span><span class="ansicyan">1</span><span class="ansiyellow">,</span> <span class="ansicyan">2</span><span class="ansiyellow">,</span> <span class="ansicyan">3</span><span class="ansiyellow">]</span><span class="ansiyellow">]</span> <span class="ansiyellow">=</span> <span class="ansicyan">8</span> <span class="ansired"># Tablice są zmienne i nie mogą być kluczem</span><span class="ansiyellow"></span>
 
 <span class="ansired">TypeError</span>: unhashable type: &apos;list&apos;</pre>
@@ -3445,7 +3585,7 @@ In&nbsp;[45]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[46]:
+In&nbsp;[64]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3504,7 +3644,7 @@ END
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[47]:
+In&nbsp;[65]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3550,7 +3690,7 @@ In&nbsp;[47]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[48]:
+In&nbsp;[66]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3571,7 +3711,7 @@ In&nbsp;[48]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_text output_pyerr">
 <pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-48-633ca24cd76b&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">3</span>
+<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-66-633ca24cd76b&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">3</span>
 <span class="ansiyellow">    for bar in range(3): # IndentationError</span>
 <span class="ansigrey">                                            ^</span>
 <span class="ansired">IndentationError</span><span class="ansired">:</span> unindent does not match any outer indentation level
@@ -3596,7 +3736,7 @@ In&nbsp;[48]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[49]:
+In&nbsp;[67]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3612,7 +3752,7 @@ In&nbsp;[49]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[50]:
+In&nbsp;[68]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3669,7 +3809,7 @@ Zmienna foo istnieje jako globalna 3 True
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[51]:
+In&nbsp;[69]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3707,7 +3847,7 @@ kotek
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[52]:
+In&nbsp;[70]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3742,7 +3882,7 @@ In&nbsp;[52]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[53]:
+In&nbsp;[71]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3796,7 +3936,7 @@ In&nbsp;[53]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[54]:
+In&nbsp;[72]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3812,7 +3952,7 @@ In&nbsp;[54]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[54]:</div>
+    Out[72]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3830,7 +3970,7 @@ range(0, 5)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[55]:
+In&nbsp;[73]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3846,7 +3986,7 @@ In&nbsp;[55]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[55]:</div>
+    Out[73]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3864,7 +4004,7 @@ range(0, 1000000000000000000000000000000000)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[56]:
+In&nbsp;[74]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3880,7 +4020,7 @@ In&nbsp;[56]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[56]:</div>
+    Out[74]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3908,7 +4048,7 @@ In&nbsp;[56]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[57]:
+In&nbsp;[75]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3924,7 +4064,7 @@ In&nbsp;[57]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[57]:</div>
+    Out[75]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3942,7 +4082,7 @@ In&nbsp;[57]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[58]:
+In&nbsp;[76]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3958,7 +4098,7 @@ In&nbsp;[58]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[58]:</div>
+    Out[76]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3976,7 +4116,7 @@ In&nbsp;[58]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[59]:
+In&nbsp;[77]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3996,8 +4136,8 @@ In&nbsp;[59]:
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-59-12f621a6a58d&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>range<span class="ansiyellow">(</span><span class="ansicyan">1</span><span class="ansiyellow">,</span> <span class="ansicyan">10</span><span class="ansiyellow">,</span> <span class="ansicyan">0.1</span><span class="ansiyellow">)</span> <span class="ansired"># Na trzechich zajęciach pokażę jak łatwo robić obiekty tego typu</span><span class="ansiyellow"></span>
+<span class="ansigreen">&lt;ipython-input-77-ebd261ba7878&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>range<span class="ansiyellow">(</span><span class="ansicyan">1</span><span class="ansiyellow">,</span> <span class="ansicyan">10</span><span class="ansiyellow">,</span> <span class="ansicyan">0.1</span><span class="ansiyellow">)</span> <span class="ansired"># Na trzechich? zajęciach pokażę jak łatwo robić obiekty tego typu</span><span class="ansiyellow"></span>
 
 <span class="ansired">TypeError</span>: &apos;float&apos; object cannot be interpreted as an integer</pre>
 </div>
@@ -4019,7 +4159,7 @@ In&nbsp;[59]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[80]:
+In&nbsp;[78]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4039,7 +4179,7 @@ In&nbsp;[80]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[81]:
+In&nbsp;[79]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4058,10 +4198,10 @@ In&nbsp;[81]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+rasa
 masa
 imie
 wiek
-rasa
 
 </pre>
 </div>
@@ -4074,7 +4214,7 @@ rasa
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[82]:
+In&nbsp;[80]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4093,10 +4233,10 @@ In&nbsp;[82]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+rasa: kot
 masa: (10, &apos;kg&apos;)
 imie: Pączuś
 wiek: (10, &apos;lat&apos;)
-rasa: kot
 
 </pre>
 </div>
@@ -4128,7 +4268,7 @@ rasa: kot
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[83]:
+In&nbsp;[81]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4147,10 +4287,10 @@ In&nbsp;[83]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-c
 b
-a
+c
 d
+a
 
 </pre>
 </div>
@@ -4172,7 +4312,7 @@ d
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[84]:
+In&nbsp;[82]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4204,7 +4344,7 @@ Działa
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[85]:
+In&nbsp;[83]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4248,7 +4388,7 @@ użyć zmiennych logicznych explicite. </p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[86]:
+In&nbsp;[84]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4274,11 +4414,79 @@ In&nbsp;[86]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[87]:
+In&nbsp;[85]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="bp">True</span> <span class="ow">or</span> <span class="bp">False</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[85]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+True
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[86]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="bp">True</span> <span class="ow">and</span> <span class="bp">False</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[86]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+False
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[87]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="bp">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">False</span>
 </pre></div>
 
 </div>
@@ -4312,7 +4520,7 @@ In&nbsp;[88]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="bp">True</span> <span class="ow">and</span> <span class="bp">False</span>
+<div class="highlight"><pre><span class="s">&#39;foo&#39;</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -4329,7 +4537,7 @@ In&nbsp;[88]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-False
+True
 </pre>
 </div>
 
@@ -4346,74 +4554,6 @@ In&nbsp;[89]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="bp">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">False</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[89]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-True
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[90]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="s">&#39;foo&#39;</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[90]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-True
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[91]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class="highlight"><pre><span class="s">&#39;foo&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]</span>
 </pre></div>
 
@@ -4426,7 +4566,7 @@ In&nbsp;[91]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[91]:</div>
+    Out[89]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -4453,7 +4593,7 @@ False
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[92]:
+In&nbsp;[90]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4484,7 +4624,7 @@ In&nbsp;[92]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[93]:
+In&nbsp;[91]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4516,7 +4656,7 @@ In&nbsp;[93]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[94]:
+In&nbsp;[92]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4547,7 +4687,7 @@ In&nbsp;[94]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[95]:
+In&nbsp;[93]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4575,6 +4715,40 @@ In&nbsp;[95]:
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[94]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="mi">2</span><span class="o">**</span><span class="mi">1024</span> <span class="c">#Zmienne stałoprzecinkowe mają domyślnie nieograniczony rozmiar! </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[94]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+179769313486231590772930519078902473361797697894230657273430081157732675805500963132708477322407536021120113879871393357658789768814416622492847430639474124377767893424865485276302219601246094119453082952085005768838150682342462881473913110540827237163350510684586298239947245938479716304835356329624224137216
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -4593,10 +4767,19 @@ In&nbsp;[95]:
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Na zajęciach numer 1 i  2 proszę korzystać z interpretera w <code>/opt/python3.4/bin/python</code>. </p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[96]:
+In&nbsp;[95]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4631,7 +4814,7 @@ Hello World
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[97]:
+In&nbsp;[96]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4667,7 +4850,7 @@ Hello World
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[98]:
+In&nbsp;[97]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -4710,7 +4893,7 @@ print(&quot;Hello World&quot;)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[99]:
+In&nbsp;[98]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
