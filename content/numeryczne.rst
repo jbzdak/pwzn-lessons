@@ -5,7 +5,6 @@ Całki numeryczne (skrótowo)
 :tags: zajęcia, zaj1
 :category: zajęcia
 :summary: Termin zajęć
-:status: draft
 
 Całkę funkcji można estymować za pomocą szeregu aproksymacji.
 
@@ -44,16 +43,17 @@ to Państwo
 na metodach numerycznych, tutaj przytoczę więc algorytm:
 
 * Epsilon oznacza maksymalny błąd całkowania
-* Wyznaczamy całke w zakrese od a do b metodą simpsona.
-* Wyznaczamy całkę w zakresach od a do (a+b)/2 i od (a+b)/2 do b
+* Wyznaczamy całke w zakrese od a do b metodą simpsona (jej wartość dalej oznaczam jako ``cale``)
+* Wyznaczamy całkę w zakresach od a do :math:`\frac{a+b}{2}`
+  (oznaczane jako ``lewe`` od :math:`\frac{a+b}{2}` do b (oznaczane dalej jako ``prawe``)
 * Jeśli różnica między całką na całym zakresie a sumą całek na połówkach jest
   mniejsza od 15 * Epsilon zwracamy (lewe + prawe - (lewe + prawe - cale)/15
-* Jeśli jest większa zwracamy sumę całek od a do (a+b)/2 i od (a+b)/2 do b
+* Jeśli jest większa zwracamy sumę całek od a do :math:`\frac{a+b}{2}` i od :math:`\frac{a+b}{2}` do b
 
-1
 
 .. note::
 
+    **UWAGA**:
     Algorytm pochodzi z `wikipedii <http://en.wikipedia.org/w/index.php?title=Adaptive_Simpson%27s_method&oldid=609913261>`__
     proszę go nie sprawdzać (jest tam gotowa implementacja w Pythonie).
 

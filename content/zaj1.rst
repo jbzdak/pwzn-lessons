@@ -33,8 +33,3 @@ Dla osób chcących korzystać ze swojego sprzętu:
   Ostatecznie można pracować we wbudowanym w pythona `IDLE <https://docs.python.org/3.4/library/idle.html>`__.
 
   Proszę **NIE** używać rozbudowanych IDE (takich jak Pycharm)!
-
-
-
-
-
