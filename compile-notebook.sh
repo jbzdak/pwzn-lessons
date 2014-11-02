@@ -21,5 +21,5 @@ function compile(){
 }
 
 #compile zaj1
-compile zaj2
-
+#compile zaj2
+compile zaj3
