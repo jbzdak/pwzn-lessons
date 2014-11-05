@@ -1,5 +1,5 @@
-Zajęcia 3
-=========
+Zajęcia 3 [Update 05-11-2014]
+=============================
 
 :date: 2014-11-02
 :tags: zajęcia, zaj3
@@ -13,6 +13,15 @@ Materiały
 * Blok 2 `html <{filename}/static/zaj3/zaj3-blok2.html>`__
   (`slajdy <{filename}/static/zaj3/zaj3-blok2.slides.html>`__)
 
+
+Dane na zajęcia
+---------------
+
+Osoby które chcą pracować na własnym komputerze są zachęcane do pobrania danych
+potrzebnych na zajęciach. Proszę pobrać wszystkie pliki ze strony:
+`ze strony z danymi <http://db.fizyka.pw.edu.pl/pwzn-data/zaj3>`__.
+
+Osoby z pierwszej grupy zachęcam do zabrania własnych komputerów.
 
 Oprogramowanie niezbędne na zajęciach
 -------------------------------------

@@ -2,8 +2,8 @@ Ogłoszenie
 ==========
 
 :date: 2014-10-13 23:30
-:tags: ogloszenia, zaj2
-:category: ogloszenia
+:tags: ogłoszenia, zaj2
+:category: ogłoszenia
 
 Garść ogłoszeń
 --------------
