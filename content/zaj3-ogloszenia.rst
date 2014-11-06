@@ -4,6 +4,7 @@ Zajęcia 3 -- ogłoszenia
 :date: 2014-10-22 22:15
 :tags: zajęcia, zaj3, ogłoszenia
 :category: zajęcia
+:status: draft
 
 Informuję że zajęcia 30 listopada są odwołane (ważne obowiązki służbowe).
 Widzimy się 6 listopada, a treści zajęć przenoszą się na ostatni tydzień.

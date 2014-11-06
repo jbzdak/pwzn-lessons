@@ -12,6 +12,8 @@ Materiały
   (`slajdy <{filename}/static/zaj3/zaj3-blok1.slides.html>`__)
 * Blok 2 `html <{filename}/static/zaj3/zaj3-blok2.html>`__
   (`slajdy <{filename}/static/zaj3/zaj3-blok2.slides.html>`__)
+* Blok 3 `html <{filename}/static/zaj3/zaj3-blok4.html>`__
+  (`slajdy <{filename}/static/zaj3/zaj3-blok4.slides.html>`__)
 
 
 Dane na zajęcia

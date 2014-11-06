@@ -4,7 +4,6 @@ Zajęcia 3 -- zadania
 :date: 2014-11-05
 :tags: zajęcia, zaj3, zadania
 :category: zajęcia
-:status: draft
 
 Zadania na zajęcia 2 dostępne są w następującym repozytorium github:
 https://github.com/jbzdak/pwzn (inne niż ostatnim razem).
@@ -50,6 +49,8 @@ Parametry skryptu:
 
     Jeśli pobieracie dane to jeśli jako ten parametr daliście katalog ``/foo``
     to dane powinny trafić do ``/foo/zaj3``.
+
+    Dane są do pobrania `stąd <http://db.fizyka.pw.edu.pl/pwzn-data/zaj3/>`__.
 
 
 

@@ -4,7 +4,6 @@ Rozwiązania modelowe zajęć 2
 :date: 2014-10-13 23:30
 :tags: zaj2, rozwiązania modelowe
 :category: ogłoszenia
-:status: draft
 
 
 Zadanie 1

@@ -6,7 +6,6 @@ Informacje organizacyjne
 :slug: informacje-organizacyjne
 :category: ważne
 :summary: Plan przedmiotu
-:status: draft
 
 Plan przedmiotu
 ---------------
