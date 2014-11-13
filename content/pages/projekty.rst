@@ -3,7 +3,6 @@ Projekty
 
 :date: 2014-09-16
 :category: highlighted
-:slug: Kontakt
 
 
 Projekty generalnie mają raczej mieć charakter utylitarny, czyli powinno to być:

@@ -4,3 +4,6 @@
 [submodule "content/static/reveal.js"]
 	path = content/static/reveal.js
 	url = https://github.com/hakimel/reveal.js.git
+[submodule "tools/cppmagic"]
+	path = tools/cppmagic
+	url = https://github.com/dragly/cppmagic
