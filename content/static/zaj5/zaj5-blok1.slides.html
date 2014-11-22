@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>zaj4-blok2 slides</title>
+<title>zaj5-blok1 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1718,12 +1718,45 @@ div.output_prompt {
 <div class="reveal">
 <div class="slides">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[3]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="o">%</span><span class="k">install_ext</span> <span class="nb">file</span><span class="p">:</span><span class="o">///</span><span class="n">home</span><span class="o">/</span><span class="n">jb</span><span class="o">/</span><span class="n">dydakyka</span><span class="o">/</span><span class="n">pwzd</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">cppmagic</span><span class="o">/</span><span class="n">cppmagic</span><span class="o">.</span><span class="n">py</span>
+<span class="o">%</span><span class="k">load_ext</span> <span class="n">cppmagic</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Installed cppmagic.py. To use it, type:
+  %load_ext cppmagic
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zastosowanie-biblioteki-numpy">Zastosowanie biblioteki numpy<a class="anchor-link" href="#Zastosowanie-biblioteki-numpy">&#182;</a></h1>
+<h1 id="Praca-z-plikami-binarnymi">Praca z plikami binarnymi<a class="anchor-link" href="#Praca-z-plikami-binarnymi">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -1733,7 +1766,115 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Biblioteka numpy pozwala na generowanie wielowymiarowych tablic. Tablica pusta tablica 3x3:</p>
+<h2 id="Dlaczego-pliki-binarne">Dlaczego pliki binarne<a class="anchor-link" href="#Dlaczego-pliki-binarne">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Format binarny jest użyteczny ponieważ: </p>
+<ul>
+<li>Zapis/odczyt jest rząd (kilka rzędów) wielkości szybszy niż dla plików tekstowych </li>
+<li>Pozwalają na łatwe binarne przeszukiwanie pliku (o ile ten jest sortowany)</li>
+<li>Fantastycznie latwo tworzy się kod symulacyjny, gdzie symulacja jest w C/C++ a analiza danych w Pythonie, jeśli format wymiany danych jest binarny.  </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Format-plik&#243;w-binarnych">Format plik&#243;w binarnych<a class="anchor-link" href="#Format-plik&#243;w-binarnych">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jeśli tworzycie pliki binarne dobrze jest stosować się do takich zasad: </p>
+<ul>
+<li>Zaczynacie plik od magicznego numeru</li>
+<li>Potem jest nagłówek, zawierający: <ul>
+<li>Wersję formatu</li>
+<li>Offset w którym są dane</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Magiczny-numer">Magiczny numer<a class="anchor-link" href="#Magiczny-numer">&#182;</a></h5>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Magiczny numer to ciąg bajtów od którego rozpoczyna się plik. Ów ciąg bajtów powinien pozwalać na określenie typu pliku. </p>
+<p>Przykładowo pliki PNG rozpoczynają się od takiej sekwencji bajtów: <code>89  50  4e  47  0d  0a  1a  0a</code> (w kodzie ASCII: <code>\211   P   N   G  \r  \n \032 \n</code>) </p>
+<p>Gdzie początkowe <code>\211</code> nie jest znakiem ASCII więc powoduje że edytory tekstowe uznają ten plik za binarny a <code>\032</code> oznacza w ascii koniec pliku --- co powoduje że edytor tekstowy przestanie czytać ten plik dalej. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Nag&#322;&#243;wek">Nag&#322;&#243;wek<a class="anchor-link" href="#Nag&#322;&#243;wek">&#182;</a></h5>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nagłówek zawiera: wersję formatu (przynajmniej dwa bajty) oraz miejsce od którego zaczynają się dane. </p>
+<ul>
+<li><p>Wersja formatu pliku <strong>naprawdę jest przydatna</strong>, ponieważ w toku pracy zapewne będziecie zmieniać format swoich plików, wprowadzenie (i sprawdzanie!) tego pola pozwoli ustrzec się błędów polegających np. na odczycie pliku w wersji 3 za pomocą kodu czytającego pliki w wersji 5. </p>
+</li>
+<li><p>Miejsce od którego zaczynają się dane, to odległość między początkiem pliku a końcem nagłówka. Może być przydatne do utrzymania kompatybliności wstecznej dla formatów binarnych. </p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kolejno&#347;&#263;-bajt&#243;w-(endianness)">Kolejno&#347;&#263; bajt&#243;w (endianness)<a class="anchor-link" href="#Kolejno&#347;&#263;-bajt&#243;w-(endianness)">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kolejność bajtów (Endianness) może być problemem jeśli przenosicie pomiędzy systemami dane w formacie binarnym. Powiedzmy że mamy dwubajtową liczbę całkowitą o wartości 534, składa się ona z dwóch bajtów, pierwszy ma zawartość <code>0x16</code> a drugi <code>0x2</code>. W pamięci możemy te dwa bajty albo ułożyć w kolejności:  <code>0x16</code>, <code>0x2</code> (Little-endian) albo <code>0x2</code>, <code>0x16</code> (Big-endian). </p>
+<p>Generalnie jeśli zapiszecie dane binarne na systemie korzystającym z Big-endian to przy odczycie na systemie Little-endian może nie działać poprawnie. </p>
 </div>
 </div>
 </div>
@@ -1744,23 +1885,8 @@ In&nbsp;[1]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">struct</span>
+<span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&quot;&lt;H&quot;</span><span class="p">,</span> <span class="mi">534</span><span class="p">)]</span>
 </pre></div>
 
 </div>
@@ -1772,14 +1898,12 @@ In&nbsp;[2]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
+    Out[1]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([[ 0.,  0.,  0.],
-       [ 0.,  0.,  0.],
-       [ 0.,  0.,  0.]])
+[&apos;0x16&apos;, &apos;0x2&apos;]
 </pre>
 </div>
 
@@ -1794,45 +1918,20 @@ array([[ 0.,  0.,  0.],
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Prosto można wykonać operacje na każdym elemencie macierzy: </p>
+<h2 id="Structure-padding">Structure padding<a class="anchor-link" href="#Structure-padding">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
 </div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span> <span class="o">+</span> <span class="mi">1</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kompilator może wstawiać puste miejsca między elementami struktury (jest to konieczne dla wydajnego dostępu do tych elementów). </p>
+<p>Dane poniższej struktry zajmują 9 bajtów, ale sama struktura będzie miała długość 16 bajtów. </p>
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[3]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  1.,  1.],
-       [ 1.,  1.,  1.],
-       [ 1.,  1.,  1.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1841,67 +1940,17 @@ In&nbsp;[4]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">capture</span>
+<span class="o">%%</span><span class="k">cpp</span>
+<span class="n">struct</span> <span class="n">Simple</span><span class="p">{</span>
+
+	<span class="n">uint8_t</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">uint64_t</span> <span class="n">b</span><span class="p">;</span>
+
+<span class="p">};</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 2.,  2.,  2.],
-       [ 2.,  2.,  2.],
-       [ 2.,  2.,  2.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span> <span class="c">#</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[5]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 0.,  0.,  0.],
-       [ 0.,  0.,  0.],
-       [ 0.,  0.,  0.]])
-</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -1911,7 +1960,76 @@ array([[ 0.,  0.,  0.],
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Proste-operacje">Proste operacje<a class="anchor-link" href="#Proste-operacje">&#182;</a></h1>
+<p>A w pamięci (po zapełnieniu zarówno a jaki i b maksymalną wartością) struktura ta będzie wyglądać tak: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>ff 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff</code></p>
+<p><code>aa padding padding padd bb bb bb bb bb bb bb bb</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Gdzie pierwsze <code>ff</code> to wartość <code>a</code> następnie mamy 7 bajtów wypełnienia a dalej <code>b</code>. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jest to ważne przy zapisie struktur na dysk! Padding można wyłączyć, w GCC w następujący sposób: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[28]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">capture</span>
+<span class="o">%%</span><span class="k">cpp</span>
+<span class="n">struct</span> <span class="n">Packed</span><span class="p">{</span>
+
+	<span class="n">uint8_t</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">uint8_t</span> <span class="n">b</span><span class="p">;</span>
+	<span class="n">uint64_t</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="p">}</span><span class="n">__attribute__</span> <span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Struktura ta zajmuje 10 bajtów. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h6 id="Pe&#322;ny-przyk&#322;ad:">Pe&#322;ny przyk&#322;ad:<a class="anchor-link" href="#Pe&#322;ny-przyk&#322;ad:">&#182;</a></h6>
 </div>
 </div>
 </div>
@@ -1923,8 +2041,70 @@ In&nbsp;[6]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">cpp</span>
+<span class="c">#include &lt;cstdint&gt;</span>
+<span class="c">#include &lt;iomanip&gt;</span>
+<span class="c">#include &lt;iostream&gt;</span>
+<span class="c">#include &lt;memory.h&gt;</span>
+<span class="c">#include &lt;limits&gt;</span>
+
+<span class="n">namespace</span> <span class="n">write_struct</span><span class="p">{</span>
+
+<span class="n">struct</span> <span class="n">Simple</span><span class="p">{</span>
+
+	<span class="n">uint8_t</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">uint64_t</span> <span class="n">b</span><span class="p">;</span>
+
+<span class="p">};</span>
+
+<span class="n">struct</span> <span class="n">Packed</span><span class="p">{</span>
+
+	<span class="n">uint8_t</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">uint8_t</span> <span class="n">b</span><span class="p">;</span>
+	<span class="n">uint64_t</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="p">}</span><span class="n">__attribute__</span> <span class="p">((</span><span class="n">packed</span><span class="p">));;</span>
+
+
+<span class="n">void</span> <span class="n">test_simple</span><span class="p">(){</span>
+
+	<span class="n">Simple</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Simple</span><span class="p">();</span>
+	<span class="n">Packed</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Packed</span><span class="p">();</span>
+	<span class="n">uint8_t</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+	<span class="n">uint8_t</span><span class="o">*</span> <span class="n">pacekd_data</span> <span class="o">=</span> <span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+	<span class="n">memset</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">Simple</span><span class="p">));</span>
+	<span class="n">memset</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">Packed</span><span class="p">));</span>
+
+	<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Simple&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="n">std</span><span class="p">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">&gt;</span><span class="p">::</span><span class="nb">max</span><span class="p">(),</span> <span class="n">std</span><span class="p">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">uint64_t</span><span class="o">&gt;</span><span class="p">::</span><span class="nb">max</span><span class="p">()};</span>
+
+	<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">ii</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">ii</span><span class="o">&lt;</span><span class="n">sizeof</span><span class="p">(</span><span class="n">Simple</span><span class="p">);</span> <span class="n">ii</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="nb">hex</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">setfill</span><span class="p">(</span><span class="s">&#39;0&#39;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="n">data</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Packed&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="n">std</span><span class="p">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">&gt;</span><span class="p">::</span><span class="nb">max</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">uint64_t</span><span class="o">&gt;</span><span class="p">::</span><span class="nb">max</span><span class="p">()};</span>
+
+	<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">dec</span> <span class="o">&lt;&lt;</span> <span class="n">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">ii</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">ii</span><span class="o">&lt;</span><span class="n">sizeof</span><span class="p">(</span><span class="n">Packed</span><span class="p">);</span> <span class="n">ii</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="nb">hex</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">setfill</span><span class="p">(</span><span class="s">&#39;0&#39;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="n">pacekd_data</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
+	<span class="p">}</span>
+
+<span class="o">//</span>	<span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;OK&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">write_struct</span><span class="p">::</span><span class="n">test_simple</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -1935,90 +2115,13 @@ In&nbsp;[6]:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
+b&apos;Simple\n16\nff 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff \nPacked\n10\nff 00 ff ff ff ff ff ff ff ff &apos;
+
 </pre>
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[7]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="o">*</span><span class="mi">2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[7]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[  2.,   4.,   6.],
-       [  8.,  10.,  12.],
-       [ 14.,  16.,  18.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[8]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span> <span class="c"># np.sin, np.cos itp.</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[8]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[  2.71828183e+00,   7.38905610e+00,   2.00855369e+01],
-       [  5.45981500e+01,   1.48413159e+02,   4.03428793e+02],
-       [  1.09663316e+03,   2.98095799e+03,   8.10308393e+03]])
-</pre>
-</div>
-
 </div>
 
 </div>
@@ -2030,11 +2133,291 @@ array([[  2.71828183e+00,   7.38905610e+00,   2.00855369e+01],
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Tworzenie-macierzy-numpy">Tworzenie macierzy numpy<a class="anchor-link" href="#Tworzenie-macierzy-numpy">&#182;</a></h2>
+<h2 id="Wywo&#322;anie-mmap">Wywo&#322;anie <code>mmap</code><a class="anchor-link" href="#Wywo&#322;anie-mmap">&#182;</a></h2>
 </div>
 </div>
 </div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wywołanie <code>mmap</code> jest wywołaniem systemowym GNU/Linuksa (windows ma odpowiedniki!), którego działanie jest proste: </p>
+<ul>
+<li>Pobiera plik i zwraca wskaźnik na obszar pamięci gdzie znajduje się pierwszy bajt tego pliku.</li>
+<li>Nie cały plik jest ładowany do pamięci RAM od razu </li>
+<li>Plik może być większy niż ilość dostępnej pamięci RAM (będzie wtedy ładowany fragmentami) </li>
+<li>Plik nie może być większy niż dostępna przestrzeń adresowa. </li>
+</ul>
+<p>MMap działa w taki sposób, że system operacyjny ładuje w sposób przezroczysty dla programisty, ładuje strony z dysku do pamięci kiedy strony te są potrzebne. Można też poprosić system operacyjny o wsześniejsze ładowanie stron. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wywołanie memmap:</p>
+<p><code>void* mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)</code></p>
+<p><code>addr</code> Adres do na który plik zostanie zamapowany, ja podałem <code>NULL</code> co oznacza że plik ma zostać zamapowany na dowolny adres. </p>
+<p><code>length</code> Rozmiar pliku jaki mamy zamapować (można zamapować część pliku)</p>
+<p><code>prot</code> Flaga określająca poziom ochrony pamięci, np. można plik otworzyć do odczytu. </p>
+<p><code>flag</code> W jakim trybie plik jest otwierany, możliwe jest <code>MAP_SHARED</code> (zmiany pamięci są widoczne poza proceswm wołającym mmap) <code>MAP_ANONYMOUS</code> (nie są widoczne)</p>
+<p><code>fd</code> Deskryptor pliku do zamapowania</p>
+<p><code>offset</code> Offset określający ile bajtów od początku pliku należy zamapować. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="W-C/C++">W C/C++<a class="anchor-link" href="#W-C/C++">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tworzymy plik w C++. Plik ten będzie zawierał macierz 1E7 x 2 liczb zmiennoprzecinkowych, następnie zapiszemy jakieś dane do tej macierzy. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[6]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">cpp</span>
+<span class="c">#include &lt;iostream&gt;</span>
+<span class="c">#include &lt;string&gt;</span>
+<span class="c">#include &lt;exception&gt;</span>
+<span class="c">#include &lt;stdexcept&gt;</span>
+<span class="c">#include &lt;array&gt;</span>
+<span class="c">#include &lt;sys/stat.h&gt;</span>
+<span class="c">#include &lt;fcntl.h&gt;</span>
+<span class="c">#include &lt;unistd.h&gt;</span>
+<span class="c">#include &lt;sys/types.h&gt;</span>
+<span class="c">#include &lt;sys/mman.h&gt;</span>
+<span class="c">#include &lt;errno.h&gt;</span>
+
+<span class="n">namespace</span> <span class="n">mmap_example</span><span class="p">{</span>
+
+<span class="n">static</span> <span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">filepath</span><span class="p">(</span><span class="s">&quot;/tmp/mmap-example.bin&quot;</span><span class="p">);</span>
+
+<span class="o">//</span><span class="n">Liczymy</span> <span class="n">rozmiar</span> <span class="n">pliku</span><span class="o">.</span> <span class="n">Plik</span> <span class="n">ma</span> <span class="mi">10</span> <span class="n">milion</span><span class="err">ó</span><span class="n">w</span> <span class="n">wierszy</span><span class="p">,</span> <span class="n">w</span> <span class="n">ka</span><span class="err">ż</span><span class="n">dym</span> <span class="n">wierszu</span> <span class="n">dwie</span> <span class="n">liczby</span> <span class="n">zmiennoprzecinkowe</span><span class="p">:</span> 
+<span class="n">static</span> <span class="n">const</span> <span class="n">constexpr</span> <span class="n">size_t</span> <span class="n">array_len</span> <span class="o">=</span> <span class="mf">1E7</span><span class="p">;</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">constexpr</span> <span class="n">size_t</span> <span class="n">array_bytes</span> <span class="o">=</span> <span class="n">array_len</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">sizeof</span><span class="p">(</span><span class="n">double</span><span class="p">);</span>
+
+<span class="n">void</span> <span class="n">mmap_example</span><span class="p">(){</span>
+
+    <span class="o">//</span> <span class="n">Otwieramy</span> <span class="n">plik</span> 
+	<span class="n">auto</span> <span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="o">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">O_RDWR</span> <span class="o">|</span> <span class="n">O_CREAT</span><span class="p">,</span> <span class="p">(</span><span class="n">mode_t</span><span class="p">)</span><span class="mo">0600</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">Sprawdzenie</span> <span class="n">b</span><span class="err">łę</span><span class="n">d</span><span class="err">ó</span><span class="n">w</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">fd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="n">throw</span> <span class="n">std</span><span class="p">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t open file&quot;</span><span class="p">);</span>
+	<span class="p">}</span>
+
+    <span class="o">//</span> <span class="n">Plik</span> <span class="n">jest</span> <span class="n">pusty</span><span class="p">,</span> <span class="s">&quot;rozsrzerzamy&quot;</span> <span class="n">go</span> <span class="n">do</span> <span class="n">odpowiedniego</span> <span class="n">rozmiau</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">ftruncate</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">array_bytes</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+		<span class="n">throw</span> <span class="n">std</span><span class="p">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;Couldnt&#39; resize file&quot;</span><span class="p">);</span>
+	<span class="p">}</span>
+    
+    <span class="o">//</span> <span class="n">Wywo</span><span class="err">ł</span><span class="n">anie</span> <span class="n">mmap</span> 
+	<span class="n">void</span> <span class="o">*</span> <span class="n">raw_data</span> <span class="o">=</span> <span class="n">mmap</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">array_bytes</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">,</span> <span class="n">MAP_POPULATE</span> <span class="o">|</span> <span class="n">MAP_SHARED</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">Rzutujemy</span> <span class="n">dane</span> <span class="n">na</span> <span class="n">double</span><span class="o">*</span>
+	<span class="n">double</span> <span class="o">*</span> <span class="n">double_data</span> <span class="o">=</span> <span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="n">double</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">raw_data</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">Zapisujemy</span> <span class="n">do</span> <span class="n">pierwszej</span> <span class="n">kolumny</span> <span class="n">pierwszego</span> <span class="n">wiersza</span>
+	<span class="n">double_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span>
+    <span class="o">//</span> <span class="n">Zapisujemy</span> <span class="n">do</span> <span class="n">drugiej</span> <span class="n">kolumny</span> <span class="n">trzeciego</span> <span class="n">wiersza</span>
+	<span class="n">double_data</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+	<span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+
+<span class="p">}}</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">mmap_example</span><span class="p">::</span><span class="n">mmap_example</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+b&apos;&apos;
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="W-Pythonie">W Pythonie<a class="anchor-link" href="#W-Pythonie">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Uwaga: wbrew temu że wywołanie <code>memmap</code> jest wywołaniem GNU/Linuksowym, moduł <code>mmap</code> jest dostępny również na Windowsie, korzysta on tam z analogicznego wywołania dostępnego na Windowsie. Mimo tego jednak wywołania te przyjmują różne argumenty na GNU/Linuksie i na Widnowsie. </p>
+<p>Składnie proczę poczytać w <a href="https://docs.python.org/3.4/library/mmap.html">dokumentacji</a>. Jest dość podobna do składni opakowywanych wywołań funkcji C. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[7]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">mmap</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/mmap-example.bin&quot;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mmap</span><span class="o">.</span><span class="n">MAP_SHARED</span><span class="p">,</span> <span class="n">mmap</span><span class="o">.</span><span class="n">PROT_READ</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">[:</span><span class="mi">8</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+(1.5,)
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zapis/Odczyt-plik&#243;w-binarnych">Zapis/Odczyt plik&#243;w binarnych<a class="anchor-link" href="#Zapis/Odczyt-plik&#243;w-binarnych">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dwa najprostsze formaty plików binarnych to (do tego warto dodać nagłówek): </p>
+<ul>
+<li>Macierz</li>
+<li>Tablica struktur</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Macierz-w-C++">Macierz w C++<a class="anchor-link" href="#Macierz-w-C++">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Otwieracie plik <code>mmapem</code> a dalej po prostu piszecie dane. Poniżej odpowiedni fragment przykładu z wywołanym <code>mmap</code>em. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">capture</span>
+<span class="o">%%</span><span class="k">cpp</span>
+<span class="o">//</span> <span class="n">Wywo</span><span class="err">ł</span><span class="n">anie</span> <span class="n">mmap</span> 
+<span class="n">void</span> <span class="o">*</span> <span class="n">raw_data</span> <span class="o">=</span> <span class="n">mmap</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">array_bytes</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">,</span> <span class="n">MAP_POPULATE</span> <span class="o">|</span> <span class="n">MAP_SHARED</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Rzutujemy</span> <span class="n">dane</span> <span class="n">na</span> <span class="n">double</span><span class="o">*</span>
+<span class="n">double</span> <span class="o">*</span> <span class="n">double_data</span> <span class="o">=</span> <span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="n">double</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">raw_data</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Zapisujemy</span> <span class="n">do</span> <span class="n">pierwszej</span> <span class="n">kolumny</span> <span class="n">pierwszego</span> <span class="n">wiersza</span>
+<span class="n">double_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">Zapisujemy</span> <span class="n">do</span> <span class="n">drugiej</span> <span class="n">kolumny</span> <span class="n">trzeciego</span> <span class="n">wiersza</span>
+<span class="n">double_data</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Macierz-w-Numpy">Macierz w Numpy<a class="anchor-link" href="#Macierz-w-Numpy">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpy udostępnia obiekty które enkapsulują wywołanie <code>mmap</code>. Tutaj otwieramy plik zapisany w C++. </p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
@@ -2042,7 +2425,9 @@ In&nbsp;[9]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c"># Tablica zer</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
+<span class="n">mmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span><span class="s">&quot;/tmp/mmap-example.bin&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;r+&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mf">1E7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">mmap</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2059,9 +2444,7 @@ In&nbsp;[9]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([[ 0.,  0.,  0.],
-       [ 0.,  0.,  0.],
-       [ 0.,  0.,  0.]])
+memmap([ 1.5,  0. ])
 </pre>
 </div>
 
@@ -2078,7 +2461,7 @@ In&nbsp;[10]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c"># Tablica zer</span>
+<div class="highlight"><pre><span class="n">mmap</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2095,9 +2478,7 @@ In&nbsp;[10]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([[ 1.,  1.,  1.],
-       [ 1.,  1.,  1.],
-       [ 1.,  1.,  1.]])
+memmap([ 0.,  3.])
 </pre>
 </div>
 
@@ -2107,14 +2488,65 @@ array([[ 1.,  1.,  1.],
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zapis-tablicy-struktur-w-C++">Zapis tablicy struktur w C++<a class="anchor-link" href="#Zapis-tablicy-struktur-w-C++">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Również jest to dość proste. Ponieważ nie zawsze wiemy ile tych struktur będzie, zdecydowałem się nie używać <code>mmap</code>, ale &#39;po prostu&#39; zapisać dane do pliku. </p>
+<p>Przekształcenie struktury danych w strumień bajtów gotowych do zapisania do pliku wymaga po prostu rzutowania wskaźnika na strukturę na wskaźnik na <code>char</code>. </p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[11]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c">#Tablica z niezainicjalozowaną pamięcią. Odrobinę szybsza od pozostałych **nie ma gwarancji wyzerowania!**</span>
+<div class="highlight"><pre><span class="o">%%</span><span class="k">cpp</span>
+<span class="c">#include &lt;cstdint&gt;</span>
+<span class="c">#include &lt;iomanip&gt;</span>
+<span class="c">#include &lt;iostream&gt;</span>
+<span class="c">#include &lt;fstream&gt;</span>
+<span class="c">#include &lt;memory.h&gt;</span>
+<span class="c">#include &lt;limits&gt;</span>
+
+<span class="n">struct</span> <span class="n">Interaction</span><span class="p">{</span>
+
+	<span class="n">static</span> <span class="n">constexpr</span> <span class="n">const</span> <span class="nb">int</span> <span class="n">StructureVersion</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+
+	<span class="n">uint32_t</span> <span class="n">event_id</span><span class="p">;</span>
+	<span class="nb">float</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">energy</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">packed</span><span class="p">));</span> <span class="o">//</span> <span class="n">To</span> <span class="n">jest</span> <span class="n">wa</span><span class="err">ż</span><span class="n">ne</span> <span class="o">---</span> <span class="n">jest</span> <span class="n">to</span> <span class="n">roszerzenie</span> <span class="n">GCC</span> <span class="n">kt</span><span class="err">ó</span><span class="n">re</span> <span class="n">mowi</span> <span class="n">by</span> <span class="n">nie</span> <span class="n">dodawa</span><span class="err">ć</span> 
+
+
+<span class="n">void</span> <span class="n">test_interaction</span><span class="p">(){</span>
+	<span class="n">std</span><span class="p">::</span><span class="n">ofstream</span> <span class="n">output_file</span><span class="p">;</span>
+	<span class="n">output_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;/tmp/structure.bin&quot;</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">ios</span><span class="p">::</span><span class="n">binary</span> <span class="o">|</span> <span class="n">std</span><span class="p">::</span><span class="n">ios</span><span class="p">::</span><span class="n">out</span><span class="p">);</span> <span class="o">//</span> <span class="n">Otwieramy</span> <span class="n">plik</span> <span class="n">binarnie</span>
+	<span class="n">Interaction</span> <span class="n">interaction</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">};</span>
+	<span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="n">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">interaction</span><span class="p">),</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">interaction</span><span class="p">));</span> <span class="o">//</span><span class="n">Rzutujemy</span> <span class="n">strukture</span> <span class="n">na</span> <span class="n">char</span><span class="o">*</span> <span class="n">i</span> <span class="n">zapisujemy</span> <span class="n">j</span><span class="err">ą</span>
+	<span class="n">interaction</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">55</span><span class="p">};</span>
+	<span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">reinterpret_cast</span><span class="o">&lt;</span><span class="n">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">interaction</span><span class="p">),</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">interaction</span><span class="p">));</span> <span class="o">//</span><span class="n">Rzutujemy</span> <span class="n">strukture</span> <span class="n">na</span> <span class="n">char</span><span class="o">*</span> <span class="n">i</span> <span class="n">zapisujemy</span> <span class="n">j</span><span class="err">ą</span>
+	<span class="n">output_file</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+<span class="p">};</span>
+
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">test_interaction</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -2125,23 +2557,43 @@ In&nbsp;[6]:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-array([[ 0.,  0.,  0.],
-       [ 0.,  0.,  0.],
-       [ 0.,  0.,  0.]])
+b&apos;&apos;
+
 </pre>
 </div>
-
 </div>
 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Odczyt-struktury-w-Pythonie-(wersja-1)">Odczyt struktury w Pythonie (wersja 1)<a class="anchor-link" href="#Odczyt-struktury-w-Pythonie-(wersja-1)">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Do &#39;przepakowywania&#39; danych ze struktur Pythonowych do i ze strumienia bajtów służy moduł <a href="https://docs.python.org/3.4/library/struct.html">struct</a>. Pozwala on definiować struktury danych C za pomocą specjalnie sformatowanych ciągów znaków (format ten jest rozbudowany więc nie będę sprawdzał go całego opisywał). </p>
+<p>Za pomoca: </p>
+<pre><code> s = struct.Struct(&quot;=I4f&quot;) 
+</code></pre><p>Definiuję strukturę, ma ona takie cechy: </p>
+<p><code>=</code> Oznacza to że używana jest natywna (taka jak na systemie na którym wykonywany jest program) kolejność bajtów, ale nie uwzględniamy paddingu </p>
+<p><code>I</code> oznacza że pierwszym elementem tej struktury jest 32bajtowa dodatnia liczba całkowita</p>
+<p><code>4f</code> oznacza że dalej mamy 4 liczby zmiennoprzecinkowe (również 32bajty)</p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2150,7 +2602,17 @@ In&nbsp;[12]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c"># Losowe liczby (sprawdź dokumentację dla innych zasotsowań)</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">struct</span> 
+<span class="kn">import</span> <span class="nn">mmap</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">Struct</span><span class="p">(</span><span class="s">&quot;=I4f&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/structure.bin&quot;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">mmap</span><span class="o">.</span><span class="n">mmap</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mmap</span><span class="o">.</span><span class="n">MAP_SHARED</span><span class="p">,</span> <span class="n">mmap</span><span class="o">.</span><span class="n">PROT_READ</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">):</span> 
+        <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">ii</span> <span class="p">:</span> <span class="n">ii</span><span class="o">+</span><span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">]))</span>
 </pre></div>
 
 </div>
@@ -2161,23 +2623,43 @@ In&nbsp;[12]:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-array([[16, 27, 99],
-       [56, 44, 46],
-       [72, 89, 66]])
+(0, 0.0, 0.0, 0.0, 50.0)
+(1, 1.0, 1.0, 1.0, 55.0)
+
 </pre>
 </div>
-
 </div>
 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Odczyt-struktury-w-Pythonie-(wersja-2)">Odczyt struktury w Pythonie (wersja 2)<a class="anchor-link" href="#Odczyt-struktury-w-Pythonie-(wersja-2)">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpy pozwala też na odczyt tablic struktur. By to zrobić należy zrobić tak zwaną: <a href="http://docs.scipy.org/doc/numpy/user/basics.rec.html">structured array</a>. By to zrobić należy zdefiniować dtype (typ danych w tablicy) np. w taki sposób: </p>
+<pre><code>dtype = np.dtype([
+    (&quot;event_id&quot;, np.uint32),
+    (&#39;point&#39;, np.dtype(&quot;3float32&quot;)),
+    (&#39;energy&#39;, np.dtype(&quot;float32&quot;))])
+</code></pre><p>Tutaj dtype przyjmuje tablicę krotek, pierwszym elementem każdej krotki jest nazwa danego rekordu, a drugim jego typ. W tej strukturze mamy trzy rekordy. Id zdarzenia, pozycję (składającą się z trzech współrzędnych) oraz depozycję energetyczną. </p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2186,7 +2668,15 @@ In&nbsp;[13]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># Prawie jak range</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">&quot;event_id&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">&#39;point&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s">&quot;3float32&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">&#39;energy&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s">&quot;float32&quot;</span><span class="p">))])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span><span class="s">&quot;/tmp/structure.bin&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2203,7 +2693,7 @@ In&nbsp;[13]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([5, 6, 7, 8, 9])
+(0, [0.0, 0.0, 0.0], 50.0)
 </pre>
 </div>
 
@@ -2220,7 +2710,7 @@ In&nbsp;[14]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span> <span class="c"># Ale ma większe możliwości</span>
+<div class="highlight"><pre><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2237,8 +2727,7 @@ In&nbsp;[14]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([ 8. ,  8.1,  8.2,  8.3,  8.4,  8.5,  8.6,  8.7,  8.8,  8.9,  9. ,
-        9.1,  9.2,  9.3,  9.4,  9.5,  9.6,  9.7,  9.8,  9.9])
+(1, [1.0, 1.0, 1.0], 55.0)
 </pre>
 </div>
 
@@ -2255,7 +2744,7 @@ In&nbsp;[15]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c"># 10 punktów równomiwenie rozłożonych między 1 a 100</span>
+<div class="highlight"><pre><span class="n">data</span><span class="p">[</span><span class="s">&#39;energy&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2272,7 +2761,7 @@ In&nbsp;[15]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([   1.,   12.,   23.,   34.,   45.,   56.,   67.,   78.,   89.,  100.])
+memmap([ 50.,  55.], dtype=float32)
 </pre>
 </div>
 
@@ -2289,7 +2778,7 @@ In&nbsp;[16]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c"># 10 punktów między 1 a 1E10 rozłożonych na skali logarytmicznej</span>
+<div class="highlight"><pre><span class="n">data</span>
 </pre></div>
 
 </div>
@@ -2306,57 +2795,8 @@ In&nbsp;[16]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-array([  1.00000000e+01,   1.00000000e+02,   1.00000000e+03,
-         1.00000000e+04,   1.00000000e+05,   1.00000000e+06,
-         1.00000000e+07,   1.00000000e+08,   1.00000000e+09,
-         1.00000000e+10])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wybieranie-element&#243;w">Wybieranie element&#243;w<a class="anchor-link" href="#Wybieranie-element&#243;w">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[17]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[17]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
+memmap([(0, [0.0, 0.0, 0.0], 50.0), (1, [1.0, 1.0, 1.0], 55.0)], 
+      dtype=[(&apos;event_id&apos;, &apos;&lt;u4&apos;), (&apos;point&apos;, &apos;&lt;f4&apos;, (3,)), (&apos;energy&apos;, &apos;&lt;f4&apos;)])
 </pre>
 </div>
 
@@ -2369,2545 +2809,14 @@ array([[ 1.,  2.,  3.],
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c"># Indeksy są 0 based</span>
+<div class="highlight"><pre> 
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[18]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-1.0
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[19]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[19]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-9.0
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Można zapisać elementy pod indeksem</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[20]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[20]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[   1.,    2.,    3.],
-       [   4.,  100.,    6.],
-       [   7.,    8.,    9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Nie można (tak) łatwo zmienić rozmiary tablicy</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[21]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_pyerr">
-<pre>
-<span class="ansired">---------------------------------------------------------------------------</span>
-<span class="ansired">IndexError</span>                                Traceback (most recent call last)
-<span class="ansigreen">&lt;ipython-input-21-45571285d966&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
-<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>my_array<span class="ansiyellow">[</span><span class="ansicyan">10</span><span class="ansiyellow">,</span> <span class="ansicyan">10</span><span class="ansiyellow">]</span> <span class="ansiyellow">=</span> <span class="ansicyan">100</span><span class="ansiyellow"></span>
-
-<span class="ansired">IndexError</span>: index 10 is out of bounds for axis 0 with size 3</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wybieranie-zestaw&#243;w-element&#243;w">Wybieranie zestaw&#243;w element&#243;w<a class="anchor-link" href="#Wybieranie-zestaw&#243;w-element&#243;w">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[22]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[22]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Wybieram środkową kolumnę</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[23]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[23]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 2.,  5.,  8.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Wybieram środkowy wiersz</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[24]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[24]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 4.,  5.,  6.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wybieranie-zestaw&#243;w-element&#243;w">Wybieranie zestaw&#243;w element&#243;w<a class="anchor-link" href="#Wybieranie-zestaw&#243;w-element&#243;w">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>To samo z macierzą trójwymiarową </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[25]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">27</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[26]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="c"># Dwa pierwsze elementy po pierwszym wymiarze</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[26]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[[  1.,   2.,   3.],
-        [  4.,   5.,   6.],
-        [  7.,   8.,   9.]],
-
-       [[ 10.,  11.,  12.],
-        [ 13.,  14.,  15.],
-        [ 16.,  17.,  18.]]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[27]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="c"># Cięcie dla indeksu 0 na drugim wymiarze</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[27]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[  1.,   2.,   3.],
-       [ 10.,  11.,  12.],
-       [ 19.,  20.,  21.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wybieranie-zestaw&#243;w-element&#243;w">Wybieranie zestaw&#243;w element&#243;w<a class="anchor-link" href="#Wybieranie-zestaw&#243;w-element&#243;w">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[28]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[28]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Można też wybrać slices z wymiarów, tutaj wybieramy elementy o indeksach od zera (włącznie) do dwa (rozłącznie) na obu wymiarach. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[29]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[29]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.],
-       [ 4.,  5.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[30]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c">#Wymiary co dwa </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[30]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  3.],
-       [ 7.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Operacje-macierz---macierz">Operacje macierz - macierz<a class="anchor-link" href="#Operacje-macierz---macierz">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Na macierzach można wykonywać operacje logiczne</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[31]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[31]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[32]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">+</span> <span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[32]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[  2.,   4.,   6.],
-       [  8.,  10.,  12.],
-       [ 14.,  16.,  18.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[33]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">*</span> <span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[33]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[  1.,   4.,   9.],
-       [ 16.,  25.,  36.],
-       [ 49.,  64.,  81.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Operacje-logiczne">Operacje logiczne<a class="anchor-link" href="#Operacje-logiczne">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[7]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[7]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[8]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">&lt;</span> <span class="mi">5</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[8]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ True,  True,  True],
-       [ True, False, False],
-       [False, False, False]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[9]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[False,  True, False],
-       [ True, False,  True],
-       [False,  True, False]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="p">(</span><span class="n">my_array</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>  <span class="o">|</span> <span class="p">(</span><span class="n">my_array</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[10]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ True,  True,  True],
-       [ True, False,  True],
-       [False,  True, False]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">my_array</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">,</span>  <span class="n">my_array</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="c"># Odpowiednik |</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[11]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[False,  True, False],
-       [ True, False, False],
-       [False, False, False]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Indeksowanie-macierz&#261;-logiczn&#261;">Indeksowanie macierz&#261; logiczn&#261;<a class="anchor-link" href="#Indeksowanie-macierz&#261;-logiczn&#261;">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[39]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">losowe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">losowe</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[39]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[-2,  1, -3],
-       [-3, -2,  0],
-       [ 1,  1, -1]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[40]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sqrt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">losowe</span><span class="p">)</span> 
-<span class="n">sqrt</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
--c:1: RuntimeWarning: invalid value encountered in sqrt
-
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[40]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ nan,   1.,  nan],
-       [ nan,  nan,   0.],
-       [  1.,   1.,  nan]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Po dokonaniu pierwiastkowania dostaliśmy macierz zawierającą wartości nan. Możemy chcieć np. je wyzerować. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[41]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sqrt</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[41]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ True, False,  True],
-       [ True,  True, False],
-       [False, False,  True]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[42]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sqrt</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sqrt</span><span class="p">)]</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[42]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ nan,  nan,  nan,  nan,  nan])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[43]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sqrt</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sqrt</span><span class="p">)]</span>  <span class="o">=</span> <span class="mi">0</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[44]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sqrt</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[44]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 0.,  1.,  0.],
-       [ 0.,  0.,  0.],
-       [ 1.,  1.,  0.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Indeksowanie-krotkami">Indeksowanie krotkami<a class="anchor-link" href="#Indeksowanie-krotkami">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Można też indeksować za pomoca tablic współrzędnych, N wymiarowa tablica przyjmuje w indeksie N tablic 1 wymiarowych o długości M (oznaczanych w_i), i wybierane z niej jest M punktów, każdy o współrzędnych [w_0[ii], w_1[ii], ... w_N[ii]). </p>
-<p>W przykładzie wybierzemy punkty o współrzędnych [0, 0], [1, 2], [3, 1] oraz (ponownie!) [0, 0]</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[13]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  6.,  8.,  1.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Można do tak wybranych elementów zapisywać, ale jeśli zapiszemy do jedengo elementu dwa razy (w przykładzie 0,0) wynik nie jest zdefiniowany! </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[14]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[15]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="c"># Widać że do [0, 0] jednynka dodała się raz!</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[15]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 2.,  2.,  3.],
-       [ 4.,  5.,  7.],
-       [ 7.,  9.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Indeksowanie-liczbami">Indeksowanie liczbami<a class="anchor-link" href="#Indeksowanie-liczbami">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[16]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># Potem wyjaśnie co to robi</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[16]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.],
-       [ 7.,  8.,  9.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[17]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Wybiera N-ty element z pierwszego wymiaru</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[17]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  2.,  3.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wybieranie-podmacierzy">Wybieranie podmacierzy<a class="anchor-link" href="#Wybieranie-podmacierzy">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[18]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[19]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
-<span class="n">zeros</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">+=</span><span class="mi">3</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[20]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[20]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  0.,  3.,  0.],
-       [ 1.,  0.,  3.,  0.],
-       [ 1.,  0.,  3.,  0.],
-       [ 1.,  0.,  3.,  0.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[21]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="mi">4</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[22]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[22]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  0.,  3.,  0.],
-       [ 5.,  4.,  7.,  4.],
-       [ 1.,  0.,  3.,  0.],
-       [ 1.,  0.,  3.,  0.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[23]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[23]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  0.,  3.,  0.,  5.,  4.,  7.,  4.,  1.,  0.,  3.,  0.,  1.,
-        0.,  3.,  0.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[24]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="c"># Nie ma tu kopiowania pamięci</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[24]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  0.,  3.,  0.,  5.,  4.,  7.,  4.],
-       [ 1.,  0.,  3.,  0.,  1.,  0.,  3.,  0.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[25]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[25]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  0.],
-       [ 3.,  0.],
-       [ 5.,  4.],
-       [ 7.,  4.],
-       [ 1.,  0.],
-       [ 3.,  0.],
-       [ 1.,  0.],
-       [ 3.,  0.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wybieranie-podmacierzy">Wybieranie podmacierzy<a class="anchor-link" href="#Wybieranie-podmacierzy">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[56]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">ones</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span> 
-    <span class="n">zeros</span><span class="p">[</span><span class="n">ii</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">ii</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-
-<span class="n">zeros</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
-<span class="n">zeros</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[57]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">zeros</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[57]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 2.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
-       [ 1.,  2.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
-       [ 0.,  1.,  2.,  1.,  0.,  0.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  1.,  2.,  1.,  0.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  1.,  2.,  1.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  0.,  1.,  2.,  1.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.,  1.,  2.,  1.,  0.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.,  0.,  1.,  2.,  1.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  1.,  2.,  1.],
-       [ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  1.,  2.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zmiana-wymiaru-tablicy">Zmiana wymiaru tablicy<a class="anchor-link" href="#Zmiana-wymiaru-tablicy">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Można zmieniać wymiary tablicy, o ile nie zmieniamy jej rozmiaru. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[58]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[59]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[59]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  1.,  1.,  1.,  1.,  1.,  1.,  1.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[60]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
-<span class="n">my_array</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[60]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[61]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[61]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.,  4.],
-       [ 5.,  6.,  7.,  8.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[62]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[62]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.],
-       [ 3.,  4.],
-       [ 5.,  6.],
-       [ 7.,  8.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zaawansowane-operacje-macierz-macierz-broadcasting-rules">Zaawansowane operacje macierz-macierz broadcasting-rules<a class="anchor-link" href="#Zaawansowane-operacje-macierz-macierz-broadcasting-rules">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Robienie operacji na tablicach o tym samym rozmiarze jest fajne, ale nie rozwiązuje zbyt wielu problemów. </p>
-<p>Kiedy wykonujemy operacje na tablicach, muszą mieć one zgodne wymiary. Wymiar jest zgodny kiedy: </p>
-<ul>
-<li>W obu tablicach jest taki sam. </li>
-<li>W jednej tablicy wynosi on jeden</li>
-</ul>
-<p>Czyli tablice A(1 x 3) i B(5 x 3) mają zgodne oba wymiary, pierwszy wymiar jest zgodny bo w A wymiar ten jest 1, drugi bo wymiar ma ten sam rozmiar. </p>
-<p>Kiedy tablica A ma więcej wymiarów niż B, do B dopisuje się wymiary o rozmiarze 1 z lewej strony. </p>
-<p>Tablice A(1) i B(100 x 100 x 100) również mają zgodne wymiary. </p>
-<p>Polecam dokładny opis: <a href="http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html">http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html</a></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Broadcasting-rules">Broadcasting rules<a class="anchor-link" href="#Broadcasting-rules">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[63]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[64]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span> <span class="o">*</span> <span class="mi">10</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[64]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 10.,  10.,  10.],
-       [ 10.,  10.,  10.],
-       [ 10.,  10.,  10.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Tutaj liczba 10 zostala potraktowana jako macierz 10 x 10,</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Broadcasting-rules">Broadcasting rules<a class="anchor-link" href="#Broadcasting-rules">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[65]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">ones</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[65]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  1.,  1.],
-       [ 1.,  1.,  1.],
-       [ 1.,  1.,  1.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[66]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">onetwothree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">onetwothree</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[66]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 1.,  2.,  3.])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Kiedy pomnożymy ones * onetwothree, onetwothree zostanie potraktowany jako macierz 3 x 3. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[67]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span> <span class="o">*</span> <span class="n">onetwothree</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[67]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  2.,  3.],
-       [ 1.,  2.,  3.],
-       [ 1.,  2.,  3.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Tutaj tak samo</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[68]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span> <span class="o">*</span> <span class="n">onetwothree</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[68]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 1.,  1.,  1.],
-       [ 2.,  2.,  2.],
-       [ 3.,  3.,  3.]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><code>np.newaxis</code> Dodaje do macierzy dodakowy wymiar o rozmiarze 1</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Typy-danych-(dtype)">Typy danych (dtype)<a class="anchor-link" href="#Typy-danych-(dtype)">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Macierze numpy mogą służyć do przechowywania danych innych typów niż zmiennoprzecinkowe. Na przykład liczb całkowitych. Można też przechowywać rekordy (o tym innym razem). </p>
-<p>W przeciwieństwie do intów z pythona typy całkowite w numpym mają ustaloną długość. Operacje <code>/</code> i <code>//</code> działają jak dla jak w Pythonie. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Macierze-logczne">Macierze logczne<a class="anchor-link" href="#Macierze-logczne">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do ustalenia typu macierzy służy parametr dtype</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[69]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[69]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ True,  True,  True],
-       [ True,  True,  True],
-       [ True,  True,  True]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[70]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[70]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[False, False, False],
-       [False, False, False],
-       [False, False, False]], dtype=bool)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Macierze-liczb-ca&#322;kowitych">Macierze liczb ca&#322;kowitych<a class="anchor-link" href="#Macierze-liczb-ca&#322;kowitych">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[26]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span> <span class="c"># Rozmiar 65.000 z hakiem</span>
-<span class="n">twos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span> <span class="o">*</span><span class="mi">2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[27]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span><span class="o">/</span><span class="n">twos</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[27]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 0.5,  0.5,  0.5],
-       [ 0.5,  0.5,  0.5],
-       [ 0.5,  0.5,  0.5]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[28]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">ones</span><span class="o">//</span><span class="n">twos</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[28]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[0, 0, 0],
-       [0, 0, 0],
-       [0, 0, 0]], dtype=uint16)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Macierze-liczb-ca&#322;kowitych">Macierze liczb ca&#322;kowitych<a class="anchor-link" href="#Macierze-liczb-ca&#322;kowitych">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[75]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">integers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[76]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">integers</span> <span class="o">**</span> <span class="n">integers</span> <span class="c"># wychodzimy poza zakres zmiennych</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
--c:1: RuntimeWarning: invalid value encountered in power
-
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[76]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([    1,     1,     4,    27,   256,  3125, 46656, 37111,     0,
-       37193,     0,     0], dtype=uint16)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Macierze-liczb-zmiennoprzecinkowych">Macierze liczb zmiennoprzecinkowych<a class="anchor-link" href="#Macierze-liczb-zmiennoprzecinkowych">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Można użyć macierzy o różnej dokładności. W zasadzie ma to sens tylko ze względu na oszczędzanie ramu/dysku. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[77]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">short_floats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[78]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">short_floats</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[78]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 5.,  6.,  7.], dtype=float16)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[79]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">short_floats</span> <span class="o">**</span> <span class="n">short_floats</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
--c:1: RuntimeWarning: overflow encountered in power
-
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[79]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[  3124.,   7776.,  16800.],
-       [ 15624.,  46656.,     inf],
-       [    inf,     inf,     inf]], dtype=float16)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[80]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">floats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[81]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">floats</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[81]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 5.,  6.,  7.], dtype=float32)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[82]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">floats</span> <span class="o">**</span> <span class="n">floats</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[82]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[   3125.,    7776.,   16807.],
-       [  15625.,   46656.,  117649.],
-       [  78125.,  279936.,  823543.]], dtype=float32)
-</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
