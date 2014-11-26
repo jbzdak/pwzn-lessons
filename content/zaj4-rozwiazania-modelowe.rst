@@ -43,19 +43,97 @@ Zadanie 1
 Zadanie 2
 ---------
 
+Znów dwa rozwiązania:
 
 .. code-block:: python
 
-    TODO
+    def __create_slices():
+        """
+        To mi nie do końca wyszło. W każdym razie generuje to listę slice s które
+        pozwalają tak zaindeksować tablicę i sąsiadów by po przesumowaniu
+        wyszło dobrze
+        """
+        class SliceMaker(object):
+            def __getitem__(self, item):
+                return item
+
+        sm = SliceMaker()
+
+        # not diagonal
+
+        yield from zip(
+            chain(permutations([sm[:], sm[:-1]], 2), permutations([sm[:], sm[1:]], 2)),
+            chain(permutations([sm[:], sm[1:]], 2), permutations([sm[:], sm[:-1]], 2))
+        )
+
+        # diagonal
+
+        yield from zip(
+            product([sm[:-1], sm[1:]], repeat=2),
+            product([sm[1:], sm[:-1]], repeat=2)
+        )
+
+    # To jest lista slices które pozwalają mi wybrać odpowiedne fragmenty tablicy
+    SLICES = list(__create_slices())
+
+
+    def calculate_neighbours(board):
+
+
+        neighbours = np.zeros(board.shape, dtype=np.int8)
+
+        for n_slice, b_slice in SLICES:
+            neighbours[n_slice] += board[b_slice]
+
+        return neighbours
+
+
+    def iterate(board):
+
+        board = np.asanyarray(board, dtype=bool)
+
+        n = calculate_neighbours(board)
+
+        create = n == 3
+        survives = (n == 2) & board
+
+        return create | survives
+
+Rozwiązanie studenta:
+
+.. code-block:: python
+
+
+    def calculate_neighbours(board):
+        m, n = board.shape
+
+        # "Oklejamy" planszę zerami (w ten sposób trochchę łatwiej jest
+        # to indeksować). Wada jest taka że marnuje się trochę pamięci
+        board2 = np.zeros((m+2, n+2), dtype=int)
+        board2[1:m+1, 1:n+1] = board.astype(int)
+
+        wynik = np.zeros(board.shape, dtype=np.int)
+        ones = np.ones(board.shape) # Na moje oko (JB) to jest niepotrzebne, ale niech już będzie.
+        for i, j in [ (1,0), (-1,0), (0,1), (0,-1), (1,1), (1,-1), (-1,1), (-1,-1) ]:
+            wynik += (ones * board2[1+i:m+1+i, 1+j:n+1+j]).astype(int)
+        return wynik
+
+    def iterate(board):
+
+        from numpy import logical_and as land, logical_or as lor, logical_not as lnot
+
+        board = board.astype(np.bool)
+        neigh = calculate_neighbours(board)
+        ozywa = land(board == False, neigh == 3)
+        umiera = lnot(land( board == True, lor( neigh < 2, neigh > 3) )
+        board2 = land(lor(board, ozywa), umiera)
+        return board2
 
 
 Zadanie 3
 ---------
 
 .. code-block:: python
-
-
-
 
     class Integrator(object):
 
