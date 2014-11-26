@@ -2175,6 +2175,28 @@ b&apos;Simple\n16\nff 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff \nPacked\n10\
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Powi&#261;zane-wywo&#322;ania-systemowe:">Powi&#261;zane wywo&#322;ania systemowe:<a class="anchor-link" href="#Powi&#261;zane-wywo&#322;ania-systemowe:">&#182;</a></h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Wywołanie <code>int munmap(void* addr, size_t length)</code> usuwa mapowanie obszaru pamięci.</li>
+<li>Wywołanie <code>int msync(void* addr, size_t length, int flags)</code> synchronizuje mapowanie obszaru pamięci z plikiem dyskowym. </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="W-C/C++">W C/C++<a class="anchor-link" href="#W-C/C++">&#182;</a></h2>
 </div>
 </div>
@@ -2330,6 +2352,19 @@ In&nbsp;[7]:
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Domyślnie pliki otwierane są w trybie do odczytu i zapisu. Dostępne są również inne tryby (między innymi): </p>
+<ul>
+<li><code>r</code> --- W trybie tym macierz danych jest tylko do odczytu. </li>
+<li><code>c</code> --- W trybie tym macierz jest do odczytu i zapisu ale zapisy nie są synchronizowane na dysk. Jest to przydatne kiedy chcemy pracować na danych, ale nie modyfikować danych na dysku</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -2805,6 +2840,29 @@ memmap([(0, [0.0, 0.0, 0.0], 50.0), (1, [1.0, 1.0, 1.0], 55.0)],
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zapis-struktury-danych-w-pythonie">Zapis struktury danych w pythonie<a class="anchor-link" href="#Zapis-struktury-danych-w-pythonie">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Obszar pamięci otrzymany za pomocą wywołania <code>memmap</code> nie musi być synchronizowany z dyskiem zaraz po zapisie danych (takie rozwiązanie zresztą niszczyłoby wszelkie wydajnościowe zyski!). Momentem synchronizacji z dyskiem jest:</p>
+<ul>
+<li>Moment usunięcia obiektu <code>np.memmap</code>. </li>
+<li>Wywołanie <code>np.memmap.flush</code>. </li>
+</ul>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">

@@ -1,12 +1,44 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="utf-8" />
-<title>zaj5-blok2</title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>zaj5-blok3 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../reveal.js/css/theme/simple.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="../reveal.js/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 <style type="text/css">
     .clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
@@ -1618,34 +1650,306 @@ span#checkpoint_status,span#autosave_status{font-size:small}
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+html {
+  overflow-y: auto;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
+.reveal {
+  font-size: 160%;
 }
-
-@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+.rendered_html p {
+  text-align: inherit;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
+
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Detale-przydatne-na-zaj&#281;ciach">Detale przydatne na zaj&#281;ciach<a class="anchor-link" href="#Detale-przydatne-na-zaj&#281;ciach">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Praca z macierzami z ciągami znaków okazała się być nieprzyjemna. Stąd krótki instruktaż</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[2]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[1]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">,</span> <span class="s">&#39;baz&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[4]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s">&#39;a3&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[6]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">array</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[10]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">array</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[10]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+array([b&apos;foo&apos;, b&apos;bar&apos;, b&apos;baz&apos;], 
+      dtype=&apos;|S3&apos;)
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Teraz chcemy z tej macierzy pobrać tylko jej ostatnie znaki: czyli uzyskać [&#39;o&#39;, &#39;r&#39;, &#39;z&#39;]</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[11]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">array</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[11]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+[111, 114, 122]
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[12]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">array</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[12]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+[&apos;o&apos;, &apos;r&apos;, &apos;z&apos;]
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script src="../reveal.js/lib/js/head.min.js"></script>
+
+<script src="../reveal.js/js/reveal.js"></script>
+
+<script>
+
+// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: "../reveal.js/lib/js/classList.js", condition: function() { return !document.body.classList; } },
+{ src: "../reveal.js/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: "../reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+</script>
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -1670,1330 +1974,13 @@ div#notebook {
     </script>
     <!-- End of mathjax configuration -->
 
-</head>
-<body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+<script>
+Reveal.addEventListener( 'slidechanged', function( event ) {
+  window.scrollTo(0,0);
+  MathJax.Hub.Rerender(event.currentSlide);
+});
+</script>
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[1]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Obr&#243;bka-danych-w-macierzach-numpy">Obr&#243;bka danych w macierzach numpy<a class="anchor-link" href="#Obr&#243;bka-danych-w-macierzach-numpy">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sortowanie">Sortowanie<a class="anchor-link" href="#Sortowanie">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[3]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">random</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
-<span class="n">random</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[3]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0.44760782,  0.48095597,  0.86307326,  0.91863612,  0.34832552,
-        0.64402301,  0.68667868,  0.99873946,  0.1430979 ,  0.39522482])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[4]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">random</span><span class="p">)</span> <span class="c"># Działa jak sorted</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0.1430979 ,  0.34832552,  0.39522482,  0.44760782,  0.48095597,
-        0.64402301,  0.68667868,  0.86307326,  0.91863612,  0.99873946])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Powiedzmy że mamy tablicę N x 3, która zawiera wartości pewnej funkcji $R^2 \rightarrow R$ na zmierzone dla dwóch zestawu punktów. W pierwszej kolumnie jest wartość X dla każdego z N punktów, w drugiej Y w trzeciej wartość punktów. Chcemy teraz posortować tą tablicę względem wartości Y</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do wykonania tej operacji służy funkcja <code>np.argsort</code> która zwraca indeksy które mają pozwalać na posortowanie tablicy. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[6]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">indeksy_sortujace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="c"># Wybieramy tylko kolumnę z Y i dostajemy indeksy </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[7]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">indeksy_sortujace</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[7]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0.02246321,  0.03544397,  0.048845  ,  0.14415717,  0.16448422,
-        0.26015029,  0.69152298,  0.71784117,  0.81128519,  0.81601787])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[8]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">array</span><span class="p">[</span><span class="n">indeksy_sortujace</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[8]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 0.3673974 ,  0.02246321,  0.9389421 ],
-       [ 0.37814015,  0.03544397,  0.10350637],
-       [ 0.96609645,  0.048845  ,  0.82967877],
-       [ 0.78647026,  0.14415717,  0.10734441],
-       [ 0.69124605,  0.16448422,  0.46878055],
-       [ 0.99440606,  0.26015029,  0.67568401],
-       [ 0.82590353,  0.69152298,  0.23067954],
-       [ 0.5150773 ,  0.71784117,  0.01094984],
-       [ 0.24122545,  0.81128519,  0.77709138],
-       [ 0.95227789,  0.81601787,  0.8122437 ]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Maksimum,-minimum">Maksimum, minimum<a class="anchor-link" href="#Maksimum,-minimum">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[21]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">random</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
-<span class="n">random</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[21]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0.72602205,  0.063436  ,  0.1969681 ,  0.0193703 ,  0.77469882,
-        0.31792851,  0.0729093 ,  0.75356195,  0.1643407 ,  0.99548451])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[22]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[22]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.9954845112528754
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[23]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[23]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.019370299944439395
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Tak samo jak <code>argsort</code>, <code>argmax</code> i <code>argmin</code> zwracają indeks pod którym znajduje się maksimum/minimum. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[9]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-7
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[10]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-8
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#346;rednia,-mediana">&#346;rednia, mediana<a class="anchor-link" href="#&#346;rednia,-mediana">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[11]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.49824223320776523
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.47354791733291124
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[13]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[13]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.30060804297777588
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Histogram">Histogram<a class="anchor-link" href="#Histogram">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Funkcja np.histogram histogramuje dane i zwraca krotkę zawierającą wartości histogramu oraz brzegi binów histogramu. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[27]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">random_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[28]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">values</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">random_sum</span><span class="p">,</span> <span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[29]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">bin_edges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[29]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-[&lt;matplotlib.lines.Line2D at 0x7f4ef87f8898&gt;]
-</pre>
-</div>
-
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Znalezienie-indeks&#243;w-spe&#322;niaj&#261;cych-predykat">Znalezienie indeks&#243;w spe&#322;niaj&#261;cych predykat<a class="anchor-link" href="#Znalezienie-indeks&#243;w-spe&#322;niaj&#261;cych-predykat">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Funkcja <code>np.where</code> przyjmuje tablicę logiczną, jeśli ta tablica ma N wymiarów to <code>where</code> zwraca N tablic zawierających indeksy w ktróych tablica ta ma wartości prawdziwe</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[30]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">random</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
-<span class="n">random</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[30]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0.39063146,  0.75968786,  0.71910739,  0.85020937,  0.3606133 ,
-        0.00850859,  0.32011255,  0.57668266,  0.84950912,  0.85569103])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[31]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">random</span><span class="o">&lt;.</span><span class="mi">5</span><span class="p">)</span> <span class="c">#W tych indeksach tablica ta ma wartość mniej niż 0.5. </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[31]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-(array([0, 4, 5, 6]),)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[32]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">random2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">random2d</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[32]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 0.45077819,  0.18317865,  0.76232586],
-       [ 0.34793677,  0.89409347,  0.90550618],
-       [ 0.56441239,  0.54799542,  0.25729542]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[33]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">random2d</span><span class="o">&lt;.</span><span class="mi">7</span><span class="p">)</span>  <span class="c">#W tych indeksach tablica ta ma wartość mniej niż 0.7.  </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[33]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-(array([0, 0, 1, 2, 2, 2]), array([0, 1, 0, 0, 1, 2]))
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Przykład zastosowania funkcji where to znalezienie pierwszego indeksu spełniającego predykat</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[34]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">random</span><span class="o">&lt;.</span><span class="mi">5</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[34]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Przeszukiwanie">Przeszukiwanie<a class="anchor-link" href="#Przeszukiwanie">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Funkcja <code>np.searchsorted</code> przyjmuje dwie tablice: jedną posortowaną A i drugą B i zwraca indeksy w pierwszej tablicy do przed (lub zależnie od opcji: za) które można wstawic elementy z B do A tak by A była ciągle posortowana</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[35]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[36]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">data</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[36]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ,  1.2,  1.4,  1.6,  1.8])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[37]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">to_be_inserted</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">to_be_inserted</span><span class="p">)</span>
-<span class="n">indices</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[37]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([6, 6, 8, 3])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[38]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">to_be_inserted</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[38]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0. ,  0.2,  0.4,  0.5,  0.6,  0.8,  1. ,  1.1,  1.2,  1.2,  1.4,
-        1.5,  1.6,  1.8])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Operacje-na-osiach">Operacje na osiach<a class="anchor-link" href="#Operacje-na-osiach">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Sumowanie całej tablicy jest operacją o ograniczonej przydatności, zdecydowanie przytatniejsze byłoby sumowanie tablicy względem którejś osi. </p>
-<p>Przykładowo mamy pewne zdarzenie jądrowe i otrzymujemy koordynaty cząstestek w geometrii kartezjańskiej. Chcę policzyć środek ciężkości chmury cząstek (które zakładamy mają masę równą 1). </p>
-<p>Numpy w wielu operacjach pozwala na specyfikowanie osi &quot;wzdłuż&quot; której działa operacja. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[39]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[40]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">coords</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[40]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[ 0.83769849,  0.56890956,  0.56506461],
-       [ 0.40502735,  0.43334184,  0.62774204],
-       [ 0.45595799,  0.50242069,  0.66175362],
-       ..., 
-       [ 0.03034786,  0.60686688,  0.15796221],
-       [ 0.80641827,  0.93326945,  0.04504715],
-       [ 0.02338288,  0.16877554,  0.14206055]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[41]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span> <span class="c"># Średni koordynat nie ma sensu! </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[41]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.49911934702856525
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[42]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c"># Operacja average działa wzdłuż osi 1, czyli osi definiowanej pierwszym wymiarem tablicy. </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[42]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([ 0.50149494,  0.49847956,  0.49738354])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[43]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span> <span class="c"># To też nie ma sensu fizycznego! </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[43]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-(1000,)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div>
-  </div>
 </body>
+
 </html>
