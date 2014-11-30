@@ -1,7 +1,7 @@
 Zajęcia 5 -- zadania
 ====================
 
-:date: 2014-10-26 20:00
+:date: 2014-11-23 20:00
 :tags: zajęcia, zaj5, zadania
 :category: zajęcia
 
