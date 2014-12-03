@@ -2,7 +2,7 @@ Rozwiązania modelowe zajęć 4
 ============================
 
 :date: 2014-10-27 19:00
-:tags: zaj3, rozwiązania modelowe
+:tags: zaj4, rozwiązania modelowe
 :category: ogłoszenia
 
 
