@@ -25,4 +25,5 @@ function compile(){
 #compile zaj3
 #compile zaj4
 #compile zaj5
-compile zaj6
+#compile zaj6
+compile zaj7

@@ -1,44 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>zaj6-blok1 slides</title>
+<title>zaj3-blok1</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../reveal.js/css/theme/simple.css" id="theme">
-
-<!-- For syntax highlighting -->
-<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="../reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 <style type="text/css">
     .clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
@@ -1650,998 +1618,34 @@ span#checkpoint_status,span#autosave_status{font-size:small}
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-html {
-  overflow-y: auto;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal {
-  font-size: 160%;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-.rendered_html p {
-  text-align: inherit;
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
-
-</head>
-
-<body>
-<div class="reveal">
-<div class="slides">
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ipython-notebook">Ipython notebook<a class="anchor-link" href="#Ipython-notebook">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ipython notebook jest <em>interaktywną</em> konsolą Pythona dostępną za pomocą przeglądarki internetowej. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Cechy notebooka: </p>
-<ul>
-<li>Pozwala na łączenie wykonywanego kodu z opisem tekstowym stworzonym za pomocą języka <a href="https://daringfireball.net/projects/markdown/basics">markdown</a> (<a href="http://markdowntutorial.com/lesson/1/">tutorial</a>). </li>
-<li>Pozwala na zdalną pracę na innym komputerze</li>
-<li>Ma rozsądne rozwiązania pozwalające na zrównoleglanie obliczeń</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Instalacja">Instalacja<a class="anchor-link" href="#Instalacja">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Instalacja jest dość prosta: </p>
-<blockquote>
-<p>pip install &#39;ipython[all]&#39;    </p>
-</blockquote>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Uruchomienie">Uruchomienie<a class="anchor-link" href="#Uruchomienie">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do uruchomienia starczy: </p>
-<blockquote>
-<p>ipython notebook </p>
-</blockquote>
-<p>lub</p>
-<blockquote>
-<p>ipython notebook --port=1234</p>
-</blockquote>
-<p>Pierwsza komenda uruchoamia notebooka na porcie <code>8888</code>. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Przyk&#322;ad-u&#380;ycia">Przyk&#322;ad u&#380;ycia<a class="anchor-link" href="#Przyk&#322;ad-u&#380;ycia">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Kod w Ipython notebook wykonuje się w &quot;komórkach&quot; </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[1]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c"># Wynik działania komórki wyświetla się pod nią:</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[1]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c"># Wyświetla się wynik ostatniego wyrażenia</span>
-<span class="mi">3</span><span class="o">+</span><span class="mi">3</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-6
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[3]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">suma</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[4]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">suma</span> <span class="c"># Zmienne są widoczne z innych komórek. </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">sumator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="c"># Można definiować funkcje, klasy</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[6]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Uzupe&#322;nianie-sk&#322;adni">Uzupe&#322;nianie sk&#322;adni<a class="anchor-link" href="#Uzupe&#322;nianie-sk&#322;adni">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ipython notebook posiada doskonałe uzupełnianie składni. Do uzupełniania służy klawisz TAB. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="c">#&lt;Uzupełnić tab&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="p">()</span><span class="c">#Uzupełnić SHIFT+TAB </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span><span class="err">?</span>
-<span class="c">#Wyświetla dokumentację funkcji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ważna sprawa: uzupełnianie składni działa w inny sposób niż w PyCharmie i innych IDE. IDE muszą zgadywać typ obiektu, podczas gdy Ipython uzupełnia obiekty które żyją w jego pamięci, do uzupełniania składni używa on introspekcji. Powoduje to że uzupełnianie składni na złożonych srukturach danych nie musi zadziałać. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[41]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">example</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">foo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span> <span class="c">#Tutaj uzupełnianie składni nie zadziała </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Uzupełnianie składni nie zadziała ponieważ ipython nie zna typu <code>foo[1]</code> mógłby pobrać ten element (wywołać foo.<strong>itemgetter</strong>(1)), ale ta funkcja może mieć skutki uboczne. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bardziej-zaawansowane-przyk&#322;ady-u&#380;ycia">Bardziej zaawansowane przyk&#322;ady u&#380;ycia<a class="anchor-link" href="#Bardziej-zaawansowane-przyk&#322;ady-u&#380;ycia">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>W Ipythonie można wykonywać kod bash-a (po zainstalowaniu wtyczek: w zasadzie dowolnego języka), w przeglądarce można wykonać javaskrypt, html. </p>
-<p>Służą do tego tak zwane &quot;magiczne&quot; polecenia, zaczynające się od znaku <code>%</code> lub <code>%%</code>. </p>
-<p>Komendy z jednym <code>%</code> dotyczą linii, a z dwoma: całej komórki</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Profilowanie-kodu">Profilowanie kodu<a class="anchor-link" href="#Profilowanie-kodu">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1E7</span><span class="p">)))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-1 loops, best of 3: 175 ms per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="c"># Jeśli jedno wykonanie trwa krótko timeit potrafi wykonać wiele iteracji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-1000000 loops, best of 3: 542 ns per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[16]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">timeit</span> <span class="c"># Teraz profilujemy całą komórkę</span>
-
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-100000 loops, best of 3: 1.65 µs per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Wykonywanie-polece&#324;-basha">Wykonywanie polece&#324; basha<a class="anchor-link" href="#Wykonywanie-polece&#324;-basha">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre>%%bash
-
-ls
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-fig-a.png
-fig-b.png
-load_ngrams.py
-__pycache__
-zaj6-blok1_files
-zaj6-blok1.html
-zaj6-blok1.ipynb
-zaj6-blok1.rst
-zaj6-blok1.slides.html
-zaj6-blok2_files
-zaj6-blok2.html
-zaj6-blok2.ipynb
-zaj6-blok2.rst
-zaj6-blok2.slides.html
-zaj6-blok3.html
-zaj6-blok3.ipynb
-zaj6-blok3.rst
-zaj6-blok3.slides.html
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Mo&#380;na-robi&#263;-du&#380;o-fajnych-rzeczy-we-frontendzie:">Mo&#380;na robi&#263; du&#380;o fajnych rzeczy we frontendzie:<a class="anchor-link" href="#Mo&#380;na-robi&#263;-du&#380;o-fajnych-rzeczy-we-frontendzie:">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>%%HTML</p>
-<p><p> Można też wpisywać kod HTML na &quot;żywca&quot;</p>
-<p><p> Działa cały <strong>markup</strong> HTML</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[28]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">SVG</span>
-<span class="o">&lt;</span><span class="n">svg</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.1&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">rect</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;150&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s">&quot;150&quot;</span> <span class="n">fill</span><span class="o">=</span><span class="s">&quot;rgb(0, 255, 0)&quot;</span> <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="n">stroke</span><span class="o">=</span><span class="s">&quot;rgb(0, 0, 0)&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_svg output_subarea ">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <rect fill="rgb(0, 255, 0)" height="150" stroke="rgb(0, 0, 0)" stroke-width="1" width="150"/>
-</svg>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Konfiguracja">Konfiguracja<a class="anchor-link" href="#Konfiguracja">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do stworzenia plików konfiguracji służy polecenie: </p>
-<blockquote>
-<p>ipython profile create default</p>
-</blockquote>
-<p>Konfiguracja ipythona znajduje się w katalogu: <code>$HOME/.ipython/profile_default/ipython_notebook_config.py</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zalety">Zalety<a class="anchor-link" href="#Zalety">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Pozwala na szybkie prototypowanie kodu. </li>
-<li>Przyśpiesza tworzenie kodu obliczeniowego --- ponieważ pozwala na iteratywne tworzenie go z zachowaniem poprzednich wyników obliczeń. </li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[29]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">bardzo_dlugo_wykonujaca_sie_funkcja</span><span class="p">():</span>
-    <span class="c"># ....</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-
-<span class="n">dane</span> <span class="o">=</span> <span class="n">bardzo_dlugo_wykonujaca_sie_funkcja</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[31]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dane</span> <span class="o">*</span><span class="mi">2</span> <span class="c"># Teraz na danych można pracować dalej --- bez ponownego wykonywania drogiej funkcji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[31]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-8
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Pozwala łątwo prezentować wyniki obliczeń</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[38]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">capture</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">stdout</span>
-<span class="o">%%</span><span class="k">bash</span>
-<span class="n">ipython</span> <span class="n">nbconvert</span> <span class="n">zaj6</span><span class="o">-</span><span class="n">blok1</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
-
-<span class="n">cat</span> <span class="n">zaj6</span><span class="o">-</span><span class="n">blok1</span><span class="o">.</span><span class="n">html</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">8</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-
-&lt;meta charset=&quot;utf-8&quot; /&gt;
-&lt;title&gt;zaj6-blok1&lt;/title&gt;
-
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js&quot;&gt;&lt;/script&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wady">Wady<a class="anchor-link" href="#Wady">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Nie da sie dzielić kodu między dwoma notebookami (mogę zaimportować ten sam kod pythona w obu notebookach, ale nie mogę pobrać funkcji <strong>zdefiniowanej</strong> w jednym z nich do drugiego)</li>
-<li>Format notebooka nie jest czytelny dla ludzi. </li>
-<li>Trudno jest wersjonować pliki notebooka kiedy pracuje nad nimi kilka osób</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Znane-problemy">Znane problemy<a class="anchor-link" href="#Znane-problemy">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="1.-Uruchomienie-ipythona-na-zdalnym-komputerze,-tak-by-nikt-poza-mn&#261;-nie-m&#243;g&#322;-go-u&#380;ywa&#263;.">1. Uruchomienie ipythona na zdalnym komputerze, tak by nikt poza mn&#261; nie m&#243;g&#322; go u&#380;ywa&#263;.<a class="anchor-link" href="#1.-Uruchomienie-ipythona-na-zdalnym-komputerze,-tak-by-nikt-poza-mn&#261;-nie-m&#243;g&#322;-go-u&#380;ywa&#263;.">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://ipython.org/ipython-doc/1/interactive/public_server.html">Tutaj</a> jest opis jak to uzyskać: </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="2.-Praca-z-badzo-du&#380;ymi-macierzami">2. Praca z badzo du&#380;ymi macierzami<a class="anchor-link" href="#2.-Praca-z-badzo-du&#380;ymi-macierzami">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Generalnie ipython notebook działa zupełnie dobrze z dużymi macierzami. Jedyny problem polega na tym że ma on w zwyczaju keszować zmienne, co może powodować nadmierne zużycie pamięci. </p>
-<p>By to usunąć należy: </p>
-<ul>
-<li>Zmienić w konfiguracji klucze: <code>c.ZMQInteractiveShell.cache_size</code> oraz <code>c.ZMQInteractiveShell.history_length</code> na <code>0</code>. </li>
-<li>Dodać do katalogu z konfiguracją katalog <code>startup</code> a w nim plik <code>init.py</code> z <code>__builtin__._ = True</code>. </li>
-</ul>
-<p><a href="http://stackoverflow.com/a/24700191/7918">Żródło</a></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="3.-Obrazki-matplotliba-s&#261;-zbyt-ma&#322;e">3. Obrazki matplotliba s&#261; zbyt ma&#322;e<a class="anchor-link" href="#3.-Obrazki-matplotliba-s&#261;-zbyt-ma&#322;e">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do notatnika należy dodać linijkę określającą rozmiar obrazków: </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[43]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://stackoverflow.com/a/17231361/7918">Źródło</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<script src="../reveal.js/lib/js/head.min.js"></script>
-
-<script src="../reveal.js/js/reveal.js"></script>
-
-<script>
-
-// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: "../reveal.js/lib/js/classList.js", condition: function() { return !document.body.classList; } },
-{ src: "../reveal.js/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: "../reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
-]
-});
-</script>
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -2666,13 +1670,1393 @@ dependencies: [
     </script>
     <!-- End of mathjax configuration -->
 
-<script>
-Reveal.addEventListener( 'slidechanged', function( event ) {
-  window.scrollTo(0,0);
-  MathJax.Hub.Rerender(event.currentSlide);
-});
-</script>
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Praca-z-plikami-tekstowymi">Praca z plikami tekstowymi<a class="anchor-link" href="#Praca-z-plikami-tekstowymi">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Praca-z-plikami">Praca z plikami<a class="anchor-link" href="#Praca-z-plikami">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Do otwierania plików służy funkcja <a href="https://docs.python.org/3/library/functions.html#open">open()</a>. Ma ona sporo parametrów:</p>
+<pre><code> open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+</code></pre><ul>
+<li><strong>file</strong> Ciąg znaków --- ścieżka do pliku</li>
+<li><strong>mode</strong> Ciąg znaków --- tryb odczytu &#39;r&#39; (odczyt), &#39;w&#39; (zapis ze skasowaniem ew. uprzedniej zawartości), &#39;a&#39; (zapis z doklejeniem do końca pliku). &#39;b&#39; otwieramy plik binarny, &#39;t&#39; tekstowy (domyślnie). Na przykład &#39;ab&#39; dopisanie do pliku binarnego &#39;rt&#39; odczyt tekstowego (równoważne &#39;r&#39;). </li>
+<li><strong>encoding</strong> kodowanie pliku tekstowego (<a href="https://docs.python.org/3/library/codecs.html#standard-encodings)">lista kodowań</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[141]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Zażółć gęślą jaźń</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Test2</span><span class="se">\n</span><span class="s">Test3&quot;</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sprawdźmy czy działa</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[142]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash
+cat /tmp/test.txt
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Zażółć gęślą jaźń
+Test2
+Test3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Obiekty-file">Obiekty file<a class="anchor-link" href="#Obiekty-file">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>API obiektów zwracanych przez open():</p>
+<ul>
+<li><code>read(N)</code> zwraca <strong>do</strong> N bajtów/znaków z pliku. Wywołane bez N zwraca cały plik.</li>
+<li><code>write(str)</code> zapisuje zawartość danego ciągu do plików</li>
+<li><code>tell()</code> zwraca pozycję w pliku</li>
+<li><code>seek()</code> przesuwa pozycję w pliku</li>
+<li><code>__iter__</code> pozwala iterować po liniach pliku.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zapis-2">Zapis 2<a class="anchor-link" href="#Zapis-2">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[143]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Zażółć gęślą jaźń </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span> <span class="c">#Aktualna pozycja w pliku</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;XXXXXXXXX</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;XXXXXXXXX</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">tell</span><span class="p">())</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c"># Przesunięcie się w pliku na 30 bajtów od początku</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;YYYYYYYYY&quot;</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+30
+40
+50
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[144]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash
+cat /tmp/test.txt
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Zażółć gęślą jaźń 
+YYYYYYYYY
+XXXXXXXXX
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Odczyt">Odczyt<a class="anchor-link" href="#Odczyt">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[145]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c"># Odczyt całego pliku na raz</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Zażółć gęślą jaźń 
+YYYYYYYYY
+XXXXXXXXX
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[146]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">file</span><span class="p">:</span> 
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Zażółć gęślą jaźń
+YYYYYYYYY
+XXXXXXXXX
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[1]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span> <span class="c"># Odczyt 9 bajtów (read(N) może zwrócić **mniej** niż N bajtów)</span>
+<span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+XXXXXXXXX
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Blok-with">Blok <code>with</code><a class="anchor-link" href="#Blok-with">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Python zarządza pamięcią, ale pozostałe zasoby takie jak: </p>
+<ul>
+<li>Gniazda sieciowe</li>
+<li>Pliki </li>
+<li>Porty wejścia-wyjścia </li>
+</ul>
+<p>wymagają ręcznego zarządzania przez programistę. By ułatwić zarządzanie takimi zasobami stworzono blok with.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[148]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="c"># Odczyt całego pliku na raz</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Zażółć gęślą jaźń 
+YYYYYYYYY
+XXXXXXXXX
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[149]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.txt&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file2</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">file2</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Zażółć gęślą jaźń 
+YYYYYYYYY
+XXXXXXXXX
+
+Zażółć gęślą jaźń 
+YYYYYYYYY
+XXXXXXXXX
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Blok-with">Blok with<a class="anchor-link" href="#Blok-with">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ma on takie zalety:</p>
+<ul>
+<li>Obiekty otwarte w bloku with są zamykane po jego zakończeniu, bez względu czy z bloku poleciał wyjątek czy nie</li>
+<li>Jeśli stworzenie któregoś obiektu (w przykładzie <code>file</code> i <code>file2</code>) się nie powiedzie pozostałe będą zamknięte</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Formaty-plik&#243;w-tekstowych">Formaty plik&#243;w tekstowych<a class="anchor-link" href="#Formaty-plik&#243;w-tekstowych">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jest sporo różnych formatów plików tekstowych, powiem o takich: </p>
+<ul>
+<li>XML </li>
+<li>INI </li>
+<li>CSV </li>
+<li>JSON </li>
+</ul>
+<p>główną lekcją z tego powinno być: &quot;Jeśli chcecie przechować dane nie twórzcie nowego formatu&quot;. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Na kolokwiach nie będę Was tym męczył :)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Praca-z-plikami-csv">Praca z plikami csv<a class="anchor-link" href="#Praca-z-plikami-csv">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pliki csv to rodzina tekstowych formatów plików zawierających tabelarczne dane. Do pracy z plikami csv służy moduł <code>csv</code>. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[150]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/test.csv&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">unix_dialect</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a^2&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">ii</span><span class="p">,</span> <span class="n">ii</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[151]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash
+cat /tmp/test.csv
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+&quot;a&quot;,&quot;a^2&quot;
+&quot;0&quot;,&quot;0&quot;
+&quot;1&quot;,&quot;1&quot;
+&quot;2&quot;,&quot;4&quot;
+&quot;3&quot;,&quot;9&quot;
+&quot;4&quot;,&quot;16&quot;
+&quot;5&quot;,&quot;25&quot;
+&quot;6&quot;,&quot;36&quot;
+&quot;7&quot;,&quot;49&quot;
+&quot;8&quot;,&quot;64&quot;
+&quot;9&quot;,&quot;81&quot;
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zapis-plik&#243;w-csv">Zapis plik&#243;w csv<a class="anchor-link" href="#Zapis-plik&#243;w-csv">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Obiekt <code>csv.writer</code> przyjmuje w konstruktorze otwarty plik oraz (opcjonalnie!) dialekt. Obsługuje on dwie operacje: </p>
+<ul>
+<li><code>writerow</code> która przyjmuje iterablę (krotka, lista) zawierającą komórki do zapisania</li>
+<li><code>writerows</code> która przyjmuje iterablę zawierającą wiersze do zapisania </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[65]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/test.csv&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">unix_dialect</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a^2&#39;</span><span class="p">])</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">writerows</span><span class="p">([[</span><span class="n">ii</span><span class="p">,</span> <span class="n">ii</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Odczyt-plik&#243;w-csv">Odczyt plik&#243;w csv<a class="anchor-link" href="#Odczyt-plik&#243;w-csv">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Obiekt <code>csv.reader</code> przyjmuje w konstruktorze otwarty plik oraz (opcjonalnie!) dialekt. Obsługuje on jedną operację: iterację po wierszach. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[68]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/test.csv&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">unix_dialect</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+[&apos;a&apos;, &apos;a^2&apos;]
+[&apos;0&apos;, &apos;0&apos;]
+[&apos;1&apos;, &apos;1&apos;]
+[&apos;2&apos;, &apos;4&apos;]
+[&apos;3&apos;, &apos;9&apos;]
+[&apos;4&apos;, &apos;16&apos;]
+[&apos;5&apos;, &apos;25&apos;]
+[&apos;6&apos;, &apos;36&apos;]
+[&apos;7&apos;, &apos;49&apos;]
+[&apos;8&apos;, &apos;64&apos;]
+[&apos;9&apos;, &apos;81&apos;]
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dialekty-csv">Dialekty csv<a class="anchor-link" href="#Dialekty-csv">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Istnieje wiele dialektów csv, jedne oddzielają pola przecinkiem inne średnikiem, a inne pionową kreską. Jedne zawsze umieszczają zawartość pól w średnikach a inne nie. Wszystkie różnice między dialektami csv zawierają się w <a href="https://docs.python.org/3.4/library/csv.html#dialects-and-formatting-parameters">klasie dialect</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[60]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">MyDialect</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">unix_dialect</span><span class="p">):</span>
+    
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span>
+    <span class="n">quotechar</span> <span class="o">=</span> <span class="s">&#39;&quot;&#39;</span>
+    <span class="n">doublequote</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">quoting</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_MINIMAL</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[63]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/test-dialect.csv&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="n">MyDialect</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;a ^ 2&#39;</span><span class="p">,</span> <span class="s">&#39;a ^ 3&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">ii</span><span class="p">,</span> <span class="n">ii</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">ii</span><span class="o">**</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[64]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash
+cat /tmp/test-dialect.csv
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+a	a ^ 2	a ^ 3
+0	0	0
+1	1	1
+2	4	8
+3	9	27
+4	16	64
+5	25	125
+6	36	216
+7	49	343
+8	64	512
+9	81	729
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Format-JSON">Format JSON<a class="anchor-link" href="#Format-JSON">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Json jest siecowym formatem który pozwala przechowywać dane hierarhiczne. Pozwala on na przechowywanie: </p>
+<ul>
+<li>Liczb </li>
+<li>Ciągów znaków </li>
+<li>Słowników </li>
+<li>List </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[72]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;event_count&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s">&quot;energy_mev&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s">&quot;MeV&quot;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[73]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[73]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+&apos;{&quot;energy_mev&quot;: [1000, &quot;MeV&quot;], &quot;event_count&quot;: 1000}&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[79]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">metadata</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+{&apos;energy_mev&apos;: [1000, &apos;MeV&apos;], &apos;event_count&apos;: 1000}
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Format-INI">Format INI<a class="anchor-link" href="#Format-INI">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Format in jest płaskim formatem w którym zwykle przechowuje się konfigurację</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[90]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">configparser</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s">&quot;Symulacja&quot;</span><span class="p">)</span>
+<span class="n">cp</span><span class="p">[</span><span class="s">&#39;Symulacja&#39;</span><span class="p">][</span><span class="s">&#39;energy_mev&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;1000&#39;</span>
+<span class="n">cp</span><span class="p">[</span><span class="s">&#39;Symulacja&#39;</span><span class="p">][</span><span class="s">&#39;event_count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;10000&#39;</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s">&quot;Źródło&quot;</span><span class="p">)</span>
+<span class="n">cp</span><span class="p">[</span><span class="s">&quot;Źródło&quot;</span><span class="p">][</span><span class="s">&quot;rodzaj&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;gamma&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/test.ini&quot;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> 
+    <span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[95]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash
+cat /tmp/test.ini
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+[Symulacja]
+energy_mev = 1000
+event_count = 10000
+
+[Źródło]
+rodzaj = gamma
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[100]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">cp</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<span class="n">cp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&quot;/tmp/test.ini&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">cp</span><span class="p">[</span><span class="s">&#39;Symulacja&#39;</span><span class="p">][</span><span class="s">&#39;energy_mev&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+1000
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Format-XML">Format XML<a class="anchor-link" href="#Format-XML">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>XML jest formatem przechowijącym hierarchiczną zawartość. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;data&gt;
+    &lt;country name=&quot;Liechtenstein&quot;&gt;
+        &lt;rank&gt;1&lt;/rank&gt;
+        &lt;year&gt;2008&lt;/year&gt;
+        &lt;gdppc&gt;141100&lt;/gdppc&gt;
+        &lt;neighbor name=&quot;Austria&quot; direction=&quot;E&quot;/&gt;
+        &lt;neighbor name=&quot;Switzerland&quot; direction=&quot;W&quot;/&gt;
+    &lt;/country&gt;
+    &lt;country name=&quot;Singapore&quot;&gt;
+        &lt;rank&gt;4&lt;/rank&gt;
+        &lt;year&gt;2011&lt;/year&gt;
+        &lt;gdppc&gt;59900&lt;/gdppc&gt;
+        &lt;neighbor name=&quot;Malaysia&quot; direction=&quot;N&quot;/&gt;
+    &lt;/country&gt;
+    &lt;country name=&quot;Panama&quot;&gt;
+        &lt;rank&gt;68&lt;/rank&gt;
+        &lt;year&gt;2011&lt;/year&gt;
+        &lt;gdppc&gt;13600&lt;/gdppc&gt;
+        &lt;neighbor name=&quot;Costa Rica&quot; direction=&quot;W&quot;/&gt;
+        &lt;neighbor name=&quot;Colombia&quot; direction=&quot;E&quot;/&gt;
+    &lt;/country&gt;
+&lt;/data&gt;
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Format-XML">Format XML<a class="anchor-link" href="#Format-XML">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dokument XML: </p>
+<ul>
+<li>Zawiera jeden tak głowny (w przykładzie <code>&lt;data&gt;</code>) </li>
+<li>Tag może zawierać atrybuty (na przykład: w <code>&lt;country name=&quot;Panama&quot;&gt;</code> name jest atrybutem) </li>
+<li>Tag może wewnątrz zawierać inne tagi (<code>&lt;country&gt;</code> lub być pusty <code>&lt;neighbor name=&quot;Costa Rica&quot; direction=&quot;W&quot;/&gt;</code>)</li>
+<li>Tag zamykamy <code>&lt;data&gt;&lt;/data&gt;</code></li>
+<li>Jest dużo więcej w XML.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Odczyt-XML">Odczyt XML<a class="anchor-link" href="#Odczyt-XML">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Na razie zajmiemy się odczytem XML za pomocą DOM (czyli w tym przypadku cały dokument jest w pamięci)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[112]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/test.xml&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="s">&lt;data&gt;</span>
+<span class="s">    &lt;country name=&quot;Liechtenstein&quot;&gt;</span>
+<span class="s">        &lt;rank&gt;1&lt;/rank&gt;</span>
+<span class="s">        &lt;year&gt;2008&lt;/year&gt;</span>
+<span class="s">        &lt;gdppc&gt;141100&lt;/gdppc&gt;</span>
+<span class="s">        &lt;neighbor name=&quot;Austria&quot; direction=&quot;E&quot;/&gt;</span>
+<span class="s">        &lt;neighbor name=&quot;Switzerland&quot; direction=&quot;W&quot;/&gt;</span>
+<span class="s">    &lt;/country&gt;</span>
+<span class="s">    &lt;country name=&quot;Singapore&quot;&gt;</span>
+<span class="s">        &lt;rank&gt;4&lt;/rank&gt;</span>
+<span class="s">        &lt;year&gt;2011&lt;/year&gt;</span>
+<span class="s">        &lt;gdppc&gt;59900&lt;/gdppc&gt;</span>
+<span class="s">        &lt;neighbor name=&quot;Malaysia&quot; direction=&quot;N&quot;/&gt;</span>
+<span class="s">    &lt;/country&gt;</span>
+<span class="s">    &lt;country name=&quot;Panama&quot;&gt;</span>
+<span class="s">        &lt;rank&gt;68&lt;/rank&gt;</span>
+<span class="s">        &lt;year&gt;2011&lt;/year&gt;</span>
+<span class="s">        &lt;gdppc&gt;13600&lt;/gdppc&gt;</span>
+<span class="s">        &lt;neighbor name=&quot;Costa Rica&quot; direction=&quot;W&quot;/&gt;</span>
+<span class="s">        &lt;neighbor name=&quot;Colombia&quot; direction=&quot;E&quot;/&gt;</span>
+<span class="s">    &lt;/country&gt;</span>
+<span class="s">&lt;/data&gt;&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[120]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">ET</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/test.xml&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[121]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">root</span><span class="o">.</span><span class="n">tag</span> <span class="c">#Nazwa tagu</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[121]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+&apos;data&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[122]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">root</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">attrib</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+country {&apos;name&apos;: &apos;Liechtenstein&apos;}
+country {&apos;name&apos;: &apos;Singapore&apos;}
+country {&apos;name&apos;: &apos;Panama&apos;}
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zapis-XML">Zapis XML<a class="anchor-link" href="#Zapis-XML">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[138]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">liechtenstein</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s">&#39;country&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Liechtenstein&#39;</span><span class="p">})</span>
+<span class="n">rank</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">liechtenstein</span><span class="p">,</span> <span class="s">&#39;rank&#39;</span><span class="p">)</span>
+<span class="n">rank</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
+<span class="n">year</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">liechtenstein</span><span class="p">,</span> <span class="s">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">year</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&#39;2008&#39;</span>
+<span class="n">ET</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">liechtenstein</span><span class="p">,</span> <span class="s">&#39;neighbor&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&quot;Austria&quot;</span><span class="p">,</span> <span class="s">&#39;direction&#39;</span><span class="p">:</span><span class="s">&quot;E&quot;</span><span class="p">}</span> <span class="p">)</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">ElementTree</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;/tmp/test-write.xml&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[139]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash 
+
+cat <span class="s1">&#39;/tmp/test-write.xml&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+&lt;data&gt;&lt;country name=&quot;Liechtenstein&quot;&gt;&lt;rank&gt;1&lt;/rank&gt;&lt;year&gt;2008&lt;/year&gt;&lt;neighbor direction=&quot;E&quot; name=&quot;Austria&quot; /&gt;&lt;/country&gt;&lt;/data&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kiedy-jaki-format">Kiedy jaki format<a class="anchor-link" href="#Kiedy-jaki-format">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>CSV: Używać kiedy macie mało danych w formie tabeli<ul>
+<li>Zalety: <ul>
+<li>Łatwy do edycji w zewnętrznych programach</li>
+<li>Łatwy do zrozumienia </li>
+</ul>
+</li>
+<li>Wady: <ul>
+<li>Nie wydajny dla dużych zestawów danych</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>INI: Dla plików konfiguracyjnych/metadanych, edytowanych/czytanych przez ludzi<ul>
+<li>Zalety: <ul>
+<li>Łatwy do edycji</li>
+<li>Czytelny przez każdy język programowania
+Ostatecznie można samemu napisać parser</li>
+</ul>
+</li>
+<li>Wady: <ul>
+<li>Dwa poziomy zagnieżdżenia </li>
+<li>Nie posiada list</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>.py: Używać kiedy konfiguracja jest skomplikowana<ul>
+<li>Zalety: <ul>
+<li>Super elastyczne</li>
+</ul>
+</li>
+<li>Wady: <ul>
+<li>Użytkownik musi znać Pythona</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JSON: Używać do konfiguracyjnych/metadanych<ul>
+<li>Zalety: <ul>
+<li>Można budować złożone struktury danych</li>
+<li>Słowniki i listy za darmo!</li>
+<li>Czytelny przez każdy język programowania</li>
+</ul>
+</li>
+<li>Wady: <ul>
+<li>Mało wygodny przy ręcznym pisaniu</li>
+<li>Mało wygodny przy odczycie</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>XML:<ul>
+<li>Zalety: <ul>
+<li>Posiada schemat</li>
+<li>Nadaje się do długoterminowego przechowywania dokumentów</li>
+</ul>
+</li>
+<li>Wady: <ul>
+<li>Mało wygodny w odczycie przez program</li>
+<li>Mało wygodny dla pisania przez człowieka</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Parsery-typu-&quot;DOM&quot;-a-parsery-iteracyjne">Parsery typu "DOM" a parsery iteracyjne<a class="anchor-link" href="#Parsery-typu-&quot;DOM&quot;-a-parsery-iteracyjne">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Parsery które Wam pokazywałem ładowały cały dokument do pamięci RAM. Jest to wygodne, ale nie wydajne kiedy danych jest dużo. Parsery iteracyjne są dużo trudniejsze w pracy, ale pozwalają one na przetworzenie dokumentu element po elemencie bez zapisu całości na dysk twardy. </p>
+</div>
+</div>
+</div>
+    </div>
+  </div>
 </body>
-
 </html>

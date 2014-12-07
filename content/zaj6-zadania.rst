@@ -1,7 +1,7 @@
 Zajęcia 6 -- zadania
 ====================
 
-:date: 2014-11-23 20:00
+:date: 2014-11-30 20:00
 :tags: zajęcia, zaj6, zadania
 :category: zajęcia
 

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>zaj6-blok1 slides</title>
+<title>zaj7-blok2 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1723,7 +1723,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ipython-notebook">Ipython notebook<a class="anchor-link" href="#Ipython-notebook">&#182;</a></h1>
+<h1 id="Pobieranie-danych-za-pomoc&#261;-HTTP">Pobieranie danych za pomoc&#261; HTTP<a class="anchor-link" href="#Pobieranie-danych-za-pomoc&#261;-HTTP">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -1733,20 +1733,11 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ipython notebook jest <em>interaktywną</em> konsolą Pythona dostępną za pomocą przeglądarki internetowej. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Cechy notebooka: </p>
+<p>Uwaga: </p>
 <ul>
-<li>Pozwala na łączenie wykonywanego kodu z opisem tekstowym stworzonym za pomocą języka <a href="https://daringfireball.net/projects/markdown/basics">markdown</a> (<a href="http://markdowntutorial.com/lesson/1/">tutorial</a>). </li>
-<li>Pozwala na zdalną pracę na innym komputerze</li>
-<li>Ma rozsądne rozwiązania pozwalające na zrównoleglanie obliczeń</li>
+<li>Użycie HTTP do pobierania danych ze stron HTML, rzadko jest najlepszym rozwiązaniem, w zasadzie z reguły jest najgorszym rozwiązaniem. Czasem jest rozwiązaniem jedynym. </li>
+<li>W przypadku wielu źródeł danych (<a href="https://dumps.wikimedia.org/">wikipedia</a>, <a href="https://dev.twitter.com/streaming/public">twitter</a>, <a href="https://archive.org/details/stackexchange">stackoverflow</a>) dostępne są API/zrzuty publicznie dostępnych danych.</li>
+<li>Niektóre usługi zabraniają automatycznego generowania zapytań HTTP (jeśli chodzi o to czy tego typu TOS są wiążące i w jakim stopniu, to jednak radzę spytać prawnika). Generalnie rzecz biorąc trudno jest wykryć czy zapytania wykonywane są automatycznie, czy ręcznie.</li>
 </ul>
 </div>
 </div>
@@ -1756,7 +1747,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Instalacja">Instalacja<a class="anchor-link" href="#Instalacja">&#182;</a></h1>
+<h3 id="Protok&#243;&#322;-HTTP">Protok&#243;&#322; HTTP<a class="anchor-link" href="#Protok&#243;&#322;-HTTP">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1766,10 +1757,13 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Instalacja jest dość prosta: </p>
-<blockquote>
-<p>pip install &#39;ipython[all]&#39;    </p>
-</blockquote>
+<p>Protokół HTTP to protokół: </p>
+<ul>
+<li>Bezstanowy --- poszczególne zapytania są niezależne od siebie </li>
+<li>Protokół zapytanie-odpowiedź --- Klient wysyła zapytanie a serwer odpowiada. W czystym HTTP serwer nie ma możliwości wysłania klientowi informacji bez wcześniejszego wysłania zapytania (jak zawsze: <a href="http://en.wikipedia.org/wiki/BOSH">da się to obejść</a>)</li>
+<li>Tekstowy (tekstowo/binarny) --- dane są przesyłane (w większości) jako tekst</li>
+<li>Protokół warstwy aplikacji w modelu OSI</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1778,7 +1772,40 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Uruchomienie">Uruchomienie<a class="anchor-link" href="#Uruchomienie">&#182;</a></h1>
+<p>Zapytanie HTTP: </p>
+<pre><code> GET /index.html HTTP/1.1 
+ Host: www.example.com
+</code></pre><p>Zapytanie ma taką postać: </p>
+<pre><code>&lt;VERB&gt; &lt;Resource&gt; HTTP/1.1
+&lt;Jeden lub więcej nagłówków w oddzielnych liniahc&gt; 
+\n\r
+&lt;Opcjonalna treść zapytania&gt;
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Zdefiniowane są następujące rodzaje zapytań <code>&lt;VERB&gt;</code>: </p>
+<ul>
+<li><strong>GET</strong>  -- pobiera zasób</li>
+<li><strong>PUT</strong>  -- umieszcza zasób na serwerze</li>
+<li><strong>POST</strong> -- jak <strong>PUT</strong> ale działa trochę <a href="http://en.wikipedia.org/wiki/POST_(HTTP)">inaczej</a></li>
+<li><strong>HEAD</strong> --- pobiera nagłównki ale nie treść odpowiedzi. </li>
+<li>INNE też</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Odpowiedzi:">Odpowiedzi:<a class="anchor-link" href="#Odpowiedzi:">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1788,15 +1815,12 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Do uruchomienia starczy: </p>
-<blockquote>
-<p>ipython notebook </p>
-</blockquote>
-<p>lub</p>
-<blockquote>
-<p>ipython notebook --port=1234</p>
-</blockquote>
-<p>Pierwsza komenda uruchoamia notebooka na porcie <code>8888</code>. </p>
+<p>Odpowiedzi mają następującą postać: </p>
+<pre><code>HTTP/1.1 &lt;status&gt; &lt;opis statusu&gt; 
+&lt;lista nagłówków&gt;
+\n\r
+&lt;Treść&gt;
+</code></pre>
 </div>
 </div>
 </div>
@@ -1805,7 +1829,23 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Przyk&#322;ad-u&#380;ycia">Przyk&#322;ad u&#380;ycia<a class="anchor-link" href="#Przyk&#322;ad-u&#380;ycia">&#182;</a></h1>
+<p>Statusów jest sporo, generalnie: </p>
+<ul>
+<li><code>1XX</code> informacyjne</li>
+<li><code>2XX</code> sukces</li>
+<li><code>3XX</code> przekierowanie na inny zasób</li>
+<li><code>4XX</code> błąd uzytkownika </li>
+<li><code>5XX</code> błąd serwera</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Nag&#322;&#243;wki.">Nag&#322;&#243;wki.<a class="anchor-link" href="#Nag&#322;&#243;wki.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1815,127 +1855,82 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Kod w Ipython notebook wykonuje się w &quot;komórkach&quot; </p>
+<p>Nagłówków jest <a href="http://en.wikipedia.org/wiki/List_of_HTTP_header_fields"><strong>dużo</strong></a>.</p>
+<h4 id="nag-wki-zapytania">Nagłówki zapytania</h4>
+<ul>
+<li><code>Host</code> domena z której pobieramy stronę. Generalnie często pod jednym adresem IP i portem mieści się wiele domen. Nagłówek <code>Host</code> pozwala na przekierowanie zapytania do odpowiedniego hosta, </li>
+<li><code>Content-Length</code> Długość zapytania w bajtach</li>
+<li><code>Content-Type</code> Typ zawartości w zapytaniu</li>
+<li><code>Referer</code> [sic]. Adres strony która zawiera odnośnik do właśnie pobieranego zasobu. </li>
+<li><code>User-Agent</code> Ciąg znaków identyfikujący rodzaj przeglądarki. </li>
+<li><code>Range</code> Zakres bajtów które pobieramy z danego zasobu. </li>
+<li><code>Cookies</code> o tym później. </li>
+</ul>
+<h4 id="nag-wki-odpowiedzi">Nagłówki odpowiedzi</h4>
+<ul>
+<li><code>Content-Length</code> Długość odpowiedzi w bajtach</li>
+<li><code>Content-Type</code> Typ zawartości w zapytaniu</li>
+<li><code>Set-Cookie</code> o tym później</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
 </div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c"># Wynik działania komórki wyświetla się pod nią:</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Cookies">Cookies<a class="anchor-link" href="#Cookies">&#182;</a></h1>
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[1]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
 </div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c"># Wyświetla się wynik ostatniego wyrażenia</span>
-<span class="mi">3</span><span class="o">+</span><span class="mi">3</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Http jest protokolem bezstanowym, tj: poszczególne pary zapytanie-odpowiedź są od siebie niezależne. Uniemożliwia to (w zasadzie) zaimplementowanie np. funkcjonalności logowania. </p>
+<p>By umożliwić taką funkcjonalność dodano funkconalność ciastek. Działą ona następująco, najpierw serwer w jakiejś odpowiedzi dołącza nagłówki <code>Set-Cookie</code>, np: </p>
+<pre><code>Set-Cookie: name=value
+Set-Cookie: name2=value2; Expires=Wed, 09 Jun 2021 10:18:14 GMT
+</code></pre><p>następnie przeglądarka <strong>może</strong> w każdym kolejnym zapytaniu dołączyć nagłówek: </p>
+<pre><code>Cookie: name=value; name2=value2
+</code></pre><p>Cookie są przesyłane tylko <strong>do tej domeny z której pochodzą</strong>. </p>
 </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-6
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
 </div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">suma</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Logowanie-za-pomoc&#261;-HTTP.">Logowanie za pomoc&#261; HTTP.<a class="anchor-link" href="#Logowanie-za-pomoc&#261;-HTTP.">&#182;</a></h1>
 </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
 </div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">suma</span> <span class="c"># Zmienne są widoczne z innych komórek. </span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="HTTP-Basic-Auth">HTTP Basic-Auth<a class="anchor-link" href="#HTTP-Basic-Auth">&#182;</a></h3>
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-
-</div>
-
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Jest to najprostsza metoda logowania do serwera. Nie jest ona jednak zbyt popularna, oraz nie daje <strong>żadnego bezpieczeństwa</strong>. </p>
+<p>Polega ona na tym by dołączyć nagłówek: </p>
+<pre><code> Authorization: Basic amJ6ZGFrOm1vamV0YWpuZWhhc2xv
+</code></pre><p>gdzie ciąg znaków: amJ6ZGFrOm1vamV0YWpuZWhhc2xv to ciąg znaków: &quot;username:password&quot; potraktowany za pomocą kodowania Base64.      </p>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1944,14 +1939,92 @@ In&nbsp;[5]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">sumator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="c"># Można definiować funkcje, klasy</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">base64</span>
+<span class="k">print</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="s">&quot;jbzdak:mojetajnehaslo&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">)))</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+b&apos;amJ6ZGFrOm1vamV0YWpuZWhhc2xv&apos;
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="HTTP-Digest-Auth">HTTP Digest-Auth<a class="anchor-link" href="#HTTP-Digest-Auth">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nie spotkałem się z użyciem tego protokołu audentykacji. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Logowanie-za-pomoc&#261;-ciastka-sesji.">Logowanie za pomoc&#261; ciastka sesji.<a class="anchor-link" href="#Logowanie-za-pomoc&#261;-ciastka-sesji.">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Typowe logowanie w większości aplikajcji. Dziala (z grubsza) następująco, strona prezentuje formularz: </p>
+<pre><code>&lt;form method=&quot;POST&quot;&gt; 
+    &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;/input&gt;
+    &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;/input&gt;
+&lt;/form&gt;
+</code></pre><p>Użytkownik wypełnia go i wysyła zapytaniem POST, w odpowiedzi dostaje plik ciastka które autoryzuje kolejne zapytania do serwera.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Pobieranie-stron-za-pomoc&#261;-biblioteki-requests">Pobieranie stron za pomoc&#261; biblioteki requests<a class="anchor-link" href="#Pobieranie-stron-za-pomoc&#261;-biblioteki-requests">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Requests jest biblioteką pozwalającą na wykonywanie zapytań HTTP. Aktualnie jest ona najwygodniejszą biblioteką służącą do obsługi HTTP. </p>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1960,7 +2033,55 @@ In&nbsp;[6]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By wykonać zapytanie wykonujemy odpowiednią metodę (<code>get</code>, <code>head</code>, <code>post</code>) z modułu requests</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[9]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;http://google.com&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Odpowiedź zawiera kod statusu: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[10]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>  <span class="c">#</span>
 </pre></div>
 
 </div>
@@ -1972,12 +2093,12 @@ In&nbsp;[6]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
+    Out[10]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-4
+200
 </pre>
 </div>
 
@@ -1992,28 +2113,18 @@ In&nbsp;[6]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Uzupe&#322;nianie-sk&#322;adni">Uzupe&#322;nianie sk&#322;adni<a class="anchor-link" href="#Uzupe&#322;nianie-sk&#322;adni">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ipython notebook posiada doskonałe uzupełnianie składni. Do uzupełniania służy klawisz TAB. </p>
+<p>Można pobrać też zawartość: </p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[14]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="c">#&lt;Uzupełnić tab&gt;</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
 </pre></div>
 
 </div>
@@ -2024,121 +2135,11 @@ In&nbsp;[]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[15]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="p">()</span><span class="c">#Uzupełnić SHIFT+TAB </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span><span class="err">?</span>
-<span class="c">#Wyświetla dokumentację funkcji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ważna sprawa: uzupełnianie składni działa w inny sposób niż w PyCharmie i innych IDE. IDE muszą zgadywać typ obiektu, podczas gdy Ipython uzupełnia obiekty które żyją w jego pamięci, do uzupełniania składni używa on introspekcji. Powoduje to że uzupełnianie składni na złożonych srukturach danych nie musi zadziałać. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[41]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">example</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">foo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span> <span class="c">#Tutaj uzupełnianie składni nie zadziała </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Uzupełnianie składni nie zadziała ponieważ ipython nie zna typu <code>foo[1]</code> mógłby pobrać ten element (wywołać foo.<strong>itemgetter</strong>(1)), ale ta funkcja może mieć skutki uboczne. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bardziej-zaawansowane-przyk&#322;ady-u&#380;ycia">Bardziej zaawansowane przyk&#322;ady u&#380;ycia<a class="anchor-link" href="#Bardziej-zaawansowane-przyk&#322;ady-u&#380;ycia">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>W Ipythonie można wykonywać kod bash-a (po zainstalowaniu wtyczek: w zasadzie dowolnego języka), w przeglądarce można wykonać javaskrypt, html. </p>
-<p>Służą do tego tak zwane &quot;magiczne&quot; polecenia, zaczynające się od znaku <code>%</code> lub <code>%%</code>. </p>
-<p>Komendy z jednym <code>%</code> dotyczą linii, a z dwoma: całej komórki</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Profilowanie-kodu">Profilowanie kodu<a class="anchor-link" href="#Profilowanie-kodu">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1E7</span><span class="p">)))</span>
+<div class="highlight"><pre><span class="n">HTML</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span> <span class="c"># Wyświetlmy to jako HTML </span>
 </pre></div>
 
 </div>
@@ -2149,194 +2150,64 @@ In&nbsp;[10]:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
+<div class="output_area"><div class="prompt output_prompt">
+    Out[15]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+<!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="pl"><head><meta content="/images/google_favicon_128.png" itemprop="image"><title>Google</title><script>(function(){window.google={kEI:'ulqEVLveHcHyUqHRgvAP',kEXPI:'18168,4011559,4014789,4016824,4020347,4020562,4020726,4021587,4021597,4022495,4023567,4023677,4024007,4025103,4025254,4025285,4025407,4025743,4025827,4026124,4026189,8300096,8500393,8500852,10200083,10200095,10200716,10200743,10200828,10200835',authuser:0,kSID:'ulqEVLveHcHyUqHRgvAP'};google.kHL='pl';})();(function(){google.lc=[];google.li=0;google.getEI=function(a){for(var b;a&&(!a.getAttribute||!(b=a.getAttribute("eid")));)a=a.parentNode;return b||google.kEI};google.https=function(){return"https:"==window.location.protocol};google.ml=function(){};google.time=function(){return(new Date).getTime()};google.log=function(a,b,d,e,k){var c=new Image,h=google.lc,f=google.li,g="",l=google.ls||"";c.onerror=c.onload=c.onabort=function(){delete h[f]};h[f]=c;d||-1!=b.search("&ei=")||(e=google.getEI(e),g="&ei="+e,e!=google.kEI&&(g+="&lei="+google.kEI));a=d||"/"+(k||"gen_204")+"?atyp=i&ct="+a+"&cad="+b+g+l+"&zx="+google.time();/^http:/i.test(a)&&google.https()?(google.ml(Error("a"),!1,{src:a,glmm:1}),delete h[f]):(c.src=a,google.li=f+1)};google.y={};google.x=function(a,b){google.y[a.id]=[a,b];return!1};google.load=function(a,b,d){google.x({id:a+m++},function(){google.load(a,b,d)})};var m=0;})();google.kCSI={};var _gjwl=location;function _gjuc(){var a=_gjwl.href.indexOf("#");if(0<=a&&(a=_gjwl.href.substring(a),0<a.indexOf("&q=")||0<=a.indexOf("#q="))&&(a=a.substring(1),-1==a.indexOf("#"))){for(var d=0;d<a.length;){var b=d;"&"==a.charAt(b)&&++b;var c=a.indexOf("&",b);-1==c&&(c=a.length);b=a.substring(b,c);if(0==b.indexOf("fp="))a=a.substring(0,d)+a.substring(c,a.length),c=d;else if("cad=h"==b)return 0;d=c}_gjwl.href="/search?"+a+"&cad=h";return 1}return 0}
+function _gjh(){!_gjuc()&&window.google&&google.x&&google.x({id:"GJH"},function(){google.nav&&google.nav.gjh&&google.nav.gjh()})};window._gjh&&_gjh();</script><style>#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}</style><style>body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#36c}.q{color:#00c}.ts td{padding:0}.ts{border-collapse:collapse}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}a.gb1,a.gb2,a.gb3,a.gb4{color:#11c !important}body{background:#fff;color:black}a{color:#11c;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#36c}a:visited{color:#551a8b}a.gb1,a.gb4{text-decoration:underline}a.gb3:hover{text-decoration:none}#ghead a.gb2:hover{color:#fff !important}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#eee;border:solid 1px;border-color:#ccc #999 #999 #ccc;height:30px}.lsbb{display:block}.ftl,#fll a{display:inline-block;margin:0 12px}.lsb{background:url(/images/srpr/nav_logo80.png) 0 -258px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#ccc}.lst:focus{outline:none}.tiah{width:458px}</style><script></script></head><body bgcolor="#fff"><script>(function(){var src='/images/nav_logo176.png';var iesg=false;document.body.onload = function(){window.n && window.n();if (document.images){new Image().src=src;}
+if (!iesg){document.f&&document.f.q.focus();document.gbqf&&document.gbqf.q.focus();}
+}
+})();</script><div id="mngb">   <div id=gbar><nobr><b class=gb1>Wyszukiwarka</b> <a class=gb1 href="http://www.google.pl/imghp?hl=pl&tab=wi">Grafika</a> <a class=gb1 href="http://maps.google.pl/maps?hl=pl&tab=wl">Mapy</a> <a class=gb1 href="https://play.google.com/?hl=pl&tab=w8">Play</a> <a class=gb1 href="http://www.youtube.com/?gl=PL&tab=w1">YouTube</a> <a class=gb1 href="http://news.google.pl/nwshp?hl=pl&tab=wn">Wiadomości</a> <a class=gb1 href="https://mail.google.com/mail/?tab=wm">Gmail</a> <a class=gb1 href="https://drive.google.com/?tab=wo">Dysk</a> <a class=gb1 style="text-decoration:none" href="http://www.google.pl/intl/pl/options/"><u>Więcej</u> &raquo;</a></nobr></div><div id=guser width=100%><nobr><span id=gbn class=gbi></span><span id=gbf class=gbf></span><span id=gbe></span><a href="http://www.google.pl/history/optout?hl=pl" class=gb4>Historia online</a> | <a  href="/preferences?hl=pl" class=gb4>Ustawienia</a> | <a target=_top id=gb_70 href="https://accounts.google.com/ServiceLogin?hl=pl&continue=http://www.google.pl/%3Fgfe_rd%3Dcr%26ei%3DulqEVLHLEsmg8weE5IDYAg" class=gb4>Zaloguj</a></nobr></div><div class=gbh style=left:0></div><div class=gbh style=right:0></div>  </div><center><span id="prt" style="display:block"> <div><style>.pmoabs{background-color:#fff;border:1px solid #E5E5E5;color:#666;font-size:13px;padding-bottom:20px;position:absolute;right:2px;top:3px;z-index:986}#pmolnk{border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px}.kd-button-submit{border:1px solid #3079ed;background-color:#4d90fe;background-image:-webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));background-image:-webkit-linear-gradient(top,#4d90fe,#4787ed);background-image:-moz-linear-gradient(top,#4d90fe,#4787ed);background-image:-ms-linear-gradient(top,#4d90fe,#4787ed);background-image:-o-linear-gradient(top,#4d90fe,#4787ed);background-image:linear-gradient(top,#4d90fe,#4787ed);filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed')}.kd-button-submit:hover{border:1px solid #2f5bb7;background-color:#357ae8;background-image:-webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#357ae8));background-image:-webkit-linear-gradient(top,#4d90fe,#357ae8);background-image:-moz-linear-gradient(top,#4d90fe,#357ae8);background-image:-ms-linear-gradient(top,#4d90fe,#357ae8);background-image:-o-linear-gradient(top,#4d90fe,#357ae8);background-image:linear-gradient(top,#4d90fe,#357ae8);filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#357ae8')}.kd-button-submit:active{-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);box-shadow:inset 0 1px 2px rgba(0,0,0,0.3)}#pmolnk a{color:#fff;display:inline-block;font-weight:bold;padding:5px 20px;text-decoration:none;white-space:nowrap}.xbtn{color:#999;cursor:pointer;font-size:23px;line-height:5px;padding-top:5px}.padi{padding:0 8px 0 10px}.padt{padding:5px 20px 0 0;color:#444}.pads{text-align:left;max-width:200px}</style> <div class="pmoabs" id="pmocntr2" style="behavior:url(#default#userdata);display:none"> <table border="0"> <tr> <td colspan="2"> <div class="xbtn" onclick="google.promos&&google.promos.toast&& google.promos.toast.cpc()" style="float:right">&times;</div> </td> </tr> <tr> <td class="padi" rowspan="2"> <img src="/images/icons/product/chrome-48.png"> </td> <td class="pads">Przeglądaj internet szybciej</td> </tr> <tr> <td class="padt"> <div class="kd-button-submit" id="pmolnk"> <a href="/chrome/index.html?hl=pl&amp;brand=CHNG&amp;utm_source=pl-hpp&amp;utm_medium=hpp&amp;utm_campaign=pl" onclick="google.promos&&google.promos.toast&& google.promos.toast.cl()">Zainstaluj Google Chrome</a> </div> </td> </tr> </table> </div> <script type="text/javascript">(function(){var a={o:{}};a.o.Pa=50;a.o.Oa=10;a.o.ca="body";a.o.La=!0;a.o.Ea=function(b,c){var d=a.o.Ja();a.o.Ka(d,b,c);a.o.Na(d);a.o.La&&a.o.Ma(d)};a.o.Na=function(b){(b=a.o.ba(b))&&0<b.forms.length&&b.forms[0].submit()};a.o.Ja=function(){var b=document.createElement("iframe");b.height=0;b.width=0;b.style.overflow="hidden";b.style.top=b.style.left="-100px";b.style.position="absolute";document.body.appendChild(b);return b};a.o.ba=function(b){return b.contentDocument||b.contentWindow.document};a.o.Ka=function(b,c,d){b=a.o.ba(b);b.open();d=["<",a.o.ca,'><form method=POST action="',d,'">'];for(var e in c)c.hasOwnProperty(e)&&d.push('<textarea name="',e,'">',c[e],"</textarea>");d.push("</form></",a.o.ca,">");b.write(d.join(""));b.close()};a.o.aa=function(b,c){c>a.o.Oa?google&&google.ml&&google.ml(Error("ogcdr"),!1,{cause:"timeout"}):b.contentWindow?a.o.Qa(b):window.setTimeout(function(){a.o.aa(b,c+1)},a.o.Pa)};a.o.Qa=function(b){document.body.removeChild(b)};a.o.Ma=function(b){a.o.Ra(b,"load",function(){a.o.aa(b,0)})};a.o.Ra=function(b,c,d){b.addEventListener?b.addEventListener(c,d,!1):b.attachEvent&&b.attachEvent("on"+c,d)};var m={Va:0,D:1,F:2,S:5};a.k={};a.k.T={Ha:"i",X:"d",Ia:"l"};a.k.A={R:"0",H:"1"};a.k.U={O:1,X:2,P:3};a.k.w={ta:"a",wa:"g",C:"c",za:"u",ya:"t",R:"p",xa:"pid",va:"eid",Aa:"at"};a.k.Ca=window.location.protocol+"//www.google.com/_/og/promos/";a.k.Ba="g";a.k.Da="z";a.k.Q=function(b,c,d,e){var f=null;switch(c){case m.D:f=window.gbar.up.gpd(b,d,!0);break;case m.S:f=window.gbar.up.gcc(e)}return null==f?0:parseInt(f,10)};a.k.ia=function(b,c,d){return c==m.D?null!=window.gbar.up.gpd(b,d,!0):!1};a.k.V=function(b,c,d,e,f,h,k,l){var g={};g[a.k.w.R]=b;g[a.k.w.wa]=c;g[a.k.w.ta]=d;g[a.k.w.Aa]=e;g[a.k.w.va]=f;g[a.k.w.xa]=1;k&&(g[a.k.w.C]=k);l&&(g[a.k.w.za]=l);if(h)g[a.k.w.ya]=h;else return google.ml(Error("knu"),!1,{cause:"Token is not found"}),null;return g};a.k.W=function(b,c,d){if(b){var e=c?a.k.Ba:a.k.Da;c&&d&&(e+="?authuser="+d);a.o.Ea(b,a.k.Ca+e)}};a.k.Ga=function(b,c,d,e,f,h,k){b=a.k.V(c,b,a.k.T.X,a.k.U.X,d,f,null,e);a.k.W(b,h,k)};a.k.Fa=function(b,c,d,e,f,h,k){b=a.k.V(c,b,a.k.T.Ha,a.k.U.O,d,f,e,null);a.k.W(b,h,k)};a.k.la=function(b,c,d,e,f,h,k,l,g,n){switch(c){case m.S:window.gbar.up.dpc(e,f);break;case m.D:window.gbar.up.spd(b,d,1,!0);break;case m.F:g=g||!1,l=l||"",h=h||0,k=k||a.k.A.H,n=n||0,a.k.Ga(e,h,k,f,l,g,n)}};a.k.ja=function(b,c,d,e,f){return c==m.D?0<d&&a.k.Q(b,c,e,f)>=d:!1};a.k.ga=function(b,c,d,e,f,h,k,l,g,n){switch(c){case m.S:window.gbar.up.iic(e,f);break;case m.D:c=a.k.Q(b,c,d,e)+1;window.gbar.up.spd(b,d,c.toString(),!0);break;case m.F:g=g||!1,l=l||"",h=h||0,k=k||a.k.A.R,n=n||0,a.k.Fa(e,h,k,1,l,g,n)}};a.k.na=function(b,c,d,e,f,h){b=a.k.V(c,b,a.k.T.Ia,a.k.U.P,d,e,null,null);a.k.W(b,f,h)};var p={Ta:"a",Wa:"l",Ua:"c",ka:"d",P:"h",O:"i",gb:"n",H:"x",cb:"ma",eb:"mc",fb:"mi",Xa:"pa",Ya:"pc",$a:"pi",bb:"pn",ab:"px",Za:"pd",hb:"gpa",jb:"gpi",kb:"gpn",lb:"gpx",ib:"gpd"};a.i={};a.i.v={oa:"hplogo",Sa:"pmocntr2"};a.i.A={ea:"0",H:"1",ma:"2"};a.i.p=document.getElementById(a.i.v.Sa);a.i.pa=16;a.i.qa=2;a.i.ra=20;google.promos=google.promos||{};google.promos.toast=google.promos.toast||{};a.i.G=function(b){a.i.p&&(a.i.p.style.display=b?"":"none",a.i.p.parentNode&&(a.i.p.parentNode.style.position=b?"relative":""))};a.i.$=function(b){try{if(a.i.p&&b&&b.es&&b.es.m){var c=window.gbar.rtl(document.body)?"left":"right";a.i.p.style[c]=b.es.m-a.i.pa+a.i.qa+"px";a.i.p.style.top=a.i.ra+"px"}}catch(d){google.ml(d,!1,{cause:a.i.s+"_PT"})}};google.promos.toast.cl=function(){try{a.i.I==m.F&&a.k.na(a.i.J,a.i.B,a.i.A.ma,a.i.N,a.i.L,a.i.M),window.gbar.up.sl(a.i.B,a.i.s,p.P,a.i.K(),1)}catch(b){google.ml(b,!1,{cause:a.i.s+"_CL"})}};google.promos.toast.cpc=function(){try{a.i.p&&(a.i.G(!1),a.k.la(a.i.p,a.i.I,a.i.v.Y,a.i.J,a.i.da,a.i.B,a.i.A.H,a.i.N,a.i.L,a.i.M),window.gbar.up.sl(a.i.B,a.i.s,p.ka,a.i.K(),1))}catch(b){google.ml(b,!1,{cause:a.i.s+"_CPC"})}};a.i.Z=function(){try{if(a.i.p){var b=276,c=document.getElementById(a.i.v.oa);c&&(b=Math.max(b,c.offsetWidth));var d=parseInt(a.i.p.style.right,10)||0;a.i.p.style.visibility=2*(a.i.p.offsetWidth+d)+b>document.body.clientWidth?"hidden":""}}catch(e){google.ml(e,!1,{cause:a.i.s+"_HOSW"})}};a.i.fa=function(){var b=["gpd","spd","aeh","sl"];if(!window.gbar||!window.gbar.up)return!1;for(var c=0,d;d=b[c];c++)if(!(d in window.gbar.up))return!1;return!0};a.i.ha=function(){return a.i.p.currentStyle&&"absolute"!=a.i.p.currentStyle.position};google.promos.toast.init=function(b,c,d,e,f,h,k,l,g,n,q,r){try{a.i.fa()?a.i.p&&(e==m.F&&!l==!g?(google.ml(Error("tku"),!1,{cause:"zwieback: "+g+", gaia: "+l}),a.i.G(!1)):(a.i.v.C="toast_count_"+c+(q?"_"+q:""),a.i.v.Y="toast_dp_"+c+(r?"_"+r:""),a.i.s=d,a.i.B=b,a.i.I=e,a.i.J=c,a.i.da=f,a.i.N=l?l:g,a.i.L=!!l,a.i.M=k,a.k.ia(a.i.p,e,a.i.v.Y,c)||a.k.ja(a.i.p,e,h,a.i.v.C,c)||a.i.ha()?a.i.G(!1):(a.k.ga(a.i.p,e,a.i.v.C,c,f,a.i.B,a.i.A.ea,a.i.N,a.i.L,a.i.M),n||(window.gbar.up.aeh(window,"resize",a.i.Z),window.lol=
+a.i.Z,window.gbar.elr&&a.i.$(window.gbar.elr()),window.gbar.elc&&window.gbar.elc(a.i.$),a.i.G(!0)),window.gbar.up.sl(a.i.B,a.i.s,p.O,a.i.K())))):google.ml(Error("apa"),!1,{cause:a.i.s+"_INIT"})}catch(t){google.ml(t,!1,{cause:a.i.s+"_INIT"})}};a.i.K=function(){var b=a.k.Q(a.i.p,a.i.I,a.i.v.C,a.i.J);return"ic="+b};})();</script> <script type="text/javascript">(function(){var sourceWebappPromoID=143012;var sourceWebappGroupID=5;var payloadType=5;var cookieMaxAgeSec=2592000;var dismissalType=5;var impressionCap=25;var gaiaXsrfToken='';var zwbkXsrfToken='';var kansasDismissalEnabled=false;var sessionIndex=0;var invisible=false;window.gbar&&gbar.up&&gbar.up.r&&gbar.up.r(payloadType,function(show){if (show){google.promos.toast.init(sourceWebappPromoID,sourceWebappGroupID,payloadType,dismissalType,cookieMaxAgeSec,impressionCap,sessionIndex,gaiaXsrfToken,zwbkXsrfToken,invisible,'0612');}
+});})();</script> </div> </span><br clear="all" id="lgpd"><div id="lga"><div style="padding:28px 0 3px"><div style="height:110px;width:276px;background:url(/images/srpr/logo9w.png) no-repeat" title="Google" align="left" id="hplogo" onload="window.lol&&lol()"><div nowrap="" style="color:#777;font-size:16px;font-weight:bold;position:relative;top:70px;left:218px">Polska</div></div></div><br></div><form action="/search" name="f"><table cellpadding="0" cellspacing="0"><tr valign="top"><td width="25%">&nbsp;</td><td align="center" nowrap=""><input name="ie" value="ISO-8859-2" type="hidden"><input value="pl" name="hl" type="hidden"><input name="source" type="hidden" value="hp"><div class="ds" style="height:32px;margin:4px 0"><div style="position:relative;zoom:1"><input style="color:#000;margin:0;padding:5px 8px 0 6px;vertical-align:top;padding-right:38px" autocomplete="off" class="lst tiah" value="" title="Szukaj w Google" maxlength="2048" name="q" size="57"><img src="/textinputassistant/tia.png" style="position:absolute;cursor:pointer;right:5px;top:4px;z-index:300" onclick="(function(){var src='/textinputassistant/11/pl_tia.js';var s=document.createElement('script');s.src=src;google.dom.append(s);})();" alt="" height="23" width="27"></div></div><br style="line-height:0"><span class="ds"><span class="lsbb"><input class="lsb" value="Szukaj w Google" name="btnG" type="submit"></span></span><span class="ds"><span class="lsbb"><input class="lsb" value="Szczęśliwy traf" name="btnI" onclick="if(this.form.q.value)this.checked=1; else top.location='/doodles/'" type="submit"></span></span></td><td class="fl sblc" align="left" nowrap="" width="25%"><a href="/advanced_search?hl=pl&amp;authuser=0">Szukanie zaawansowane</a><a href="/language_tools?hl=pl&amp;authuser=0">Narzędzia językowe</a></td></tr></table><input id="gbv" name="gbv" type="hidden" value="1"></form><div id="gac_scont"></div><div style="font-size:83%;min-height:3.5em"><br></div><span id="footer"><div style="font-size:10pt"><div style="margin:19px auto;text-align:center" id="fll"><a href="/intl/pl/ads/">Reklamuj się w Google</a><a href="http://www.google.pl/intl/pl/services/">Rozwiązania dla firm</a><a href="https://plus.google.com/102407376649446415369" rel="publisher">+Google</a><a href="/intl/pl/about.html">Wszystko o Google</a><a href="http://www.google.pl/setprefdomain?prefdom=US&amp;sig=0_b-34Yu_1iAAC6q6RE3QmKtZ4M_Y%3D" id="fehl">Google.com</a></div></div><p style="color:#767676;font-size:8pt">&copy; 2013 - <a href="/intl/pl/policies/">Prywatność i warunki</a></p></span></center><div id="xjsd"></div><div id="xjsi" data-jiis="bp"><script>(function(){function c(b){window.setTimeout(function(){var a=document.createElement("script");a.src=b;document.getElementById("xjsd").appendChild(a)},0)}google.dljp=function(b,a){google.xjsu=b;c(a)};google.dlj=c;})();(function(){window.google.xjsrm=[];})();if(google.y)google.y.first=[];if(!google.xjs){window._=window._||{};window._._DumpException=function(e){throw e};if(google.timers&&google.timers.load.t){google.timers.load.t.xjsls=new Date().getTime();}google.dljp('/xjs/_/js/k\x3dxjs.hp.en_US.Anfrvs-G7Vg.O/m\x3dsb_he,pcc/rt\x3dj/d\x3d1/t\x3dzcms/rs\x3dACT90oEO5uJZbGlNIeyya5w6rQiVuEHo7A','/xjs/_/js/k\x3dxjs.hp.en_US.Anfrvs-G7Vg.O/m\x3dsb_he,pcc/rt\x3dj/d\x3d1/t\x3dzcms/rs\x3dACT90oEO5uJZbGlNIeyya5w6rQiVuEHo7A');google.xjs=1;}google.pmc={"sb_he":{"agen":true,"cgen":true,"client":"heirloom-hp","dh":true,"ds":"","eqch":true,"exp":"msedr","fl":true,"host":"google.pl","jam":0,"jsonp":true,"msgs":{"cibl":"Wyczyść wyszukiwanie","dym":"Czy chodziło Ci o:","lcky":"Szczęśliwy traf","lml":"Więcej informacji","oskt":"Narzędzia do wprowadzania tekstu","psrc":"To wyszukiwanie zostało usunięte z Twojej \u003Ca href=\"/history\"\u003EHistorii online\u003C/a\u003E","psrl":"Usuń","sbit":"Wyszukiwanie obrazem","srch":"Szukaj w Google"},"ovr":{},"pq":"","qcpw":false,"refoq":true,"scd":10,"sce":5,"stok":"XENmFA9ifWXbobQ7eIBQ-nIs-oQ"},"pcc":{}};google.y.first.push(function(){if(google.med){google.med('init');google.initHistory();google.med('history');}});if(google.j&&google.j.en&&google.j.xi){window.setTimeout(google.j.xi,0);}
+</script></div></body></html>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Można wykonać też zapytanie POST: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[132]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s">&#39;http://postcatcher.in/catchers/54845b3898de1602000004c2&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;foo&#39;</span><span class="p">:</span> <span class="s">&#39;bar&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[132]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
 <pre>
-1 loops, best of 3: 175 ms per loop
-
+&lt;Response [201]&gt;
 </pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="c"># Jeśli jedno wykonanie trwa krótko timeit potrafi wykonać wiele iteracji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-1000000 loops, best of 3: 542 ns per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[16]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">timeit</span> <span class="c"># Teraz profilujemy całą komórkę</span>
-
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-100000 loops, best of 3: 1.65 µs per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Wykonywanie-polece&#324;-basha">Wykonywanie polece&#324; basha<a class="anchor-link" href="#Wykonywanie-polece&#324;-basha">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre>%%bash
-
-ls
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-fig-a.png
-fig-b.png
-load_ngrams.py
-__pycache__
-zaj6-blok1_files
-zaj6-blok1.html
-zaj6-blok1.ipynb
-zaj6-blok1.rst
-zaj6-blok1.slides.html
-zaj6-blok2_files
-zaj6-blok2.html
-zaj6-blok2.ipynb
-zaj6-blok2.rst
-zaj6-blok2.slides.html
-zaj6-blok3.html
-zaj6-blok3.ipynb
-zaj6-blok3.rst
-zaj6-blok3.slides.html
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Mo&#380;na-robi&#263;-du&#380;o-fajnych-rzeczy-we-frontendzie:">Mo&#380;na robi&#263; du&#380;o fajnych rzeczy we frontendzie:<a class="anchor-link" href="#Mo&#380;na-robi&#263;-du&#380;o-fajnych-rzeczy-we-frontendzie:">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>%%HTML</p>
-<p><p> Można też wpisywać kod HTML na &quot;żywca&quot;</p>
-<p><p> Działa cały <strong>markup</strong> HTML</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[28]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">SVG</span>
-<span class="o">&lt;</span><span class="n">svg</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.1&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">rect</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;150&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s">&quot;150&quot;</span> <span class="n">fill</span><span class="o">=</span><span class="s">&quot;rgb(0, 255, 0)&quot;</span> <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="n">stroke</span><span class="o">=</span><span class="s">&quot;rgb(0, 0, 0)&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_svg output_subarea ">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <rect fill="rgb(0, 255, 0)" height="150" stroke="rgb(0, 0, 0)" stroke-width="1" width="150"/>
-</svg>
-</div>
 
 </div>
 
@@ -2349,7 +2220,7 @@ In&nbsp;[28]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Konfiguracja">Konfiguracja<a class="anchor-link" href="#Konfiguracja">&#182;</a></h1>
+<h3 id="Pobieranie-fragment&#243;w-plik&#243;w">Pobieranie fragment&#243;w plik&#243;w<a class="anchor-link" href="#Pobieranie-fragment&#243;w-plik&#243;w">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2359,48 +2230,222 @@ In&nbsp;[28]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Do stworzenia plików konfiguracji służy polecenie: </p>
-<blockquote>
-<p>ipython profile create default</p>
-</blockquote>
-<p>Konfiguracja ipythona znajduje się w katalogu: <code>$HOME/.ipython/profile_default/ipython_notebook_config.py</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zalety">Zalety<a class="anchor-link" href="#Zalety">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<p>HTTP pozwala na pobranie fragmentów zasobów. Można to zrobić w następujący sposób: </p>
 <ul>
-<li>Pozwala na szybkie prototypowanie kodu. </li>
-<li>Przyśpiesza tworzenie kodu obliczeniowego --- ponieważ pozwala na iteratywne tworzenie go z zachowaniem poprzednich wyników obliczeń. </li>
+<li>Odpytujemy za pomocą zapytania <code>HEAD</code> długość zasobu (zawarta jest w nagłówku <code>Content-Length</code>)</li>
+<li>Za pomocą zapytań Get z nagłowkiem <code>Range</code> pobieramy interesujące nas fragmenty pliku. </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Najpierw za pomocą HEAD pobieramy długość pliku. </p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[29]:
+In&nbsp;[101]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">bardzo_dlugo_wykonujaca_sie_funkcja</span><span class="p">():</span>
-    <span class="c"># ....</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+<div class="highlight"><pre><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="s">&quot;http://db.fizyka.pw.edu.pl/pwzn-data/rand-data&quot;</span><span class="p">)</span>
+</pre></div>
 
-<span class="n">dane</span> <span class="o">=</span> <span class="n">bardzo_dlugo_wykonujaca_sie_funkcja</span><span class="p">()</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[103]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">resp_len</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Length&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Potem za pomocą zapytań GET pobieramy poszczególne fragmenty</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[130]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">resp_len</span><span class="o">/</span><span class="mi">11</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">resp_len</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span> 
+    <span class="n">request_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">resp_len</span><span class="p">,</span> <span class="n">ii</span><span class="o">+</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;http://db.fizyka.pw.edu.pl/pwzn-data/rand-data&quot;</span><span class="p">,</span> 
+                 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s">&quot;Range&quot;</span><span class="p">:</span> <span class="s">&quot;bytes={}-{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">request_range</span><span class="p">)</span>
+                <span class="p">})</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sklejamy je razem</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[127]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">collected</span> <span class="o">=</span> <span class="n">b</span><span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">content</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sprawdzam czy suma kontrolna jest zgodna, powinno wyjść: d43a0ce093f466848d6f8adb31daff3e</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[131]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">()</span>
+<span class="nb">hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">collected</span><span class="p">)</span>
+<span class="nb">hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[131]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+&apos;d43a0ce093f466848d6f8adb31daff3e&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Odczyt-danych-z-html">Odczyt danych z html<a class="anchor-link" href="#Odczyt-danych-z-html">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kiedy już pobraliśmy plik HTML zawierający interesujące nas dane, należy jeszcze owe dane odczytać... </p>
+<p>Jest to często dość skomplikowane zadanie. Bardzo upraszcza je biblioteka BeatifullSoup. </p>
+<p>Biblioteka ta: </p>
+<ul>
+<li>Pozwala na wygodne nawigowanie po dokumencie HTML, np. można wybrać wszystkie linki</li>
+<li>Pozwala parsować HTML za pomocą kilku parserów (wpływa to na ostateczny dokument, natomiast API parsowania jest takie samo). </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pobieramy stronę z listą pracowników: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[19]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">data</span>  <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;http://www.fizyka.pw.edu.pl/index.php?option=com_facultyinfo&amp;Itemid=233&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ładujemy tą stronę do obiektu BeautifulSoup</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[21]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">bs4</span>
 </pre></div>
 
 </div>
@@ -2415,7 +2460,84 @@ In&nbsp;[31]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">dane</span> <span class="o">*</span><span class="mi">2</span> <span class="c"># Teraz na danych można pracować dalej --- bez ponownego wykonywania drogiej funkcji</span>
+<div class="highlight"><pre><span class="n">bs</span> <span class="o">=</span> <span class="n">bs4</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Znajdujemy tabelkę z pracownikami. Zakładam że tabelka ta jest w tagu table oraz że zawiera słowo &quot;Pracownik&quot;. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[37]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">pracownicy</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">bs</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">&#39;table&#39;</span><span class="p">):</span> 
+    <span class="k">if</span> <span class="s">&#39;Pracownik&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">table</span><span class="p">):</span> 
+        <span class="n">pracownicy</span> <span class="o">=</span> <span class="n">table</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Z Pracowników wyciągamiy imie i nazwisko, zakład i numer telefonu (Imie jest wewnątrz linka)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[71]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pracownicy</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">&#39;tr&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]:</span> 
+    <span class="n">data</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> 
+                <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> 
+                <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span> 
+        <span class="k">pass</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[133]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">result</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2427,12 +2549,16 @@ In&nbsp;[31]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[31]:</div>
+    Out[133]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-8
+[(&apos;prof. nzw. dr hab. Leszek Adamowicz&apos;, &apos;103&apos;, &apos;22 234 5471&apos;),
+ (&apos;dr inż. Jerzy Antonowicz&apos;,
+  &apos;130C 12B Gmach Fizyki&apos;,
+  &apos;22 234 7247 22 234 5839 22 234 8214&apos;),
+ (&apos;dr Elżbieta Auguściuk&apos;, &apos;123&apos;, &apos;22 234 5448&apos;)]
 </pre>
 </div>
 
@@ -2442,179 +2568,20 @@ In&nbsp;[31]:
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Pozwala łątwo prezentować wyniki obliczeń</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[38]:
+In&nbsp;[]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">capture</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">stdout</span>
-<span class="o">%%</span><span class="k">bash</span>
-<span class="n">ipython</span> <span class="n">nbconvert</span> <span class="n">zaj6</span><span class="o">-</span><span class="n">blok1</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
-
-<span class="n">cat</span> <span class="n">zaj6</span><span class="o">-</span><span class="n">blok1</span><span class="o">.</span><span class="n">html</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">8</span> 
+<div class="highlight"><pre> 
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-
-&lt;meta charset=&quot;utf-8&quot; /&gt;
-&lt;title&gt;zaj6-blok1&lt;/title&gt;
-
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js&quot;&gt;&lt;/script&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wady">Wady<a class="anchor-link" href="#Wady">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Nie da sie dzielić kodu między dwoma notebookami (mogę zaimportować ten sam kod pythona w obu notebookach, ale nie mogę pobrać funkcji <strong>zdefiniowanej</strong> w jednym z nich do drugiego)</li>
-<li>Format notebooka nie jest czytelny dla ludzi. </li>
-<li>Trudno jest wersjonować pliki notebooka kiedy pracuje nad nimi kilka osób</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Znane-problemy">Znane problemy<a class="anchor-link" href="#Znane-problemy">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="1.-Uruchomienie-ipythona-na-zdalnym-komputerze,-tak-by-nikt-poza-mn&#261;-nie-m&#243;g&#322;-go-u&#380;ywa&#263;.">1. Uruchomienie ipythona na zdalnym komputerze, tak by nikt poza mn&#261; nie m&#243;g&#322; go u&#380;ywa&#263;.<a class="anchor-link" href="#1.-Uruchomienie-ipythona-na-zdalnym-komputerze,-tak-by-nikt-poza-mn&#261;-nie-m&#243;g&#322;-go-u&#380;ywa&#263;.">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://ipython.org/ipython-doc/1/interactive/public_server.html">Tutaj</a> jest opis jak to uzyskać: </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="2.-Praca-z-badzo-du&#380;ymi-macierzami">2. Praca z badzo du&#380;ymi macierzami<a class="anchor-link" href="#2.-Praca-z-badzo-du&#380;ymi-macierzami">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Generalnie ipython notebook działa zupełnie dobrze z dużymi macierzami. Jedyny problem polega na tym że ma on w zwyczaju keszować zmienne, co może powodować nadmierne zużycie pamięci. </p>
-<p>By to usunąć należy: </p>
-<ul>
-<li>Zmienić w konfiguracji klucze: <code>c.ZMQInteractiveShell.cache_size</code> oraz <code>c.ZMQInteractiveShell.history_length</code> na <code>0</code>. </li>
-<li>Dodać do katalogu z konfiguracją katalog <code>startup</code> a w nim plik <code>init.py</code> z <code>__builtin__._ = True</code>. </li>
-</ul>
-<p><a href="http://stackoverflow.com/a/24700191/7918">Żródło</a></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="3.-Obrazki-matplotliba-s&#261;-zbyt-ma&#322;e">3. Obrazki matplotliba s&#261; zbyt ma&#322;e<a class="anchor-link" href="#3.-Obrazki-matplotliba-s&#261;-zbyt-ma&#322;e">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do notatnika należy dodać linijkę określającą rozmiar obrazków: </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[43]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://stackoverflow.com/a/17231361/7918">Źródło</a></p>
-</div>
-</div>
 </div>
 </div>
 </div>

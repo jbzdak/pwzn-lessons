@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>zaj6-blok1 slides</title>
+<title>zaj7-blok1 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1723,7 +1723,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ipython-notebook">Ipython notebook<a class="anchor-link" href="#Ipython-notebook">&#182;</a></h1>
+<h1 id="Serializacja-obiekt&#243;w:-modu&#322;-pickle">Serializacja obiekt&#243;w: modu&#322; <code>pickle</code><a class="anchor-link" href="#Serializacja-obiekt&#243;w:-modu&#322;-pickle">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -1733,20 +1733,11 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ipython notebook jest <em>interaktywną</em> konsolą Pythona dostępną za pomocą przeglądarki internetowej. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Cechy notebooka: </p>
+<p>Pickle jest formatem serializacji obiektów pythona mającym następujące cechy: </p>
 <ul>
-<li>Pozwala na łączenie wykonywanego kodu z opisem tekstowym stworzonym za pomocą języka <a href="https://daringfireball.net/projects/markdown/basics">markdown</a> (<a href="http://markdowntutorial.com/lesson/1/">tutorial</a>). </li>
-<li>Pozwala na zdalną pracę na innym komputerze</li>
-<li>Ma rozsądne rozwiązania pozwalające na zrównoleglanie obliczeń</li>
+<li>Jest <strong>specyficzny</strong> dla pythona, tj. format jest wyspecyfikowany, ale niewiele języków ma możliwość odczytu picklowanych danych  (<code>C++</code>, <code>Go</code>)</li>
+<li>Jest rozsądnie wydajny. </li>
+<li>Domyślnie (prawie) każdy obiekt może być zserializowany</li>
 </ul>
 </div>
 </div>
@@ -1756,146 +1747,20 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Instalacja">Instalacja<a class="anchor-link" href="#Instalacja">&#182;</a></h1>
+<h2 id="Proste-przyk&#322;ady">Proste przyk&#322;ady<a class="anchor-link" href="#Proste-przyk&#322;ady">&#182;</a></h2>
 </div>
 </div>
 </div>
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Instalacja jest dość prosta: </p>
-<blockquote>
-<p>pip install &#39;ipython[all]&#39;    </p>
-</blockquote>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Uruchomienie">Uruchomienie<a class="anchor-link" href="#Uruchomienie">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do uruchomienia starczy: </p>
-<blockquote>
-<p>ipython notebook </p>
-</blockquote>
-<p>lub</p>
-<blockquote>
-<p>ipython notebook --port=1234</p>
-</blockquote>
-<p>Pierwsza komenda uruchoamia notebooka na porcie <code>8888</code>. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Przyk&#322;ad-u&#380;ycia">Przyk&#322;ad u&#380;ycia<a class="anchor-link" href="#Przyk&#322;ad-u&#380;ycia">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Kod w Ipython notebook wykonuje się w &quot;komórkach&quot; </p>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[7]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c"># Wynik działania komórki wyświetla się pod nią:</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[1]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[2]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="mi">2</span><span class="o">+</span><span class="mi">2</span> <span class="c"># Wyświetla się wynik ostatniego wyrażenia</span>
-<span class="mi">3</span><span class="o">+</span><span class="mi">3</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-6
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[3]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">suma</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">pickletools</span>
 </pre></div>
 
 </div>
@@ -1906,46 +1771,11 @@ In&nbsp;[3]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[13]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">suma</span> <span class="c"># Zmienne są widoczne z innych komórek. </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[4]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[5]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">sumator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="c"># Można definiować funkcje, klasy</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -1956,189 +1786,11 @@ In&nbsp;[5]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[15]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[6]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-4
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Uzupe&#322;nianie-sk&#322;adni">Uzupe&#322;nianie sk&#322;adni<a class="anchor-link" href="#Uzupe&#322;nianie-sk&#322;adni">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ipython notebook posiada doskonałe uzupełnianie składni. Do uzupełniania służy klawisz TAB. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="c">#&lt;Uzupełnić tab&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">sumator</span><span class="p">()</span><span class="c">#Uzupełnić SHIFT+TAB </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[9]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span><span class="err">?</span>
-<span class="c">#Wyświetla dokumentację funkcji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ważna sprawa: uzupełnianie składni działa w inny sposób niż w PyCharmie i innych IDE. IDE muszą zgadywać typ obiektu, podczas gdy Ipython uzupełnia obiekty które żyją w jego pamięci, do uzupełniania składni używa on introspekcji. Powoduje to że uzupełnianie składni na złożonych srukturach danych nie musi zadziałać. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[41]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">example</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">foo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span> <span class="c">#Tutaj uzupełnianie składni nie zadziała </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Uzupełnianie składni nie zadziała ponieważ ipython nie zna typu <code>foo[1]</code> mógłby pobrać ten element (wywołać foo.<strong>itemgetter</strong>(1)), ale ta funkcja może mieć skutki uboczne. </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bardziej-zaawansowane-przyk&#322;ady-u&#380;ycia">Bardziej zaawansowane przyk&#322;ady u&#380;ycia<a class="anchor-link" href="#Bardziej-zaawansowane-przyk&#322;ady-u&#380;ycia">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>W Ipythonie można wykonywać kod bash-a (po zainstalowaniu wtyczek: w zasadzie dowolnego języka), w przeglądarce można wykonać javaskrypt, html. </p>
-<p>Służą do tego tak zwane &quot;magiczne&quot; polecenia, zaczynające się od znaku <code>%</code> lub <code>%%</code>. </p>
-<p>Komendy z jednym <code>%</code> dotyczą linii, a z dwoma: całej komórki</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Profilowanie-kodu">Profilowanie kodu<a class="anchor-link" href="#Profilowanie-kodu">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[10]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1E7</span><span class="p">)))</span>
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2152,38 +1804,7 @@ In&nbsp;[10]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-1 loops, best of 3: 175 ms per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">timeit</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span> <span class="c"># Jeśli jedno wykonanie trwa krótko timeit potrafi wykonać wiele iteracji</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-1000000 loops, best of 3: 542 ns per loop
+b&apos;\x80\x03]q\x00(K\x01K\x02K\x03e.&apos;
 
 </pre>
 </div>
@@ -2200,222 +1821,7 @@ In&nbsp;[16]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">timeit</span> <span class="c"># Teraz profilujemy całą komórkę</span>
-
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-100000 loops, best of 3: 1.65 µs per loop
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Wykonywanie-polece&#324;-basha">Wykonywanie polece&#324; basha<a class="anchor-link" href="#Wykonywanie-polece&#324;-basha">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre>%%bash
-
-ls
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-fig-a.png
-fig-b.png
-load_ngrams.py
-__pycache__
-zaj6-blok1_files
-zaj6-blok1.html
-zaj6-blok1.ipynb
-zaj6-blok1.rst
-zaj6-blok1.slides.html
-zaj6-blok2_files
-zaj6-blok2.html
-zaj6-blok2.ipynb
-zaj6-blok2.rst
-zaj6-blok2.slides.html
-zaj6-blok3.html
-zaj6-blok3.ipynb
-zaj6-blok3.rst
-zaj6-blok3.slides.html
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Mo&#380;na-robi&#263;-du&#380;o-fajnych-rzeczy-we-frontendzie:">Mo&#380;na robi&#263; du&#380;o fajnych rzeczy we frontendzie:<a class="anchor-link" href="#Mo&#380;na-robi&#263;-du&#380;o-fajnych-rzeczy-we-frontendzie:">&#182;</a></h5>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>%%HTML</p>
-<p><p> Można też wpisywać kod HTML na &quot;żywca&quot;</p>
-<p><p> Działa cały <strong>markup</strong> HTML</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[28]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">SVG</span>
-<span class="o">&lt;</span><span class="n">svg</span> <span class="n">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.1&quot;</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">rect</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;150&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s">&quot;150&quot;</span> <span class="n">fill</span><span class="o">=</span><span class="s">&quot;rgb(0, 255, 0)&quot;</span> <span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="n">stroke</span><span class="o">=</span><span class="s">&quot;rgb(0, 0, 0)&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">svg</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_svg output_subarea ">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <rect fill="rgb(0, 255, 0)" height="150" stroke="rgb(0, 0, 0)" stroke-width="1" width="150"/>
-</svg>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Konfiguracja">Konfiguracja<a class="anchor-link" href="#Konfiguracja">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do stworzenia plików konfiguracji służy polecenie: </p>
-<blockquote>
-<p>ipython profile create default</p>
-</blockquote>
-<p>Konfiguracja ipythona znajduje się w katalogu: <code>$HOME/.ipython/profile_default/ipython_notebook_config.py</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Zalety">Zalety<a class="anchor-link" href="#Zalety">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Pozwala na szybkie prototypowanie kodu. </li>
-<li>Przyśpiesza tworzenie kodu obliczeniowego --- ponieważ pozwala na iteratywne tworzenie go z zachowaniem poprzednich wyników obliczeń. </li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[29]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">bardzo_dlugo_wykonujaca_sie_funkcja</span><span class="p">():</span>
-    <span class="c"># ....</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-
-<span class="n">dane</span> <span class="o">=</span> <span class="n">bardzo_dlugo_wykonujaca_sie_funkcja</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[31]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dane</span> <span class="o">*</span><span class="mi">2</span> <span class="c"># Teraz na danych można pracować dalej --- bez ponownego wykonywania drogiej funkcji</span>
+<div class="highlight"><pre><span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2427,12 +1833,12 @@ In&nbsp;[31]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[31]:</div>
+    Out[16]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-8
+[1, 2, 3]
 </pre>
 </div>
 
@@ -2447,24 +1853,45 @@ In&nbsp;[31]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Pozwala łątwo prezentować wyniki obliczeń</li>
-</ul>
+<h2 id="Serializacja-funkcji">Serializacja funkcji<a class="anchor-link" href="#Serializacja-funkcji">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Funkcje serializoane są z użyciu ich nazw. </p>
+<p><strong>Uwaga</strong>: Moduł pickletools pozwala wyświetlić wygenerowany przez pickle format danych. </p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[38]:
+In&nbsp;[20]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="k">capture</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">stdout</span>
-<span class="o">%%</span><span class="k">bash</span>
-<span class="n">ipython</span> <span class="n">nbconvert</span> <span class="n">zaj6</span><span class="o">-</span><span class="n">blok1</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+</pre></div>
 
-<span class="n">cat</span> <span class="n">zaj6</span><span class="o">-</span><span class="n">blok1</span><span class="o">.</span><span class="n">html</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">8</span> 
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[21]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">pickletools</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -2478,14 +1905,157 @@ In&nbsp;[38]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
+    0: c    GLOBAL     &apos;__main__ foo&apos;
+   14: p    PUT        0
+   17: .    STOP
+highest protocol among opcodes = 0
 
-&lt;meta charset=&quot;utf-8&quot; /&gt;
-&lt;title&gt;zaj6-blok1&lt;/title&gt;
+</pre>
+</div>
+</div>
 
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js&quot;&gt;&lt;/script&gt;
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[17]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">pickletools</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+    0: \x80 PROTO      3
+    2: c    GLOBAL     &apos;builtins getattr&apos;
+   20: q    BINPUT     0
+   22: c    GLOBAL     &apos;builtins str&apos;
+   36: q    BINPUT     1
+   38: X    BINUNICODE &apos;startswith&apos;
+   53: q    BINPUT     2
+   55: \x86 TUPLE2
+   56: q    BINPUT     3
+   58: R    REDUCE
+   59: q    BINPUT     4
+   61: .    STOP
+highest protocol among opcodes = 2
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[48]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span><span class="p">():</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="n">pickletools</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Foo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+    0: \x80 PROTO      3
+    2: c    GLOBAL     &apos;__main__ Foo&apos;
+   16: q    BINPUT     0
+   18: )    EMPTY_TUPLE
+   19: \x81 NEWOBJ
+   20: q    BINPUT     1
+   22: }    EMPTY_DICT
+   23: q    BINPUT     2
+   25: (    MARK
+   26: X        BINUNICODE &apos;b&apos;
+   32: q        BINPUT     3
+   34: K        BININT1    4
+   36: X        BINUNICODE &apos;a&apos;
+   42: q        BINPUT     4
+   44: K        BININT1    3
+   46: u        SETITEMS   (MARK at 25)
+   47: b    BUILD
+   48: .    STOP
+highest protocol among opcodes = 2
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[19]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+    0: \x80 PROTO      3
+    2: c    GLOBAL     &apos;__main__ Foo&apos;
+   16: q    BINPUT     0
+   18: )    EMPTY_TUPLE
+   19: \x81 NEWOBJ
+   20: q    BINPUT     1
+   22: }    EMPTY_DICT
+   23: q    BINPUT     2
+   25: (    MARK
+   26: X        BINUNICODE &apos;b&apos;
+   32: q        BINPUT     3
+   34: K        BININT1    4
+   36: X        BINUNICODE &apos;a&apos;
+   42: q        BINPUT     4
+   44: K        BININT1    3
+   46: u        SETITEMS   (MARK at 25)
+   47: b    BUILD
+   48: .    STOP
+highest protocol among opcodes = 2
 
 </pre>
 </div>
@@ -2500,7 +2070,7 @@ In&nbsp;[38]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wady">Wady<a class="anchor-link" href="#Wady">&#182;</a></h1>
+<h2 id="Ograniczenia-pickle">Ograniczenia pickle<a class="anchor-link" href="#Ograniczenia-pickle">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2510,96 +2080,319 @@ In&nbsp;[38]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Nie da sie dzielić kodu między dwoma notebookami (mogę zaimportować ten sam kod pythona w obu notebookach, ale nie mogę pobrać funkcji <strong>zdefiniowanej</strong> w jednym z nich do drugiego)</li>
-<li>Format notebooka nie jest czytelny dla ludzi. </li>
-<li>Trudno jest wersjonować pliki notebooka kiedy pracuje nad nimi kilka osób</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Znane-problemy">Znane problemy<a class="anchor-link" href="#Znane-problemy">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="1.-Uruchomienie-ipythona-na-zdalnym-komputerze,-tak-by-nikt-poza-mn&#261;-nie-m&#243;g&#322;-go-u&#380;ywa&#263;.">1. Uruchomienie ipythona na zdalnym komputerze, tak by nikt poza mn&#261; nie m&#243;g&#322; go u&#380;ywa&#263;.<a class="anchor-link" href="#1.-Uruchomienie-ipythona-na-zdalnym-komputerze,-tak-by-nikt-poza-mn&#261;-nie-m&#243;g&#322;-go-u&#380;ywa&#263;.">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://ipython.org/ipython-doc/1/interactive/public_server.html">Tutaj</a> jest opis jak to uzyskać: </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="2.-Praca-z-badzo-du&#380;ymi-macierzami">2. Praca z badzo du&#380;ymi macierzami<a class="anchor-link" href="#2.-Praca-z-badzo-du&#380;ymi-macierzami">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Generalnie ipython notebook działa zupełnie dobrze z dużymi macierzami. Jedyny problem polega na tym że ma on w zwyczaju keszować zmienne, co może powodować nadmierne zużycie pamięci. </p>
-<p>By to usunąć należy: </p>
-<ul>
-<li>Zmienić w konfiguracji klucze: <code>c.ZMQInteractiveShell.cache_size</code> oraz <code>c.ZMQInteractiveShell.history_length</code> na <code>0</code>. </li>
-<li>Dodać do katalogu z konfiguracją katalog <code>startup</code> a w nim plik <code>init.py</code> z <code>__builtin__._ = True</code>. </li>
-</ul>
-<p><a href="http://stackoverflow.com/a/24700191/7918">Żródło</a></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="3.-Obrazki-matplotliba-s&#261;-zbyt-ma&#322;e">3. Obrazki matplotliba s&#261; zbyt ma&#322;e<a class="anchor-link" href="#3.-Obrazki-matplotliba-s&#261;-zbyt-ma&#322;e">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Do notatnika należy dodać linijkę określającą rozmiar obrazków: </p>
+<p>Pickle nie potrafi serializować obiektów lokalnych czyli: </p>
+<ol>
+<li>Funkcji zdefiniowanych nie na poziomie modułu </li>
+<li>Klas zdefiniowanych nie na poziomie modułu</li>
+</ol>
+<p><strong>Uwaga</strong>: Jak z wykle w Pythonie da się to obejść (w pewnym sensie)</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[43]:
+In&nbsp;[40]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span> 
+    <span class="k">def</span> <span class="nf">bar</span><span class="p">():</span> 
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[41]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">PicklingError</span>                             Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-41-624891b0d01a&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">----&gt; 1</span><span class="ansiyellow"> </span>foo<span class="ansiyellow">(</span><span class="ansiyellow">)</span><span class="ansiyellow"></span>
+
+<span class="ansigreen">&lt;ipython-input-40-79e23cba475b&gt;</span> in <span class="ansicyan">foo</span><span class="ansiblue">()</span>
+<span class="ansigreen">      2</span>     <span class="ansigreen">def</span> bar<span class="ansiyellow">(</span><span class="ansiyellow">)</span><span class="ansiyellow">:</span><span class="ansiyellow"></span>
+<span class="ansigreen">      3</span>         <span class="ansigreen">pass</span><span class="ansiyellow"></span>
+<span class="ansigreen">----&gt; 4</span><span class="ansiyellow">     </span><span class="ansigreen">return</span> pickle<span class="ansiyellow">.</span>dumps<span class="ansiyellow">(</span>bar<span class="ansiyellow">)</span><span class="ansiyellow"></span>
+
+<span class="ansired">PicklingError</span>: Can&apos;t pickle &lt;function foo.&lt;locals&gt;.bar at 0x7f6e400ae268&gt;: attribute lookup bar on __main__ failed</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pickle-nie-jest-zapezpieczony-przed-z&#322;o&#347;liwymi-danymi.">Pickle nie jest zapezpieczony przed z&#322;o&#347;liwymi danymi.<a class="anchor-link" href="#Pickle-nie-jest-zapezpieczony-przed-z&#322;o&#347;liwymi-danymi.">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Oznacza to że nie powinno się deserializować obiektów przychodzących od niezaufanych źródeł. </p>
+<p>Przykład: </p>
+<ul>
+<li>Stworzę plik /tmp/foo</li>
+<li>Pokażę Państwo metodę stworzenia stumienia danych pickle, który usunie ten plik</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[45]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash 
+touch /tmp/foo
+ls /tmp/foo
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+/tmp/foo
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tworzę klasę <code>Foo</code> która jest lokalna, tj. kod rozpakowujący nie musi posiadać jej definicji. 
+Posiada ona funkcję <code>__reduce__</code> która służy do przekształcenia <strong>bardzo niestandardowych</strong> typów danych do Pickle (<a href="https://docs.python.org/3.4/library/pickle.html#object.__reduce__">dokładna dokumentacja</a>). Funkcja ta (w skrócie) zwraca krotkę zawierającą: </p>
+<ul>
+<li>Globalną metodę do wykonania </li>
+<li>Krotkę zawierającą argumenty dla tej metody</li>
+</ul>
+<p>Metoda ta zostanie wykonana a jej wynik zostanie uznany za odpicklowaną wartość obiektu. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[46]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span> 
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">class</span> <span class="nc">Foo</span><span class="p">():</span>
+        <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="p">(</span><span class="s">&quot;rm /tmp/foo&quot;</span><span class="p">,))</span>
+    <span class="k">return</span> <span class="n">Foo</span><span class="p">()</span>
+        
+<span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">foo</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[46]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+0
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[47]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre>%%bash
+ls /tmp/foo
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+ls: cannot access /tmp/foo: No such file or directory
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Zobaczcie że komórka zwróciła zero, tj. uznała że w strumieniu zserializowano wartość 0, jest tak ponieważ <code>os.system</code> zwróciło 0: wynik działania polecenia <code>rm</code>. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Picklowanie-obiekt&#243;w">Picklowanie obiekt&#243;w<a class="anchor-link" href="#Picklowanie-obiekt&#243;w">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Atrybut <code>__dict__</code> w Pythonie atrybuty obiektów (poza specjalnie optymalizowanymi przypadkami) są przechowywane w słowniku. Słownik ten jest dostępny za pomocą atrybutu <code>__dict__</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[49]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Foo</span><span class="p">():</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[50]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">foo</span><span class="o">.</span><span class="n">__dict__</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[50]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+{&apos;b&apos;: 4, &apos;a&apos;: 3}
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Domyślnie obiekty są zapisywane w postaci krotki: nazwa klasy oraz zawartość atrybutu <code>__dict__</code>. </p>
+<p>Odczyt przypomina taki kawałek kodu: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[54]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">new_foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">Foo</span><span class="p">)</span>
+<span class="n">new_foo</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
 </pre></div>
 
 </div>
@@ -2612,9 +2405,127 @@ In&nbsp;[43]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://stackoverflow.com/a/17231361/7918">Źródło</a></p>
+<p>foo.a</p>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Rozszerzanie-pickleowania-obiektow">Rozszerzanie pickleowania obiektow<a class="anchor-link" href="#Rozszerzanie-pickleowania-obiektow">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Powiedzmy że w aplikacji bardzo ważną klasą jest klasa <code>Square</code> reprezentująca kwadrat, zawiera ona informacje o boku, polu i obwodzie kwadratu. Chcemy zmniejszyć rozmiar zserializowanej klasy. </p>
+<p>Służą do tego dwie metody: <code>__getstate__</code> oraz <code>__setstate__</code>. </p>
+<p>Getstate zwraca dowolny <strong>picklowalny</strong> obiekt, który zostanie przekazany do <code>__setstate__</code> przy deserializacji obiektu. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[61]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Square</span><span class="p">():</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge</span> <span class="o">=</span> <span class="n">edge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="o">*</span><span class="mi">4</span>
+    
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">&quot;version&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+            <span class="s">&quot;edge&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span>
+        <span class="p">}</span>
+    
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span> 
+        <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="s">&#39;version&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s">&#39;edge&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="o">**</span><span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="o">*</span><span class="mi">4</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[62]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">loaded_square</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Square</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[63]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">loaded_square</span><span class="o">.</span><span class="n">area</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[63]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+100
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 </div>
 </div>
