@@ -1,0 +1,2 @@
+/home/jb/dydakyka/pwzd/cpp-ex/sort-ctypes/build/CMakeFiles/sort_ctypes.dir
+/home/jb/dydakyka/pwzd/cpp-ex/sort-ctypes/build/CMakeFiles/test.dir

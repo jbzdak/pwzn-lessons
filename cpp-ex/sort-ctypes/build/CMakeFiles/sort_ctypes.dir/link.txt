@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC   -std=c++14 -O3  -lboost_unit_test_framework   -shared -Wl,-soname,libsort_ctypes.so -o libsort_ctypes.so CMakeFiles/sort_ctypes.dir/src/sort.cpp.o 

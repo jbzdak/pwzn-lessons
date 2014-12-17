@@ -1,7 +1,7 @@
 Ogłoszenie: **pilne** wigilja wydziału
 ======================================
 
-:date: 2014-12-11 21:00
+:date: 2014-12-15 21:00
 :tags: ogloszenia
 :category: zajęcia
 
@@ -18,5 +18,11 @@ Proszę o dokonanie wyboru do godziny 18.00 w poniedziałek, wynik ogłoszę na 
 stronie w poniedziałek do godziny 20.00. `Ankieta <http://doodle.com/vpp2i9wwvamqnd8x>`__
 jest dostępna tutaj. Uwaga: nie jest to głosowanie większościowe, zajęcia
 przekladamy jeśli: **wszyscy** uczestnicy zgodzą się na to.
+
+Wyniki
+------
+
+Grupa 11-14 nie przekłada zajęć.
+
 
 

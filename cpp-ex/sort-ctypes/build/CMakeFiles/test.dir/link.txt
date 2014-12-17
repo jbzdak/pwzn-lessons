@@ -1,0 +1,1 @@
+/usr/bin/c++     -std=c++14 -O3  -lboost_unit_test_framework    CMakeFiles/test.dir/src/test.cpp.o CMakeFiles/test.dir/src/sort.cpp.o  -o test -rdynamic 

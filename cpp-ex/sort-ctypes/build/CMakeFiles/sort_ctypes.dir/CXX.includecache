@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jb/dydakyka/pwzd/cpp-ex/sort-ctypes/src/sort.cpp
+algorithm
+-
+sort.hh
+/home/jb/dydakyka/pwzd/cpp-ex/sort-ctypes/src/sort.hh
+iostream
+-
+
+/home/jb/dydakyka/pwzd/cpp-ex/sort-ctypes/src/sort.hh
+boost/iterator/iterator_facade.hpp
+-
+stddef.h
+-
+
