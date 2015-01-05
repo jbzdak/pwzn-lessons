@@ -3,7 +3,7 @@ Zajęcia 4
 
 :date: 2014-11-13
 :modified: 2014-11-15
-:tags: zajęcia, zaj4
+:tags: zajęcia, zaj4, numpy, virtualenv, wirtualne środowisko, pip
 :category: zajęcia
 
 Materiały

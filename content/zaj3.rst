@@ -2,7 +2,7 @@ Zajęcia 3 [Update 05-11-2014]
 =============================
 
 :date: 2014-11-02
-:tags: zajęcia, zaj3
+:tags: zajęcia, zaj3, pliki tekstowe, json, xml, pickle, pycharm, defaultdict, dict, lambda
 :category: zajęcia
 
 Materiały

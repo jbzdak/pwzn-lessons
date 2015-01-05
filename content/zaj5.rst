@@ -2,7 +2,7 @@ Zajęcia 5
 =========
 
 :date: 2014-11-23
-:tags: zajęcia, zaj5
+:tags: zajęcia, zaj5, pliki binarne, numpy, C++, mmap
 :category: zajęcia
 
 Materiały

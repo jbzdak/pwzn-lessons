@@ -2,7 +2,7 @@ Zajęcia 6
 =========
 
 :date: 2014-11-30
-:tags: zajęcia, zaj6
+:tags: zajęcia, zaj6, pandas, matplotlib, ipython notebook,
 :category: zajęcia
 
 Materiały

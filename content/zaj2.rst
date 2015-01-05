@@ -2,7 +2,7 @@ Zajęcia 2
 =========
 
 :date: 2014-10-13 23:15
-:tags: zajęcia, zaj2
+:tags: zajęcia, zaj2, wprowadzenie, moduły, paczki, git, comprehensions, yield, generator
 :category: zajęcia
 
 Materiały

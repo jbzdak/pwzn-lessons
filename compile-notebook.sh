@@ -8,15 +8,16 @@ function compile(){
 
     zaj=$1
     cd $SRC/$zaj
-    ipython nbconvert ${zaj}-blok*.ipynb --to rst
+#    ipython nbconvert ${zaj}-blok*.ipynb --to rst
     ipython nbconvert ${zaj}-blok*.ipynb --to html
-    ipython nbconvert ${zaj}-blok*.ipynb --to slides --reveal-prefix ../reveal.js
+#    ipython nbconvert ${zaj}-blok*.ipynb --to slides --reveal-prefix ../reveal.js
 
     #mkdir -p $CONTENT/$zaj
     mkdir -p $CONTENT/static/$zaj
 
     #cp *rst $CONTENT/$zaj
     cp *html $CONTENT/static/$zaj
+    cp *ipynb $CONTENT/static/$zaj
     cp -r ${zaj}*files $CONTENT/static/$zaj
 }
 
@@ -27,4 +28,5 @@ function compile(){
 #compile zaj5
 #compile zaj6
 #compile zaj7
-compile zaj8
+#compile zaj8
+compile zaj9

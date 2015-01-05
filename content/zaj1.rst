@@ -2,7 +2,7 @@ Zajęcia 1
 =========
 
 :date: 2014-10-01
-:tags: zajęcia, zaj1
+:tags: zajęcia, zaj1, wprowadzenie, dict, list, set
 :category: zajęcia
 
 Materiały

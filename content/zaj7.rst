@@ -2,7 +2,7 @@ Zajęcia 7
 =========
 
 :date: 2014-12-07
-:tags: zajęcia, zaj7
+:tags: zajęcia, zaj7, systemy rozproszone, wieloprocesowość, http, HTML, requests, beautifullsoup, pickle, wątek, proces, lock, rygiel
 :category: zajęcia
 
 Materiały
