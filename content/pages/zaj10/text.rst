@@ -113,7 +113,129 @@ Komercyjne rozwiązania issue trackery są niestety płatne. Ja używałem taki
 * `JIRA <https://www.atlassian.com/software/jira>`__. Darmowa licencja
   dla projektów open-source wraz z hostingiem.
 
+Testy
+-----
 
+Dobrym zwyczajem jest pisanie testów do kodu równolegle z pisaniem kodu.
+
+Co testować:
+
+* Poprawność działania modeli które tworzycie (czy dają sensowne wyniki)
+* Poprawność analizy danych.
+
+W bibliotece standardowej Pythona są dwa moduły służące do testowania kodu,
+``doctest`` oraz ``unittest``.
+
+Doctest
+*******
+
+Doctest jest systemem modułem który tworzy testy ze specjalnie sformatowanych
+linii z dosctringów w obiektów w danym module.
+
+Przykład z ``dokumentacji <https://docs.python.org/3.4/library/doctest.html>``__:
+.. code-block:: python
+
+    """
+    This is the "example" module.
+
+    The example module supplies one function, factorial().  For example,
+
+    >>> factorial(5)
+    120
+    """
+
+    def factorial(n):
+        """Return the factorial of n, an exact integer >= 0.
+
+        If the result is small enough to fit in an int, return an int.
+        Else return a long.
+
+        >>> [factorial(n) for n in range(6)]
+        [1, 1, 2, 6, 24, 120]
+        >>> [factorial(long(n)) for n in range(6)]
+        [1, 1, 2, 6, 24, 120]
+        >>> factorial(30)
+        265252859812191058636308480000000L
+        >>> factorial(30L)
+        265252859812191058636308480000000L
+        >>> factorial(-1)
+        Traceback (most recent call last):
+            ...
+        ValueError: n must be >= 0
+
+        Factorials of floats are OK, but the float must be an exact integer:
+        >>> factorial(30.1)
+        Traceback (most recent call last):
+            ...
+        ValueError: n must be exact integer
+        >>> factorial(30.0)
+        265252859812191058636308480000000L
+
+        It must also not be ridiculously large:
+        >>> factorial(1e100)
+        Traceback (most recent call last):
+            ...
+        OverflowError: n too large
+        """
+
+        import math
+        if not n >= 0:
+            raise ValueError("n must be >= 0")
+        if math.floor(n) != n:
+            raise ValueError("n must be exact integer")
+        if n+1 == n:  # catch a value like 1e300
+            raise OverflowError("n too large")
+        result = 1
+        factor = 2
+        while factor <= n:
+            result *= factor
+            factor += 1
+        return result
+
+
+Linijki z docstringów rozpoczynające się od: ``>>>`` zostaną wykonane w
+interpreterze Pythona a następnie wynik ich działania zostanie skonwertowany
+na ciąg znaków i porównany z linikjami po ``>>>``.
+
+Unittest
+********
+
+Unittest jest typowym narzędziem to tworzenia testów: tworzymy klasę testu,
+klasa ta może zawierać metody specjalne: ``setUp``, ``tearDown``, ``setUpClass``
+(i kilka innych) oraz wiele metod których nazwa zaczyna się od ``test``.
+
+Metody których nazwa zaczyna się od ``test`` są testami. Każda z tych metod
+jest wykonanana i jeśli nie rzuci wyjątku to uznaje się że test wykonał się
+poprawnie. Wyjątek interpretowany jest jako błąd.
+
+.. code-block:: python
+
+    import random
+    import unittest
+
+    class TestSequenceFunctions(unittest.TestCase):
+
+        def setUp(self):
+            self.seq = list(range(10))
+
+        def test_shuffle(self):
+            # make sure the shuffled sequence does not lose any elements
+            random.shuffle(self.seq)
+            self.seq.sort()
+            self.assertEqual(self.seq, list(range(10)))
+
+            # should raise an exception for an immutable sequence
+            self.assertRaises(TypeError, random.shuffle, (1,2,3))
+
+        def test_choice(self):
+            element = random.choice(self.seq)
+            self.assertTrue(element in self.seq)
+
+        def test_sample(self):
+            with self.assertRaises(ValueError):
+                random.sample(self.seq, 20)
+            for element in random.sample(self.seq, 5):
+                self.assertTrue(element in self.seq)
 
 
 
