@@ -37,7 +37,7 @@ def regenerate():
 def serve():
     os.chdir(env.deploy_path)
 
-    PORT = 8000
+    PORT = 12399
     class AddressReuseTCPServer(SocketServer.TCPServer):
         allow_reuse_address = True
 

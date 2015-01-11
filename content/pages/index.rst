@@ -105,5 +105,11 @@ Zajęcia 9
 ---------
 
 * **Blok 1** Programowanie równoległe w ``ipython notebook``
-* **Blok 1** Systemy rozproszone w pythonie
+* **Blok 2** Systemy rozproszone w pythonie
+
+
+Zajęcia 10
+----------
+
+* Ogólne informacje o prowadzeniu projektów informatycznych
 
