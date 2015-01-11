@@ -3,12 +3,6 @@ Zarządzanie projektem
 
 :date: 2015-01-05
 
-TODO
-----
-
-* Git hooks
-* Git flows
-
 
 Wstęp
 -----
@@ -237,7 +231,68 @@ poprawnie. Wyjątek interpretowany jest jako błąd.
             for element in random.sample(self.seq, 5):
                 self.assertTrue(element in self.seq)
 
+Uruchamianie testów
+*******************
 
+Zarówno dla doctesta i unittesta istnieją metodu uruchamiania poszczególnych
+testów.
 
+W projekcie powinien istnieć skrypt, który uruchamia wszystkie testy na raz
+oraz (oprócz wyświetlania na wyników na standardowe wyjście) zwraca za pomocą
+kodu wyjścia to czy testy się powiodły.
 
+Narzędzie `nose <http://nose.readthedocs.org/>`__
+pozwala na wyszukanie i uruchomienie wszystkich testow
+w projekcie. Teoria jest taka że po instalacji starczy napisać ``nosetests .`` i
+nose wyszuka i uruchomi wszystkie testy w projekcie. Praktyka jest taka
+że potrzeba jeszcze trochę konfiguracji.
+
+Serwer CI
+---------
+
+Serwer ciągłej integracji to system który:
+
+* Pobiera nowe commity z repozytorium.
+* Buduje projekt na wszystkich systemach docelowych (windows, linuks...)
+* Uruchamia testy
+* Wysyła e-mail jeśli testy nie przejdą.
+
+Istnieją darmowe systemy CI dla projektów open-source. Przykładem takiego systemu
+jest `travis CI <https://travis-ci.org>`__.
+
+Wirtualne środowiska
+--------------------
+
+Tak jak pisałem wcześniej: każdy projekt powinien mieć swoje virtualne środowisko,
+które jest przypięte do skompilowanego własnoręcznie interpretera (interpreter
+systemowy może zostać zmieniony na nowszą wersję co zmieni ABI i
+zepsuje środowisko).
+
+Plik z zależnościami
+--------------------
+
+W projekcie powinien być plik o nazwie ``requirements.txt`` który zawiera
+zależności projektu. Pliki requirements mają bardzo prostą składnię, mianowicie
+w każdej linii zawierają nazwę jednej zależności.
+
+Przykładowa zawartość
+
+.. code-block:: bash
+
+    numpy
+    scipy
+    matplotlib
+    foo==1.0.1
+    bar>=10
+
+By zainstalować wszystkie biblioteki z pliku requirements starczy napisać:
+``pip -r <nazwa pliku>``.
+
+Zależnośći można albo podać bez wersji (wtedy pobrana zostanie najnowsza wersja),
+albo ustalić jej wersję (można np. żądać wersji nowszej niż zadana).
+
+Współpraca nad projektem z użyciem Pull-Requestów
+-------------------------------------------------
+
+TODO
 
