@@ -53,9 +53,37 @@ Dokumentacja
 Dokumentacja projektu jest ważna, nawet jeśli projektem który dokumentujecie jest
 Wasza praca inżynierska.
 
+* Ułatwia wrocenie do projektu po tym jak przez długi czas
+  będzie on leżał odłogiem.
+* Ułatwia przekazanie projektu komuś innemu.
+* Ułatwia wprowadzenie innych osób do projektu.
+
+Minimum dokumentacji w projekcie to wyjaśnienie: co poszczególne moduły robią i dlaczego
+robią to w taki sposób.
+
 Dokumentację można podzielić na dwie kategorie:
 
-* Dokumentację API (dokumentację interfrejsów programistycznych)
-* Dokumentację narracyjną Poprawki pozwalają
+* Dokumentację API (dokumentację interfrejsów programistycznych) --- dokumentacja
+  zawiera opis poszczególnych struktur danych, funkcji oraz metod w programie.
+  Przykładem dokumentacji API jest `dokumentacja javy <http://docs.oracle.com/javase/8/docs/api/>`__
+  Dokumentacja API odpowie na pytanie: "Jakie parametry ma funkcja ``pylab.plot``"
+* Dokumentację narracyjną. Dokumentacja API pozwala bardzo szybko wyszukać
+  informację jeśli wie się czego się szuka, natomiast trudno jest w niej
+  znaleźć odpowiedź na niezbyt konkretne pytanie. Dokumentacja narracyjna
+  zaczyna od problemu --- i pokazuje jak go rozwiązać. Dokumentacja narracyjna
+  odpowie nam na pytanie: "Jak narysować za pomocą ``matplotlib`` logarytmiczny
+  histogram".
+
+Bardzo często używanym narzędziem do robienia dokumentacji projektów Pythonowych
+jest `Sphinx <http://sphinx-doc.org/>`__. Może on służyć do:
+
+* Pisania dokumentacji (zarówno dokumentacji API jaki i narracyjnej). Sphinks
+  wspiera równieć generowanie dokumentacji ze specjalnie sformatowanych
+  `docstringów <http://en.wikipedia.org/w/index.php?title=Docstring&oldid=637556513>`__
+  za pomocą modułu `autodoc <http://sphinx-doc.org/ext/autodoc.html>`__.
+* Pisania `książek <https://readthedocs.org/projects/the-axiom-book/>`__
+* Tworzenia `stron przedmiotów <http://db.fizyka.pw.edu.pl//bazy_danych_ed_20/>`__.s
+
+
 
 
