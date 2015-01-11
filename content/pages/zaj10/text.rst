@@ -89,3 +89,33 @@ jest `Sphinx <http://sphinx-doc.org/>`__. Może on służyć do:
 Są serwisy internetowe które pobierają Wasz projekt z Waszego repozyorium,
 generują i publikują dokumentację Waszego projektu, przykładem takiej strony
 jest: `read the docs <https://readthedocs.org/>`__.
+
+Issue tracker
+*************
+
+Issue tracker jest programem zawierającym informacje o zadaniach do wykonania w
+danym projekcie. Generalnie zadaniem issue trackera jest wspieranie większych
+projektów informatycznych --- i na przykład podział pracy między programistami.
+
+W projektach typu: "praca inżynierska" issue tracker ma inne zadania ---
+zasadniczo w pracy nad waszą pracą dyplomową można oczekiwać sporych przerw
+(na przykład z powodu sesji czy większego kolokwium). Issue tracker bardzo
+pomaga wrócić do pracy po takiej przerwie.
+
+Funkcję issue trackera może pełnić plik ``todo.txt`` w katalogu waszego
+projektu, dodatkowo zarówno bitbucket jak i github mają wbudowane proste
+issue trackery.
+
+Komercyjne rozwiązania issue trackery są niestety płatne. Ja używałem takich:
+
+* `Youtrack <https://www.jetbrains.com/youtrack/>`__. Darmowa licencja
+  do 10 osób, własnym hostowaniu projektu.
+* `JIRA <https://www.atlassian.com/software/jira>`__. Darmowa licencja
+  dla projektów open-source wraz z hostingiem.
+
+
+
+
+
+
+
