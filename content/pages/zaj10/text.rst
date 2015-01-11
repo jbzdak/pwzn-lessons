@@ -82,8 +82,10 @@ jest `Sphinx <http://sphinx-doc.org/>`__. Może on służyć do:
   `docstringów <http://en.wikipedia.org/w/index.php?title=Docstring&oldid=637556513>`__
   za pomocą modułu `autodoc <http://sphinx-doc.org/ext/autodoc.html>`__.
 * Pisania `książek <https://readthedocs.org/projects/the-axiom-book/>`__
-* Tworzenia `stron przedmiotów <http://db.fizyka.pw.edu.pl//bazy_danych_ed_20/>`__.s
+* Tworzenia `stron przedmiotów <http://db.fizyka.pw.edu.pl//bazy_danych_ed_20/>`__
+  (na marginesie: jednak do tworzenia stron przedmiotu lepszy wydaje
+  się być `pelican <http://docs.getpelican.com/en/3.5.0/>`__.
 
-
-
-
+Są serwisy internetowe które pobierają Wasz projekt z Waszego repozyorium,
+generują i publikują dokumentację Waszego projektu, przykładem takiej strony
+jest: `read the docs <https://readthedocs.org/>`__.
