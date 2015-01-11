@@ -47,4 +47,15 @@ repozytoria które pobrać mogą wszyscy są darmowe, a repozyoria prywatne są
 Github daje studentom darmowo 5 repozytoriów prywatnych a Bitbucket --- daje ich
 nieograniczoną ilość.
 
+Dokumentacja
+************
+
+Dokumentacja projektu jest ważna, nawet jeśli projektem który dokumentujecie jest
+Wasza praca inżynierska.
+
+Dokumentację można podzielić na dwie kategorie:
+
+* Dokumentację API (dokumentację interfrejsów programistycznych)
+* Dokumentację narracyjną Poprawki pozwalają
+
 
