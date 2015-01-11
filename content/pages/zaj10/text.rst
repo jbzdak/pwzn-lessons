@@ -3,6 +3,13 @@ Zarządzanie projektem
 
 :date: 2015-01-05
 
+TODO
+----
+
+* Git hooks
+* Git flows
+
+
 Wstęp
 -----
 
@@ -24,4 +31,20 @@ Podstawowe narzędzia które ułatwiają pracę nad projektemt to:
 
 System kontroli wersji
 **********************
+
+W zasadzie wszystkie systemy kontroli wersji które są
+`rozproszone <http://en.wikipedia.org/w/index.php?title=Distributed_revision_control&oldid=639181191>`__
+są tak samo udanymi narzędziami.
+
+Z tych narzędzi ja najbardziej lubię `git-a <http://git-scm.com/>`__, głównie
+z tego powodu że pozwala on na bardzo elastyczną pracę oraz umożliwia
+wykonywanie operacji które są uznane za "niebezpieczne" (np. przepisywanie
+historii projektu).
+
+Przy wspólnej pracy nad projektem bardzo przydaje się centralne repozytorium
+kodu, repozytoria takie udostępnia np. serwis GitHub i Bitbucket. W obu serwisach
+repozytoria które pobrać mogą wszyscy są darmowe, a repozyoria prywatne są płatne.
+Github daje studentom darmowo 5 repozytoriów prywatnych a Bitbucket --- daje ich
+nieograniczoną ilość.
+
 
