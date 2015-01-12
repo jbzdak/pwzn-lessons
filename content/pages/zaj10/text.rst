@@ -3,10 +3,6 @@ Zarządzanie projektem
 
 :date: 2015-01-05
 
-TODO:
-pip freeze
-__init__.py
-
 
 Wstęp
 -----
@@ -320,16 +316,69 @@ Nie każda przydatna wersja zależności jest w pypi, czasem projekt taki można
 zainstalować bezpośrednio z repozytorium (o posiada poprawnie napisany plik
 ``setup.py``). W tym celu można zdefiniować zależność w postaci:
 
-* ``typ_rep+url_do_repo@id_commitus
+.. code-block:: bash
 
+    ``typ_rep+url_do_repo@id_commitu#egg=nazwa_paczki``
+
+Na przykład gdybym chciał zainstalować numpy z repozytorium napisałbym:
+
+.. code-block:: bash
+
+    git+https://github.com/numpy/numpy.git@master#egg=numpy
 
 
 
 Plik ``setup.py``.
 ------------------
 
-Współpraca nad projektem z użyciem Pull-Requestów
--------------------------------------------------
+Układ projektu
+**************
 
-TODO
+Typowy układ projektu wygląda tak:
+
+.. code-block:: bash
+
+    - my_project
+      - my_package
+        - subpackage
+          __init__.py
+          foo.py
+        __init__.py
+        bar.py
+    - scripts
+      run_tests.sh
+      ...
+    setup.py
+    requirements.txt
+    requirements_working.txt
+    source.me
+
+
+Wyjaśnienie poszczególnych plików:
+
+* ``source.me`` plik dla którego wykonujecie ``source source.me``, który
+  np. włącza środowisko wirtualne, włącza odpowiednią instalację Root-a
+  (czy innego softu od którego zależy Wasz)
+* ``setup.py`` jeśli Wasz projekt jest paczką wykorzystywaną w innych projektach
+  dobrze jest móc zainstalować go. Do tego służy plik ``setup.py``.
+* ``run_tests.sh`` skrypt który uruchamia wszystkie testy.
+
+
+(Troszkę) zaawansowane użycia Git-a
+-----------------------------------
+
+Git flows
+*********
+
+Współpraca nad projektem zawsze wymaga jakiejś formy synchronizacji pracy, a
+najczęściej również łączenia zmian wprowadzanych przez różne osoby.
+
+W Gicie (i każdym innym VCS) jeden ciąg zmian
+
+Współpraca nad projektem z użyciem Pull-Requestów
+*************************************************
+
+Przy większych projektach całkiem przydatnym narzędziem są tzw
+
+
 
