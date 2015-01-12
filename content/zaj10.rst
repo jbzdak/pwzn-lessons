@@ -8,7 +8,7 @@ Zajęcia 10
 Treść zajęć
 -----------
 
-* `Foo <{filename}/pages/zaj10/text.rst>`__
+* `Tresc wykładu <{filename}/pages/zaj10/text.rst>`__
 
 
 Opis zajęć
@@ -26,3 +26,14 @@ Resztę czasu przeznaczymy na:
 * Rozmowę o projektach
 * etc.
 
+Kolokwium
+---------
+
+Na kolokwium proszę się spodziewać:
+
+* Numpyego i zadań na wektoryzację.
+* Pandas i pojęcia indeksu
+* Możliwe że znajdę jakieś podchwytliwe tematy z pierwszych i drugich zajęć 
+  (o których zapomnieliście)
+
+Nie planuje pytać o matplotliby i ``ipython notebooka``.
