@@ -3,6 +3,10 @@ Zarządzanie projektem
 
 :date: 2015-01-05
 
+TODO:
+pip freeze
+__init__.py
+
 
 Wstęp
 -----
@@ -289,7 +293,40 @@ By zainstalować wszystkie biblioteki z pliku requirements starczy napisać:
 ``pip -r <nazwa pliku>``.
 
 Zależnośći można albo podać bez wersji (wtedy pobrana zostanie najnowsza wersja),
-albo ustalić jej wersję (można np. żądać wersji nowszej niż zadana).
+albo ustalić jej wersję (można np. żądać wersji nowszej niż zadana). Pełna
+składnia plików z zależnościami `jest dość rozbudowana <https://pip.pypa.io/en/latest/reference/pip_install.html#requirements-file-format>`__.
+
+Są dwie szkoły:
+
+* Podawać zalezności bez wersji, ew. określając wersję minimalną
+  w formacie: ``numpy>1.8``. Tutaj problem może spowodować to, że autor
+  wprowadzi zmiany łamiące kompatybilność wsteczną.
+* Podawać zależności z dokładną wersją. Tutaj problemem może być to że spędzicie
+  dwa dni szukając błędu naprawionego w zależności dwa lata temu.
+
+Rozwiązanie:
+
+* Zależnie od biblioteki rozsądnym kompromisem może być ``Django<1.8.0,>=1.7.0``,
+  zakładam że developerzy django nie zmienią żadnych ważnych API przy zmianie
+  między pomniejszymi wersjami.
+* Do tego zawsze warto mieć w projekcie plik ``requirements_working.txt``
+  zawierający zależności z podaną wersją z konfiguracji ktora **na pewno działa**,
+  by taki plik wygenerować starczy komenta ``pip freeze > requirements_working.txt``.
+
+Instalacja zależności z repozytorium
+************************************
+
+Nie każda przydatna wersja zależności jest w pypi, czasem projekt taki można
+zainstalować bezpośrednio z repozytorium (o posiada poprawnie napisany plik
+``setup.py``). W tym celu można zdefiniować zależność w postaci:
+
+* ``typ_rep+url_do_repo@id_commitus
+
+
+
+
+Plik ``setup.py``.
+------------------
 
 Współpraca nad projektem z użyciem Pull-Requestów
 -------------------------------------------------
