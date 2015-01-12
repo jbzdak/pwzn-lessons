@@ -373,12 +373,37 @@ Git flows
 Współpraca nad projektem zawsze wymaga jakiejś formy synchronizacji pracy, a
 najczęściej również łączenia zmian wprowadzanych przez różne osoby.
 
-W Gicie (i każdym innym VCS) jeden ciąg zmian
+W Gicie (i każdym innym VCS) jeden ciąg zmian nazywamy branchem (gałęzią),
+a operację łączenia branchy mergeowaniem. Mergeowanie z reguły jest mało
+przyjemną operacją, są jednak metody pozwalające na minimalizację problemów.
+
+Jedną z nich są tzw. topic branche, przy pracy z topic branchami w repozytorium
+mamy takie gałęzie:
+
+* ``master`` Wersja produkcyjna
+* ``develop`` Aktualna wersja deweloperska (to w Waszych projektach będzie
+  ``develop`` zależy od Was).
+* ``feature/*`` W branchu o nazwie ``feature/foo`` odbywa się cała praca
+  nad funkcjonalnością ``foo``.
+* ``bugfix/*`` w takich branchach naprawia się błędy.
+
+Branche ``feature`` i ``bugfix`` to właśnie topic branche --- czyli gałęzie
+tematyczne. Gdy programista pracuje nad daną funkcjonalnościa zmiany
+trafiają właśnie do topic brancha.
 
 Współpraca nad projektem z użyciem Pull-Requestów
 *************************************************
 
-Przy większych projektach całkiem przydatnym narzędziem są tzw
+Generalnie topic branche same w sobie raczej w Waszych projektach się nie
+przydadzą, ale ich używanie ułatwia używanie Pull-Requestów. Pull request
+to prośba do innego programisty by połączył dwa branche.
+
+W pull-requeście widać:
+
+* Zmiany w kodzie
+* Komentarze wszystkich zainteresowanych
+
+
 
 
 
