@@ -14,7 +14,7 @@ albo wręcz jest to projekt jednoosobowy.
 Narzędzia
 ---------
 
-Podstawowe narzędzia które ułatwiają pracę nad projektemt to:
+Podstawowe narzędzia które ułatwiają pracę nad projektem to:
 
 * System kontroli wersji
 * Issue tracker
