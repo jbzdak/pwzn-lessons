@@ -126,7 +126,8 @@ Doctest
 Doctest jest systemem modułem który tworzy testy ze specjalnie sformatowanych
 linii z dosctringów w obiektów w danym module.
 
-Przykład z ``dokumentacji <https://docs.python.org/3.4/library/doctest.html>``__:
+Przykład z `dokumentacji <https://docs.python.org/3.4/library/doctest.html>`__:
+
 .. code-block:: python
 
     """
