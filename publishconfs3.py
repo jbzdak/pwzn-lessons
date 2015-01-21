@@ -10,8 +10,8 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-#ITEURL = 'http://pwzn.s3-website-us-east-1.amazonaws.com'
-SITEURL = 'http://db.fizyka.pw.edu.pl/pwzn'
+SITEURL = 'http://pwzn.s3-website-us-east-1.amazonaws.com'
+# SITEURL = 'http://db.fizyka.pw.edu.pl/pwzn'
 
 RELATIVE_URLS = False
 
