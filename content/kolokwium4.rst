@@ -1,32 +1,42 @@
-Kolokwium 3
-===========
+Kolokwium 3 (update 2)
+======================
 
-:date: 2015-01-18
+:date: 2015-01-26
+:modified: 2015-01-26
 :tags: kolokwium
 :category: zajęcia
+
+Update
+------
+
+* Naniosłem wyniki drugiej grupy.
+* Dodałem terminy poprawy
 
 Poprawy (dotyczy również osób które nie brały udziału w kolokwium!)
 -------------------------------------------------------------------
 
+Na razie proponuję takie terminy poprawy:
 
-Proponuję takie terminy poprawy:
+* Wtorek  27.I (w godzinach konsultacji).
+  Dostępne są dwa terminy: http://doodle.com/2fx3wbcdh4cp8zyk
+  (osoby zgłoszone poprzednią ankietą nie muszą się zgłaszać)
+* Czwartek (29.I )
 
-* Czwartek 22.I godzina (zależnie od ilości chętnych) 11 albo 12.00. Godzina
-  zostanie ogłoszona w środę.
-* Wtorek  27.I (w godzinach konsultacji)
+  * Grupa I 13-14.00
+  * Grupa II 14 - 15.00
+
+* Termin w sesji (poza godzinami egzaminów)
 
 W podanych terminach można poprawiać również poprzednie kolokwia.
-
-By wziąć udział w poprawie proszę o wypełnienie ankiety
-`z terminami  popraw <http://doodle.com/939w29r9cx5du4at>`__.
 
 Wyniki
 ------
 
-Wyniki `kolokwium <{filename}/static/kolokwia/kol-3a-wyniki.csv>`__.
+Wyniki (grupa 11-14, nie uwzględnia popraw) `kolokwium <{filename}/static/kolokwia/kol-3a-wyniki.csv>`__.
+Wyniki (grupa 14-17) `kolokwium <{filename}/static/kolokwia/kol-3b.csv>`__.
 
-Rozwiązania modelowe i punktacja
---------------------------------
+Rozwiązania modelowe i punktacja (kol 3a)
+-----------------------------------------
 
 Tresc `kolokwium <{filename}/static/kolokwia/kol-3a.pdf>`__.
 
@@ -221,4 +231,70 @@ Inne rozwiązania wykorzystywały ``collections.Counter`` albo zwykły słownik.
 
 Kod który nie działa skutkuje przyznaniem 0pkt. Czasem za drobny błąd przyznawąłem
 0.5pkt.
+
+Rozwiązania modelowe i punktacja (kol 3b)
+-----------------------------------------
+
+Tresc `kolokwium <{filename}/static/kolokwia/kol-3b.pdf>`__.
+
+Zadanie 1
+*********
+
+Tylko jedno wywołanie było niepoprawne:
+
+.. code-block:: python
+
+    my_wrapper(foo, bar, baz)
+
+To wywołanie jest poprawne:
+
+.. code-block:: python
+
+    my_wrapper(baz, foo=foo, bar=bar)
+
+Argument baz jest przekazany pozycyjnie (co dopuszcza sygnatura my_wrapper)
+pozostałe jako keyword arguments.
+
+
+Zadanie 2
+*********
+
+Rozwiązanie modelowe:
+
+.. code-block:: python
+
+    import csv
+    with open('in.csv', 'r') as in,
+           open('out.csv', 'w' as out:
+      read = csv.reader(in)
+      write = csv.writer(out, delimiter="?")
+      for line in read:
+        write.writeline(line)
+
+Bardzo często Państwo kopiowaliście argumenty do listy, a listę do
+drugiego pliku, nie obcinałem za to punktów.
+
+Można było również skorzystać z Panadas, co jednak wymagało doczytania
+parametru, który wyłączał zapisywanie indeksu.
+
+Zadanie 3
+*********
+
+Program B zużywa **więcej pamięci** ponieważ powstaje w nim
+macierz:
+
+.. code-block:: python
+
+    data!=np.nan
+
+Jest to normalna macierz logiczna. Myślę że dodatkowa pamięć konieczna
+do obliczeń nie będzie dla Was problemem, jak poszukacie to są narzędzia
+które kompilują tego typu wyrażenia do jednej pętli C.
+
+Zadanie 4
+*********
+
+Tutaj rozwiązanie jest proste. Należało tylko nie zapomnieć
+o wykorzystaniu funkcji ``np.*``.
+
 
