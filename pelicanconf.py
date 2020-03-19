@@ -6,6 +6,7 @@ import os, sys
 import unipath
 
 DIRNAME = os.path.dirname(__file__)
+
 if not DIRNAME in sys.path:
     sys.path.append(DIRNAME)
 
